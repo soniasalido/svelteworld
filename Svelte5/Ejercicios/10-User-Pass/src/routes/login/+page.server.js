@@ -1,3 +1,5 @@
+
+import { redirect } from '@sveltejs/kit';
 import { checkUserCredentials } from '$lib/database';
 import bcrypt from 'bcrypt';
 
@@ -9,13 +11,18 @@ export const actions = {
 
 		const user = await checkUserCredentials(username);
 
-		if (user && await bcrypt.compare(password, user.hashedPassword)) {
+
+		if (user && (password === user.hashedPassword)) {
 			// Si las credenciales son correctas, creamos una cookie de sesión
 			cookies.set('session_id', user.id, {
 				httpOnly: true,
 				path: '/',
 				maxAge: 60 * 60 * 24 // 1 día
 			});
+			console.log('Login correcto');
+
+			// Redirigir al usuario a la página /private después de un login exitoso
+			throw redirect(303, '/private');
 			return { success: true };
 		}
 
