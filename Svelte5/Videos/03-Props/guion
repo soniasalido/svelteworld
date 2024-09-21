@@ -1,0 +1,58 @@
+Guion para Video Explicativo del Código Svelte
+[Escena 1: Introducción]
+
+Voz en off (entusiasta):
+"¡Hola a todos! En este video, vamos a sumergirnos en el mundo de Svelte, un framework JavaScript que está cambiando la forma en que construimos aplicaciones web. Hoy, exploraremos un ejemplo práctico para entender cómo funciona la comunicación entre componentes en Svelte."
+
+[Escena 2: Visión General del Proyecto]
+
+Voz en off (informativo):
+"Comencemos con una vista rápida de lo que vamos a explorar. Tenemos dos archivos principales: un componente padre y un componente hijo. El componente padre es responsable de manejar los datos y pasarlos al componente hijo a través de propiedades, o 'props'."
+
+[Escena 3: Explicación del Archivo +page.svelte]
+
+En pantalla: Código del archivo +page.svelte destacado línea por línea.
+
+Voz en off (claramente explicativo):
+"Primero, echemos un vistazo al archivo +page.svelte. Este archivo actúa como nuestro componente padre. Al inicio, importamos el componente hijo llamado ChildProps desde el archivo Child-Props.svelte. Luego, definimos tres variables: message, count, y boolean."
+
+Voz en off (pausado):
+"La variable message es una cadena de texto que inicialmente dice 'Hello from the parent'. count es un número que comienza en 0, y boolean es un valor verdadero o falso que está configurado inicialmente como true."
+
+Voz en off (enfatizando):
+"Estas variables se vinculan a elementos de entrada (input) en el HTML usando la directiva bind. Esto permite que cualquier cambio en el valor de los campos de entrada actualice automáticamente las variables en el componente Svelte."
+
+Voz en off (claridad):
+"Después de los elementos de entrada, encontramos el componente ChildProps. Aquí es donde pasamos nuestras variables como props al componente hijo, utilizando la sintaxis de llaves ({})."
+
+[Escena 4: Explicación del Archivo Child-Props.svelte]
+
+En pantalla: Código del archivo Child-Props.svelte destacado línea por línea.
+
+Voz en off (detallado):
+"Ahora, miremos el archivo Child-Props.svelte. Este es nuestro componente hijo que recibe las props del padre. Al principio, usamos la función $props() para desestructurar y asignar las variables message, count, y boolean a variables locales dentro del componente hijo."
+
+Voz en off (educativo):
+"En el script, notamos una declaración console.log que muestra las props recibidas, lo que es útil para depuración. Luego, en el HTML del componente hijo, mostramos estas propiedades directamente en la página, utilizando la sintaxis de interpolación de Svelte ({})."
+
+Voz en off (resumiendo):
+"Esto permite que el componente hijo muestre los valores actuales de message, count, y boolean que fueron enviados desde el componente padre."
+
+[Escena 5: Demostración en Vivo]
+
+En pantalla: Demostración en vivo del código ejecutándose en un navegador.
+
+Voz en off (dinámico):
+"Veamos cómo funciona todo esto en tiempo real. Aquí tenemos nuestra aplicación en ejecución. Como pueden ver, al modificar los valores en los campos de entrada, los cambios se reflejan instantáneamente en el componente hijo. Esto es gracias a la vinculación reactiva de datos en Svelte."
+
+[Escena 6: Conclusión]
+
+Voz en off (entusiasta):
+"¡Y eso es todo por hoy! Ahora has visto cómo Svelte maneja la comunicación entre un componente padre y su hijo usando props. Esta es una de las muchas características que hacen de Svelte un framework poderoso y fácil de usar."
+
+Voz en off (invitador):
+"Si te ha gustado este video, no olvides suscribirte para más contenido sobre desarrollo web y frameworks modernos. ¡Nos vemos en el próximo video!"
+
+[Fin del video]
+
+Este guion está diseñado para guiar al espectador paso a paso a través del código Svelte que proporcionaste, explicando cómo funciona la vinculación de datos y la comunicación entre componentes de manera clara y concisa. ​

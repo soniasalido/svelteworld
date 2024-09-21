@@ -1,0 +1,1050 @@
+{
+  "especialidades": [
+    {
+      "tipo": "agrupacion",
+      "codigo": "agrupacionPulsoPua",
+      "nombre": "Agrupación de Pulso y Púa",
+      "cuota": [
+        {
+          "tipoCuota": "agrupacion",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "agrupacionguitarra",
+      "nombre": "Agrupación de Guitarra",
+      "cuota": [
+        {
+          "tipoCuota": "agrupacion",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "bigband",
+      "nombre": "Big Band",
+      "cuota": [
+        {
+          "tipoCuota": "agrupacion",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "batukada",
+      "nombre": "Batukada",
+      "cuota": [
+        {
+          "tipoCuota": "agrupacion",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "chorus",
+      "nombre": "Chorus Clarinets",
+      "cuota": [
+        {
+          "tipoCuota": "agrupacion",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "coromoderno",
+      "nombre": "Coro Moderno",
+      "cuota": [
+        {
+          "tipoCuota": "coromoderno",
+          "nombreCuota": "1 hora y media/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-inf-1",
+      "nombre": "Danza Infaltil 1 (de 3 a 6 años)",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-inf-2",
+      "nombre": "Danza Infaltil 2 (de 7 a 9 años)",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-inf-3",
+      "nombre": "Danza Infaltil 3 (de 10 a 12 años)",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-jov-1",
+      "nombre": "Danza Jóvenes 1 (de 13 a 16 años)",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-jov-2",
+      "nombre": "Danza Jóvenes 2 (a partir de 17 años...)",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-zumba",
+      "nombre": "Danza Zumba",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-adultos",
+      "nombre": "Danza Adultos",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "danza-adultos-urbana",
+      "nombre": "Danza Urbana Adultos",
+      "cuota": [
+        {
+          "tipoCuota": "danza1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 8
+        },
+        {
+          "tipoCuota": "danza2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "ensemble",
+      "nombre": "Ensemble",
+      "cuota": [
+        {
+          "tipoCuota": "agrupacion",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "agrupacioncornetas3",
+      "nombre": "Grupo de Cornetas (Grupo de 3)",
+      "cuota": [
+        {
+          "tipoCuota": "grupo3",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "agrupacioncornetas4",
+      "nombre": "Grupo de Cornetas (Grupo de 4)",
+      "cuota": [
+        {
+          "tipoCuota": "grupo4",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+    {
+      "tipo": "agrupacion",
+      "codigo": "gruposinstrumen",
+      "nombre": "Grupos Instrumentales",
+      "cuota": [
+        {
+          "tipoCuota": "agrupacion",
+          "nombreCuota": "Agrupación",
+          "precio": 15
+        }
+      ],
+      "tipoMatricula": "exento"
+    },
+
+
+
+    {
+      "tipo": "emt",
+      "codigo": "musicaEnFamilia",
+      "nombre": "Música en Familia (0 a 3 años)",
+      "cuota": [
+        {
+          "tipoCuota": "emt1h",
+          "nombreCuota": "1 Hora/semana",
+          "precio": 12
+        },
+        {
+          "tipoCuota": "emt2h",
+          "nombreCuota": "2 Horas/semana",
+          "precio": 24
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "emt",
+      "codigo": "jugandoMusica",
+      "nombre": "Jugando con la Música (3 años)",
+      "cuota": [
+        {
+          "tipoCuota": "emt1h",
+          "nombreCuota": "1 Hora/semana",
+          "precio": 12
+        },
+        {
+          "tipoCuota": "emt2h",
+          "nombreCuota": "2 Horas/semana",
+          "precio": 24
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "emt",
+      "codigo": "musicamovimient",
+      "nombre": "Música y Movimiento (4 a 5 años)",
+      "cuota": [
+        {
+          "tipoCuota": "emt1h",
+          "nombreCuota": "1 Hora/semana",
+          "precio": 12
+        },
+        {
+          "tipoCuota": "emt2h",
+          "nombreCuota": "2 Horas/semana",
+          "precio": 24
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "emt",
+      "codigo": "iniciacionMusical",
+      "nombre": "Iniciación Musical (6 a 8 años)",
+      "cuota": [
+        {
+          "tipoCuota": "emt1h",
+          "nombreCuota": "1 Hora/semana",
+          "precio": 12
+        },
+        {
+          "tipoCuota": "emt2h",
+          "nombreCuota": "2 Horas/semana",
+          "precio": 24
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "lmusical",
+      "codigo": "lmusical",
+      "nombre": "Lenguaje Musical (a partir de 8 años)",
+      "cuota": [
+        {
+          "tipoCuota": "lenguajeMusical1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 12
+        },
+        {
+          "tipoCuota": "lenguajeMusical1.5h",
+          "nombreCuota": "1 Hora y Media/Semana",
+          "precio": 18
+        },
+        {
+          "tipoCuota": "lenguajeMusical2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 24
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "lmusical",
+      "codigo": "lmusicaladultos",
+      "nombre": "Lenguaje Musical Adultos",
+      "cuota": [
+        {
+          "tipoCuota": "lenguajeMusical1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 12
+        },
+        {
+          "tipoCuota": "lenguajeMusical1.5h",
+          "nombreCuota": "1 Hora y Media/Semana",
+          "precio": 18
+        },
+        {
+          "tipoCuota": "lenguajeMusical2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 24
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IAcordeon",
+      "nombre": "Acordeón",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IBajo",
+      "nombre": "Bajo",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IBombardino",
+      "nombre": "Bombardino",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "cantomoderno",
+      "nombre": "Canto Moderno",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "Instrumento 1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IClarinete",
+      "nombre": "Clarinete",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "ICorneta",
+      "nombre": "Corneta",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IFlauta",
+      "nombre": "Flauta",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IGuitarra",
+      "nombre": "Guitarra",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IGuitarraElectr",
+      "nombre": "Guitarra Eléctrica",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "iOboe",
+      "nombre": "Oboe",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IPercusion",
+      "nombre": "Percusión",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IPiano",
+      "nombre": "Piano",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "ISaxo",
+      "nombre": "Saxofón",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "iTamborPercusio",
+      "nombre": "Tambor y Percusión",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "ITrombon",
+      "nombre": "Trombón",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "ITrompa",
+      "nombre": "Trompa",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "ITrompeta",
+      "nombre": "Trompeta",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "ITuba",
+      "nombre": "Tuba",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    },
+
+
+
+    {
+      "tipo": "instrumento",
+      "codigo": "IViolin",
+      "nombre": "Violín",
+      "cuota": [
+        {
+          "tipoCuota": "instrumento0.5horas",
+          "nombreCuota": "Media Hora/Semana",
+          "precio": 34
+        },
+        {
+          "tipoCuota": "instrumento1hora",
+          "nombreCuota": "1 Hora/Semana",
+          "precio": 68
+        },
+        {
+          "tipoCuota": "instrumento1.5Horas",
+          "nombreCuota": "1.5 Horas/Semana",
+          "precio": 102
+        },
+        {
+          "tipoCuota": "instrumento2horas",
+          "nombreCuota": "2 Horas/Semana",
+          "precio": 136
+        }
+      ],
+      "tipoMatricula": "noExento"
+    }
+  ]
+}

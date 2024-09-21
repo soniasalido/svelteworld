@@ -1,0 +1,103 @@
+¡Hola a todos! Bienvenidos a este tutorial donde aprenderemos a crear un proyecto Svelte desde cero en un entorno Linux. Hoy, cubriremos todo lo necesario, desde la instalación de Node.js hasta la creación de nuestro primer proyecto en Svelte. ¡Vamos a empezar!
+
+Previo: Instalación de Node.js
+Pero, ¿por qué necesitamos Node.js? Node.js es un entorno de tiempo de ejecución que permite ejecutar código JavaScript fuera de un navegador web. Se basa en el motor V8 de Google Chrome y proporciona un conjunto de herramientas y bibliotecas que facilitan el desarrollo de aplicaciones tanto del lado del servidor como del lado del cliente.
+
+¿Qué es el motor V8 de Google Chrome?
+Es un motor de JavaScript de alto rendimiento desarrollado por Google. Es el componente responsable de ejecutar el código JavaScript en el navegador Google Chrome y otros navegadores basados en Chromium, como Microsoft Edge.
+
+Razones por las que necesitamos Node:
+
+Compilación de Svelte: Svelte no es un framework tradicional de JavaScript que simplemente se ejecuta en el navegador. En su lugar, Svelte convierte los componentes que escribimos en código JavaScript optimizado que luego se ejecuta en el navegador. Este proceso de compilación ocurre en el entorno de desarrollo, no en el navegador, y Node.js es el entorno que se utiliza para ejecutar este proceso. Node.js ejecuta scripts que leen nuestro código fuente de Svelte, lo transforman en el formato final, y preparan todo para ser desplegado en un navegador o en un servidor. El navegador es donde se ejecuta el código final, que ya ha sido compilado y optimizado. El navegador no necesita ni conoce el código original escrito en Svelte, solo recibe el resultado final, que es el código JavaScript, HTML y CSS generado por el proceso de compilación.
+Herramientas de Desarrollo: Svelte utiliza herramientas como npm o yarn (administradores de paquetes que funcionan con Node.js) para instalar dependencias, manejar scripts de construcción, y ejecutar servidores de desarrollo. Estas herramientas requieren Node.js para funcionar.
+Servidor de Desarrollo: Durante el desarrollo de una aplicación Svelte, Node.js se utiliza para ejecutar un servidor local que sirve tu aplicación en el navegador. Esto permite hacer cambios y ver los resultados en tiempo real sin tener que compilar manualmente cada vez.
+Automatización: Node.js permite el uso de varias herramientas de automatización que son comunes en el desarrollo de aplicaciones modernas, como Webpack, Rollup (el empaquetador que Svelte utiliza por defecto), y otros que facilitan la construcción, optimización y despliegue de la aplicación.
+[Texto en pantalla]
+Vamos a instalar Node.js en Linux:
+
+[Comando en pantalla]
+Usaremo el gestor de paquetes apt para instalar Node.js en distribuciones basadas en Debian/Ubuntu. Ejecutamos el siguiente comando en la terminal:
+
+sudo apt update
+sudo apt install nodejs npm
+[Explicación]
+Este comando actualizará nuestra lista de paquetes y luego instalará Node.js junto con npm, que es el gestor de paquetes de Node.
+
+[Verificación de la instalación]
+Una vez completada la instalación, vamos a verificar que Node.js y npm se instalaron correctamente. Usamos los siguientes comandos:
+
+node -v
+npm -v
+Deberíamos ver las versiones instaladas de Node.js y npm en la terminal.
+
+Formas de crear un proyecto Svelte 5 en Linux
+1. Crear un Nuevo Proyecto Svelte 5 con SvelteKit Version Estable
+Esta opción es ideal cuando:
+
+Queremos construir aplicaciones web con todas las características avanzadas de SvelteKit, como SSR, enrutamiento avanzado, y despliegue optimizado. Es más adecuado para aplicaciones complejas y de mayor escala.
+Ideal para proyectos en producción.
+Svelte recomienda utilizar SvelteKit, el marco de aplicación oficial del equipo Svelte que permite configurar rápidamente un proyecto con las mejores prácticas y opciones configurables.
+
+Ahora, crearemos un nuevo proyecto Svelte 5 utilizando el comando npm create. Este comando genera un proyecto Svelte utilizando las herramientas proporcionadas por Svelte directamente.
+
+npm create svelte@latest my-svelte-app
+Aquí, my-svelte-app es el nombre del proyecto. Podemos cambiarlo al nombre que prefiramos.
+[Explicación]
+
+Este comando utilizará la plantilla oficial de Svelte para crear un nuevo proyecto con Svelte 5. Después de ejecutar el comando, se nos presentará un asistente interactivo que nos guiará para configurar algunas opciones iniciales para nuestro proyecto. Aquí es donde eligimos entre:
+
+SvelteKit: Una opción más avanzada que incluye características adicionales.
+Svelte Standalone: Una opción más básica que simplemente nos proporciona los componentes y herramientas necesarios para trabajar con Svelte sin ninguna configuración adicional.
+Si eligimos SvelteKit durante la configuración, obtendremos las siguientes características:
+
+Enrutamiento Basado en el Sistema de Archivos: Los archivos en el directorio src/routes automáticamente se convierten en rutas de nuestra aplicación. No necesitamos configurar un enrutador por separado.
+Renderizado en el Servidor (SSR): SvelteKit soporta SSR de forma nativa, lo que significa que nuestra aplicación puede renderizarse en el servidor antes de enviarse al cliente, mejorando el rendimiento y la optimización para motores de búsqueda (SEO).
+Despliegue Sencillo: SvelteKit está diseñado para facilitar el despliegue en plataformas modernas como serverless, Vercel, Netlify, y más. Proporciona configuraciones preestablecidas que hacen que el proceso sea más simple.
+Soporte de API: Podemos crear endpoints API directamente dentro de nuestro proyecto SvelteKit, lo que nos permite manejar tanto el frontend como el backend en un solo lugar. Un endpoint API es una URL en nuestro servidor que maneja solicitudes (requests) y devuelve respuestas (responses). Estos endpoints son donde el frontend envía datos o solicita información. Por ejemplo, si tenemos una aplicación que necesita obtener datos de una base de datos, podemos crear un endpoint que maneje esa solicitud y devuelva los datos al frontend.
+Manejo de Frontend y Backend Juntos: Esta capacidad de crear endpoints API dentro de nuestro proyecto SvelteKit significa que no necesitamos un servidor separado para manejar la lógica del backend. Todo el código puede residir en el mismo proyecto, y SvelteKit se encargará de gestionar tanto las solicitudes del frontend como las respuestas del backend.
+Herramientas Adicionales: Durante la configuración, podemos optar por incluir herramientas como ESLint (para analizar el código y encontrar problemas), Prettier (para formatear el código), TypeScript (para usar tipos estáticos en JavaScript), entre otras. Estas herramientas se integran automáticamente en tu proyecto si decides usarlas.
+[Navegar al proyecto]
+Una vez creado el proyecto, navegamos al directorio del proyecto recién creado con el siguiente comando:
+
+cd my-svelte-app
+Instalar Dependencias y Ejecutar el Proyecto
+[Texto en pantalla]
+
+Instalar dependencias
+[Comando en pantalla]
+
+Antes de ejecutar el proyecto, necesitamos instalar todas las dependencias necesarias. Para ello, ejecutamos:
+
+npm install
+Este comando descarga e instala todas las bibliotecas necesarias para que nuestro proyecto Svelte funcione.
+
+Abrimos el fichero package.json para ver las dependencias de nuestro proyecto: [Ver fichero package.json]
+
+Podemos verificar que esté Svelte 5 funcionando y solventar problemas de compatibilidad en las dependencias:
+
+npm list svelte
+Opcional: Integrar Git para control de versiones:
+
+git init && git add -A && git commit -m "Initial commit"
+Ejecutar el proyecto
+Con las dependencias instaladas, ya podemos ejecutar nuestro proyecto. Para iniciar el servidor de desarrollo, usamos el siguiente comando:
+
+npm run dev -- --open
+Esto iniciará un servidor local y abrirá en el navegador la aplicación Svelte ya en funcionamiento.
+
+[Demostración en el navegador]
+¡Deberíamos ver la página de bienvenida de Svelte! Desde aquí, podemos empezar a editar tu proyecto y ver los cambios en tiempo real."
+
+Estructura del Proyecto Svelte
+[Texto en pantalla]
+
+Estructura del proyecto Svelte 5 [Explicación]
+
+Vamos a echar un vistazo rápido a la estructura del proyecto. En nuestro editor de código favorito, abrimos la carpeta my-svelte-app.
+
+[Componentes clave] src es la carpeta que contiene el código fuente de la aplicación. src/routes/+page.svelte es el archivo principal de la página.
+src/main.js es el archivo que inicializa la aplicación.
+public/ es donde se colocan los activos estáticos como imágenes o fuentes.
+package.json gestiona las dependencias y scripts de nuestro proyecto.
+
+
