@@ -1,6 +1,6 @@
 
 <script>
-	// Importamos los datos que vienen del layout, como información del usuario
+	// Importamos los datos de autenticación del layout
 	export let data;
 </script>
 

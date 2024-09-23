@@ -1,5 +1,3 @@
-// ./db.js
-
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 
@@ -22,5 +20,3 @@ export async function query(sql, params) {
 	const [rows, fields] = await pool.execute(sql, params);
 	return rows;
 }
-
-console.log('Conexión a la base de datos establecida');
