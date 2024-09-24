@@ -348,40 +348,39 @@ Pasos:
 El archivo `+layout.server.js` verifica si un par de usuario y contraseña introducido por un usuario existe en una base de datos.
 
 ```js
-import { checkUserCredentials } from '$lib/database'; // Función que verifica las credenciales en la base de datos
-import bcrypt from 'bcrypt'; // Para comparar contraseñas encriptadas
 
-export async function load({ cookies, request }) {
-  // Obtenemos los datos de usuario y contraseña desde el request
-  const formData = await request.formData();
-  const username = formData.get('username');
-  const password = formData.get('password');
+import { redirect } from '@sveltejs/kit';
+import { checkUserCredentials } from '$lib/database';
+import bcrypt from 'bcrypt';
 
-  // Buscamos al usuario en la base de datos
-  const user = await checkUserCredentials(username);
+export const actions = {
+	default: async ({ request, cookies }) => {
+		const formData = await request.formData();
+		const username = formData.get('username');
+		const password = formData.get('password');
 
-  if (user) {
-    // Verificamos si la contraseña proporcionada coincide con la almacenada (hasheada)
-    const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
+		const user = await checkUserCredentials(username);
 
-    if (passwordMatch) {
-      // Si las credenciales son correctas, generamos una cookie de sesión (por ejemplo)
-      cookies.set('session_id', generateSessionToken(user.id), {
-        httpOnly: true,
-        secure: true,
-        maxAge: 60 * 60 * 24 * 7 // 1 semana
-      });
 
-      return { user };
-    }
-  }
+		if (user && (password === user.hashedPassword)) {
+			// Si las credenciales son correctas, creamos una cookie de sesión
+			cookies.set('session_id', user.id, {
+				httpOnly: true,
+				path: '/',
+				maxAge: 60 * 60 * 24 // 1 día
+			});
+			console.log('Login correcto');
 
-  // Si no coinciden, devolvemos un mensaje de error
-  return {
-    error: 'Nombre de usuario o contraseña incorrectos',
-    user: null
-  };
-}
+			// Redirigir al usuario a la página /private después de un login exitoso
+			throw redirect(303, '/private');
+			return { success: true };
+		}
+
+		// Si el login falla, devolvemos un error
+		return { success: false, error: 'Nombre de usuario o contraseña incorrectos' };
+	}
+};
+
 
 ```
 
