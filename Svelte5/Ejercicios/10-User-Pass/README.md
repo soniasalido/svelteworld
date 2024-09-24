@@ -390,7 +390,7 @@ export const actions = {
 
 **2. Verificación en la base de datos:**  
 - Llamamos a la función `checkUserCredentials(username)` para buscar al usuario en la base de datos. Esta función debería devolver un objeto con el hash de la contraseña almacenada.
-- Usamos `bcrypt.compare() para comparar la contraseña proporcionada por el usuario con la contraseña hasheada almacenada en la base de datos.
+- Usamos `bcrypt.compare()` para comparar la contraseña proporcionada por el usuario con la contraseña hasheada almacenada en la base de datos.
 
 **3. Sesión y cookies:**  
 - Si las credenciales son correctas, podemos generar una sesión para el usuario. En este ejemplo, usamos `cookies.set()` para crear una cookie de sesión que almacena un `session_id.` Esta cookie puede ser usada para identificar al usuario en futuras peticiones.
@@ -400,3 +400,34 @@ export const actions = {
 
 
 
+# /src/routes/private/+page.svelte
+Esta página es privada y solo se puede acceder si el usuario está autenticado. Si el usuario no está autenticado, se le redirige a la página de inicio de sesión. Usa `+layout.server.js` para verificar si el usuario está autenticado.
+
+```sveltehtml
+<h1>Esto es privado</h1>
+<p>¡Bienvenido a la página privada! Solo los usuarios autenticados pueden acceder a esta sección.</p>
+```
+
+# /src/routes/private/+page.server.js
+Esta página contiene la lógica del servidor para verificar si el usuario está autenticado antes de mostrar la página privada. Si el usuario no está autenticado, se le redirige a la página de inicio de sesión.
+
+```js
+import { redirect } from '@sveltejs/kit';
+
+export async function load({ cookies }) {
+    // Verificar si existe una cookie de sesión
+    const session_id = cookies.get('session_id');
+
+    if (!session_id) {
+        // Si no hay sesión, redirigir al login
+        throw redirect(303, '/login');
+    }
+
+    // Aquí podrías verificar si la sesión es válida consultando la base de datos,
+    // pero para el ejemplo, solo verificamos si la cookie existe.
+
+    // Si la sesión es válida, retorna el estado de autenticación o algún dato del usuario
+    return { user: { id: session_id } };  // Puedes cargar más datos si es necesario
+}
+
+```
