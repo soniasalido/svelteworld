@@ -19,7 +19,7 @@ project-root/
 │   │   └── about/
 │   │       └── +page.svelte       # Página de información "Sobre nosotros"
 │   │   └── private/
-│   │   │   ├── +page.svelte       # Página de privada sólo para usuarios autenticados
+│   │   │   ├── +page.svelte       # Página privada sólo para usuarios autenticados
 │   │   │   └── +page.server.js    # Lógica del servidor específica para la página privada
 │   │
 │   └── app.html                   # Template HTML principal de la aplicación
@@ -31,7 +31,7 @@ project-root/
 └── node_modules/                  # Dependencias instaladas
 ```
 
-# Ejemplo de cómo sería la tabla de usuarios en MySQL:
+# Ejemplo para la tabla de usuarios en MySQL:
 ```sql
 CREATE TABLE usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -105,7 +105,7 @@ export async function getUserById(id) {
 	const sql = 'SELECT id, username FROM usuarios WHERE id = ?';
 	const rows = await query(sql, [id]);
 
-	// Retorna el usuario si se encuentra
+	// Retorna el id del usuario si se encuentra
 	if (rows.length > 0) {
 		return rows[0];
 	}
@@ -122,7 +122,7 @@ export async function getUserById(id) {
 
 
 # /src/routes/+page.svelte
-Representará la página principal de la aplicación (ruta raíz /). Este archivo utiliza un diseño simple y puede incluir un mensaje de bienvenida para el usuario autenticado, así como enlaces a otras páginas de la aplicación.
+Representará la página principal de la aplicación (ruta raíz /). Este archivo utiliza un diseño simple. Incluye un mensaje de bienvenida si el usuario está autenticado, así como enlaces a otras páginas de la aplicación.
 
 ```sveltehtml
 <script>
@@ -177,18 +177,18 @@ Representará la página principal de la aplicación (ruta raíz /). Este archiv
 </style>
 ```
 
-En este código podemos ver:
-- `<script>`:
+### En este código podemos ver:
+- **`<script>`:**
 	- Importamos los datos del layout (data), que incluyen información sobre el usuario autenticado si ha iniciado sesión. Este dato viene desde `+layout.server.js`, pasando por `+layout.svelte`.
-- `<main>`:
+- **`<main>`:**
   - Condicional de autenticación ({#if data.user}):
-      - Si el usuario está autenticado `(data.user)`, mostramos un mensaje personalizado que saluda al usuario por su nombre de usuario `({data.user.username})`.
+      - Si el usuario está autenticado `(data.user)`, mostramos un mensaje personalizado que saluda al usuario por su nombre `({data.user.username})`.
         - Si el usuario no está autenticado, mostramos un mensaje invitándolo a iniciar sesión para acceder a las funcionalidades de la aplicación.
-  - Sección de navegación:
+  - **Sección de navegación:**
     - Incluimos enlaces a otras secciones de la aplicación:
     	- Sobre Nosotros (/about): Enlace a la página de información sobre la aplicación o la organización.
     	- Iniciar sesión (/login): Enlace para que los usuarios inicien sesión si no lo han hecho ya.
-- Estilos `(<style>)`: Estilos simples que centran el contenido y aplican colores y formato a los encabezados y enlaces. Se destacan los enlaces cuando el usuario pasa el mouse por encima.
+- **Estilos `(<style>)`:** Estilos simples que centran el contenido y aplican colores y formato a los encabezados y enlaces. Se destacan los enlaces cuando el usuario pasa el mouse por encima.
 
 
 # /src/routes/+layout.svelte
