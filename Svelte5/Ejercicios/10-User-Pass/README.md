@@ -192,7 +192,7 @@ Representará la página principal de la aplicación (ruta raíz /). Este archiv
 
 
 # /src/routes/+layout.svelte
-Este layout se utiliza para mostrar una barra de navegación común en todas las páginas de la aplicación y gestionar el estado de autenticación del usuario.
+Este layout se utiliza para **mostrar una barra de navegación común en todas las páginas de la aplicación y gestionar el estado de autenticación del usuario.**
 
 Si el usuario está autenticado, se muestra un mensaje de bienvenida y un enlace para cerrar sesión. Si no está autenticado, se muestra un enlace para iniciar sesión.
 
@@ -252,23 +252,23 @@ Si el usuario está autenticado, se muestra un mensaje de bienvenida y un enlace
 ```
 
 
-1. `<script>`:  
+**1. `<script>`:**  
 	Se utiliza para importar los datos que se pasan desde el archivo `+layout.server.js`. Aquí, estamos exportando let data, que contiene información sobre el usuario autenticado (si está logueado) o nulo si no lo está.
 
 	El archivo +layout.server.js es el encargado de cargar los datos del usuario y pasarlos a este layout a través de data.
 
-2. Barra de navegación (`<nav>`):
+**2. Barra de navegación (`<nav>`):**  
 - Si el usuario está autenticado `(data.user)`, mostramos un mensaje de bienvenida y un enlace para cerrar sesión.
 - Si el usuario no está autenticado (`data.user` es nulo), mostramos un enlace para iniciar sesión.
 - Además, en ambos casos, siempre se muestran los enlaces a las páginas principales: Inicio (/) y "Sobre Nosotros" (/about).
 
-3. `<slot />`
+**3. `<slot />`**  
    Es donde se renderizan las diferentes páginas de la aplicación. Cada página cargada en la ruta correspondiente (/, /about, /login, etc.) se mostrará en el lugar del slot.
 
-4. Footer (`<footer`>):
+**4. Footer (`<footer`>):**  
    Es un pie de página simple que aparecerá en todas las páginas, justo después del contenido dinámico que se carga en el slot.
 
-5. Estilos css.
+**5. Estilos css.**  
    Estilos simples para el menú de navegación y el pie de página:
 
 
