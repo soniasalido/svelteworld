@@ -308,7 +308,8 @@ export async function load({ cookies }) {
 
 # /src/routes/login/+page.svelte
 
-````sveltehtml
+
+```sveltehtml
 <script>
 	let username = '';
 	let password = '';
@@ -335,8 +336,7 @@ export async function load({ cookies }) {
         margin: 0 auto;
     }
 </style>
-
-````
+```
 
 # /src/routes/login/+layout.server.js
 El archivo `+layout.server.js` verifica si un par de usuario y contraseña introducido por un usuario existe en una base de datos.
