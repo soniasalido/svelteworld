@@ -109,7 +109,7 @@ Un `+page.svelte` componente define una página de nuestra aplicación. De forma
 <div>{@html data.content}</div>
 ```
 
-## +página.js
+## +page.js
 A menudo, una página necesitamos cargar algunos datos antes de poder renderizarse. Para ello, agregamos un módulo `+page.js` que exporta una función `load`:
 ```js
 // src/routes/blog/[slug]/+page.js
