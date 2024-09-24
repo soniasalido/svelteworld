@@ -307,7 +307,13 @@ export async function load({ cookies }) {
 ```
 
 # /src/routes/login/+page.svelte
+Página de inicio de sesión, donde los usuarios pueden ingresar su nombre de usuario y contraseña para autenticarse en la aplicación. Si las credenciales son correctas, se les redirige a la página principal. Si no, se muestra un mensaje de error. Usa /src/routes/login/+layout.server.js para verificar las credenciales del usuario.
 
+
+Pasos:
+- El usuario ingresa su nombre de usuario y contraseña en un formulario de inicio de sesión.
+- El servidor (usando `+layout.server.js`) recibe estos datos, verifica si el usuario existe en la base de datos, compara la contraseña y devuelve el resultado.
+- Si el par usuario/contraseña es correcto, el servidor puede devolver la información del usuario o generar un token de sesión.
 
 ```sveltehtml
 <script>
@@ -340,11 +346,6 @@ export async function load({ cookies }) {
 
 # /src/routes/login/+layout.server.js
 El archivo `+layout.server.js` verifica si un par de usuario y contraseña introducido por un usuario existe en una base de datos.
-
-Pasos:
-- El usuario ingresa su nombre de usuario y contraseña en un formulario de inicio de sesión.
-- El servidor (usando `+layout.server.js`) recibe estos datos, verifica si el usuario existe en la base de datos, compara la contraseña y devuelve el resultado.
-- Si el par usuario/contraseña es correcto, el servidor puede devolver la información del usuario o generar un token de sesión.
 
 ```js
 import { checkUserCredentials } from '$lib/database'; // Función que verifica las credenciales en la base de datos
