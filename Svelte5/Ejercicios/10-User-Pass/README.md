@@ -276,11 +276,9 @@ Si el usuario está autenticado, se muestra un mensaje de bienvenida y un enlace
 
 
 # /src/routes/+layout.server.js
-En este archivo, se implementa la función `load` que se ejecuta en el servidor para cargar los datos necesarios antes de renderizar la página. En este caso, se utiliza para verificar si el usuario está autenticado y obtener su información.
-
-Si el usuario tiene una cookie de sesión válida, se busca su información en la base de datos y se pasa al layout para mostrar un mensaje de bienvenida y un enlace para cerrar sesión. Si no hay una cookie de sesión válida, se muestra un enlace para iniciar sesión.
-
-Si el usuario no está autenticado, se muestra un enlace para iniciar sesión y se pasa `user: null` al layout. Esto se hace para que el layout pueda mostrar el enlace de inicio de sesión en lugar del mensaje de bienvenida.
+En este archivo, **se implementa la función `load` que se ejecuta en el servidor para cargar los datos necesarios antes de renderizar la página**. Este `layout.server.js` se utiliza para verificar si el usuario está autenticado y obtener su información.
+- Si el usuario tiene una cookie de sesión válida, se busca su `id` de usuario en la base de datos y se pasa al layout para mostrar un mensaje de bienvenida y un enlace para cerrar sesión.
+- Si no hay una cookie de sesión válida, se muestra un enlace para iniciar sesión y se pasa `user: null` al layout. Esto se hace para que el layout pueda mostrar el enlace de inicio de sesión en lugar del mensaje de bienvenida.
 
 ```js
 import { getUserById } from '$lib/database';  // Importamos la función getUserById para obtener el username del usuario
@@ -310,7 +308,35 @@ export async function load({ cookies }) {
 
 # /src/routes/login/+page.svelte
 
+````sveltehtml
+<script>
+	let username = '';
+	let password = '';
+	export let data;
+</script>
 
+<form method="post">
+	<label for="username">Nombre de usuario</label>
+	<input type="text" id="username" name="username" bind:value={username} required>
+
+	<label for="password">Contraseña</label>
+	<input type="password" id="password" name="password" bind:value={password} required>
+
+	<button type="submit">Iniciar sesión</button>
+
+	{#if data.error}
+		<p style="color: red;">{data.error}</p>
+	{/if}
+</form>
+
+<style>
+    form {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+</style>
+
+````
 
 # /src/routes/login/+layout.server.js
 El archivo `+layout.server.js` verifica si un par de usuario y contraseña introducido por un usuario existe en una base de datos.
