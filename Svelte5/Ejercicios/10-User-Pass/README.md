@@ -384,18 +384,18 @@ export const actions = {
 
 ```
 
-1. Recepción de datos del formulario:
+**1. Recepción de datos del formulario:**
 	- El usuario introduce su nombre de usuario y contraseña en un formulario, que es enviado como POST al servidor.
 	- Usamos `request.formData()` para obtener los datos del formulario.
 
-2. Verificación en la base de datos:
+**2. Verificación en la base de datos:**
 	- Llamamos a la función `checkUserCredentials(username)` para buscar al usuario en la base de datos. Esta función debería devolver un objeto con el hash de la contraseña almacenada.
 	- Usamos `bcrypt.compare() para comparar la contraseña proporcionada por el usuario con la contraseña hasheada almacenada en la base de datos.
 
-3. Sesión y cookies:
+**3. Sesión y cookies:**
 	- Si las credenciales son correctas, podemos generar una sesión para el usuario. En este ejemplo, usamos `cookies.set()` para crear una cookie de sesión que almacena un `session_id.` Esta cookie puede ser usada para identificar al usuario en futuras peticiones.
 
-4. Respuesta de error:
+**4. Respuesta de error:**
 	- Si las credenciales no coinciden, devolvemos un error que indica que el nombre de usuario o la contraseña son incorrectos.
 
 
