@@ -46,6 +46,16 @@ src/
 ## Reglas generales:
 - **Enrutamiento automático:** SvelteKit gestiona el enrutamiento basándose en la estructura de directorios y archivos dentro de routes. Un archivo +page.svelte es automáticamente una página de la aplicación, y SvelteKit la muestra cuando se navega a la ruta correspondiente.
 
+- **El `+`:** es una convención para marcar archivos que tienen un propósito especial dentro de las rutas de SvelteKit. Estos archivos pueden ser responsables de manejar páginas, funciones del servidor, o layouts, y la ubicación de estos archivos en el directorio routes define qué URL manejarán. Tipos de archivos con el prefijo +:
+
+    - +page.svelte: Define el contenido de una página.
+    - +page.server.js | +page.server.ts: Este archivo contiene lógica del lado del servidor para manejar la carga de datos o acciones para la página correspondiente (como manejar formularios). Aquí podemos definir la función load para cargar datos desde el servidor o manejar solicitudes como POST para esa página.
+    - +layout.svelte: Define un layout compartido para varias páginas. Proporciona una estructura envolvente (como un encabezado o pie de página) que será común a todas las rutas bajo ese directorio.
+    - +layout.server.js | +layout.server.ts: Contiene lógica del servidor para manejar la carga de datos o acciones a nivel de layout. Aquí podemos manejar la carga de datos o acciones, pero para un layout, aplicando los datos a todas las páginas que comparten el layout.
+    - +server.js | +server.ts: Se usa para manejar rutas API o puntos finales en el servidor. Define rutas API como GET, POST, PUT, etc. Estas rutas no están asociadas con la renderización de una página, sino que manejan la lógica de servidor para datos o acciones.
+    - +error.svelte: Renderiza una página de error personalizada para una ruta específica. Si ocurre un error en esa ruta, SvelteKit mostrará esta página en lugar de la página de error predeterminada.
+  
+
 - **`+prefijo`:** Cada directorio de ruta contiene uno o más archivos de ruta, que pueden identificarse por su `+prefijo`. Si el archivo está ubicado en /routes/+page.svelte, la página será accesible desde la ruta /. Si el archivo estuviera en /routes/about/+page.svelte, representaría el contenido de la página que se muestra cuando un usuario navega a la ruta /about.
   
 - **Cada archivo +page.svelte en la estructura del directorio representa una página en nuestra aplicación.**
