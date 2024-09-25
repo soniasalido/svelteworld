@@ -203,9 +203,9 @@ Específicamente cuando se produce un error durante la ejecución de una funció
 ## +layout
 En SvelteKit, los archivos `+layout.svelte` permiten crear diseños compartidos para varias páginas. El archivo `+layout.svelte` sirve para definir estos elementos que se mantienen constantes en todas las páginas que lo usan. Los layouts se definen por rutas, y cada página dentro de una ruta puede heredar ese layout.
 
-Uso de layouts: Si queremos que algunos elementos (como una barra de navegación o un pie de página) se mantengan visibles en todas las páginas sin necesidad de repetir el código en cada archivo +page.svelte, podemos crear un archivo `+layout.svelte`. Este archivo será el "envoltorio" alrededor de las páginas. De esta manera, cada vez que naveguemos, solo se actualizará el contenido de la página, pero el layout se mantendrá.
+**Uso de layouts:** Si queremos que algunos elementos (como una barra de navegación o un pie de página) se mantengan visibles en todas las páginas sin necesidad de repetir el código en cada archivo +page.svelte, podemos crear un archivo `+layout.svelte`. Este archivo será el "envoltorio" alrededor de las páginas. De esta manera, cada vez que naveguemos, solo se actualizará el contenido de la página, pero el layout se mantendrá.
 
-Estructura de ejemplo:
+**Estructura de ejemplo:**
 ```cmd
 src/
 ├── routes/
@@ -215,9 +215,8 @@ src/
 │   │   └── +page.svelte # Otra página con el mismo layout
 ```
 
-Un ejemplo de archibo `+layout.svelte`:
+**Un ejemplo de archivo `+layout.svelte`:**
 ```js
-<!-- +layout.svelte -->
 <nav>
   <!-- Barra de navegación que estará en todas las páginas -->
   <a href="/">Home</a>
@@ -228,7 +227,7 @@ Un ejemplo de archibo `+layout.svelte`:
 <!-- Aquí se renderizan las páginas individuales -->
 ```
 
-Cuando navegamos entre index.svelte y about/+page.svelte, el layout (barra de navegación) se mantiene, pero solo el contenido específico de la página dentro del `<slot />` cambia.
+Cuando navegamos entre `index.svelte` y `about/+page.svelte`, el layout (barra de navegación) se mantiene, pero solo el contenido específico de la página dentro del `<slot />` cambia.
 
 
 ### Layouts anidados
@@ -247,23 +246,23 @@ En este caso, el layout `admin/+layout.svelte` envuelve a las páginas `dashboar
 
 
 ### +layout.svelte
-Si queremos crear un diseño que se aplique a todas las páginas de nuestra aplicación, podemos hacerlo creando un archivo llamado src/routes/+layout.svelte. Este archivo define el diseño general de nuestra aplicación y se aplica a todas las páginas de la aplicación.
+Si queremos crear un diseño que se aplique a todas las páginas de nuestra aplicación, podemos hacerlo creando un archivo llamado `src/routes/+layout.svelte`. Este archivo define el diseño general de nuestra aplicación y se aplica a todas las páginas de la aplicación.
 
 Estructura del diseño predeterminado (el que usa SvelteKit si no usas uno propio):
 ```js
 <slot></slot>
 ```
 
-Este código esencialmente dice: "Aquí es donde se renderizará el contenido de cada página". El `<slot></slot>` es un espacio reservado para el contenido dinámico de las páginas individuales.
+Este código esencialmente indica: "Aquí es donde se renderizará el contenido de cada página". El `<slot></slot>` es un espacio reservado para el contenido dinámico de las páginas individuales.
 
-En Svelte, <slot></slot> y <slot /> son equivalentes. Ambos son una forma de definir un "slot" o espacio reservado en el componente donde se insertará contenido dinámico.
+En Svelte,`<slot></slot>` y `<slot />` son equivalentes. Ambos son una forma de definir un "slot" o espacio reservado en el componente donde se insertará contenido dinámico.
 
 ### Nota: ¿Qué es `<slot />`?
-- En el contexto de Svelte, `<slot />` es un marcador de posición especial que se utiliza para definir dónde debe insertarse el contenido dinámico dentro de un componente. Cuando un componente que tiene un `<slot />` es utilizado, el contenido que se pasa a ese componente será "insertado" en el lugar donde se encuentra el `<slot />`.
-- En el contexto del layout en SvelteKit, el `<slot />` en un archivo `+layout.svelte` indica dónde se debe renderizar el contenido de la página específica (es decir, el contenido del `+page.svelte` correspondiente) dentro de ese layout.
+- En el contexto de Svelte, `<slot />` es un marcador de posición especial que se utiliza para definir dónde debe insertarse el contenido dinámico dentro de un componente. Cuando un componente que tiene un `<slot />` es utilizado, el contenido que se pasa a ese componente será "insertado" en el lugar donde se encuentra el marcador `<slot />`.
+- En el contexto del layout en SvelteKit, el marcador `<slot />` en un archivo `+layout.svelte` indica dónde se debe renderizar el contenido de la página específica (es decir, el contenido del `+page.svelte` correspondiente) dentro de ese layout.
 
 
-+layot.svelte
+Ejemplo: `+layot.svelte`
 ```js
 <nav>
   <a href="/">Home</a>
@@ -276,26 +275,27 @@ En Svelte, <slot></slot> y <slot /> son equivalentes. Ambos son una forma de def
 <slot />
 ```
 
-index.svelte: (en la ruta raíz /)
+Ejemplo: `index.svelte`: (en la ruta raíz /)
 ```js
 <h1>Página de Inicio</h1>
 <p>Bienvenido a la página principal de mi sitio web.</p>
 ```
 
-about/+page.svelte: (en la ruta /about)
+Ejemplo: `about/+page.svelte` (en la ruta /about)
 ```js
 <h1>Sobre Nosotros</h1>
 <p>Este es el contenido de la página de "Sobre Nosotros".</p>
 ```
 
-En este caso, el contenido de index.svelte se insertará en el lugar del `<slot />` en el layout, y el contenido de about/+page.svelte se insertará en el mismo lugar cuando se navegue a la ruta /about.
+En este caso, el contenido de `index.svelte` se insertará en el lugar del `<slot />` en el layout, y el contenido de `about/+page.svelte` se insertará en el mismo lugar cuando se navegue a la ruta `/about`.
 
 
 ### +layout.js
-El archivo `+layout.js` (o `+layout.ts` si usamos TypeScript) es el encargado de manejar la lógica asociada a los layouts de nuestra aplicación. Mientras que el archivo +layout.svelte define la estructura visual y el diseño que se aplica a las páginas, el archivo `+layout.js` se usa para gestionar datos, realizar lógica del lado del servidor (o cliente) y pasar información a todas las páginas que usan ese layout.
+El archivo `+layout.js` (o `+layout.ts` si usamos TypeScript) es el encargado de manejar la lógica asociada a los layouts de nuestra aplicación. Mientras que el archivo `+layout.svelte` define la estructura visual y el diseño que se aplica a las páginas, el archivo `+layout.js` se usa para gestionar datos, realizar lógica del lado del servidor (o cliente) y pasar información a todas las páginas que usan ese layout.
 
 `+layout.js` exporta funciones para personalizar el comportamiento del layout. Por ejemplo, podemos exportar una función `load` para cargar datos que se utilizan en el layout, o una función `actions` para manejar eventos específicos del layout.
 
+Ejemplo: `+layout.js`
 ```js
 /** @type {import('./$types').LayoutLoad} */
 export function load() {
@@ -308,14 +308,14 @@ export function load() {
 }
 ```
 
-Ejecución de la función load() en `+layout.js`:
+Ejecución de la función `load()` en `+layout.js`:
 - Se ejecuta automáticamente cuando una página o un layout que utiliza ese archivo es cargado.
 - Permite obtener y pasar datos al layout o a las páginas hijas. Los datos cargados en un `+layout.js` están disponibles no solo en el layout, sino también en todas las páginas hijas. Esto significa que si tenemos varias páginas bajo el mismo layout, podemos acceder a los mismos datos sin necesidad de hacer múltiples solicitudes.
 - Puede hacer lógica del lado del servidor o del cliente, como solicitar datos de una API o acceder a cookies, información de sesión, etc.
 - Es útil para compartir datos comunes entre múltiples páginas que dependen del mismo layout, como información del usuario, autenticación, o configuraciones globales.
 
 
-Caso de uso típico:
+**Casos de uso típico:**
 - Autenticación de usuario: Podemos verificar si un usuario está autenticado y pasar esa información al layout y a las páginas hijas para mostrar diferentes opciones de navegación o contenido.
 - Configuración global: Si tenemos configuraciones globales que deben estar disponibles en varias partes de la aplicación, podemos cargarlas en `+layout.js`.
 - Datos compartidos: Podemos hacer que ciertos datos, como un carrito de compras o preferencias del usuario, estén disponibles en toda la aplicación.
@@ -323,9 +323,9 @@ Caso de uso típico:
 
 
 ### +layout.server.js
-El archivo `+layout.server.js` (o +layout.server.ts si usamos TypeScript) es similar a `+layout.js`, pero está diseñado específicamente para ejecutar lógica en el servidor. Esto significa que cualquier código dentro de `+layout.server.js` solo se ejecutará en el servidor, lo cual es útil cuando necesitamos acceder a recursos o datos sensibles, como bases de datos, sesiones, archivos o cualquier otra cosa que no debería estar expuesta al cliente.
+El archivo `+layout.server.js` (o `+layout.server.ts` si usamos TypeScript) es similar a `+layout.js`, pero está diseñado específicamente para ejecutar lógica en el servidor. Esto significa que cualquier código dentro de `+layout.server.js` solo se ejecutará en el servidor, lo cual es útil cuando necesitamos acceder a recursos o datos sensibles, como bases de datos, sesiones, archivos o cualquier otra cosa que no debería estar expuesta al cliente.
 
-El archivo +layout.server.js nos permite realizar tareas relacionadas con la carga de datos que deben ejecutarse de forma segura y controlada desde el lado del servidor. Usos comunes:
+El archivo `+layout.server.js` nos permite realizar tareas relacionadas con la carga de datos que deben ejecutarse de forma segura y controlada desde el lado del servidor. Usos comunes:
 - Acceso a bases de datos: Si necesitamos consultar una base de datos directamente, podemos hacerlo en `+layout.server.js` porque este archivo no se ejecutará en el navegador del cliente.
 - Autenticación segura: Podemos verificar la autenticación del usuario, manejar tokens o sesiones de forma segura.
 - Acceso a recursos protegidos: Cualquier lógica o dato que no debería estar expuesto al cliente (como claves de API o credenciales) puede gestionarse en este archivo.
@@ -334,16 +334,15 @@ El archivo +layout.server.js nos permite realizar tareas relacionadas con la car
 ## +server
 El archivo `+server.js` (o `+server.ts` si usamos TypeScript) es un archivo especial que se ejecuta solo en el servidor. Esto significa que cualquier código que pongamos en `+server.js` no se enviará al cliente, lo que lo hace ideal para tareas que deben ejecutarse en el servidor, como acceder a bases de datos, interactuar con el sistema de archivos, o realizar operaciones que no deben ser visibles para el cliente.
 
-En SvelteKit, el archivo +server.js nos permite definir rutas API o puntos finales donde podemos manejar directamente las solicitudes HTTP (GET, POST, etc.) y tener un control total sobre la respuesta que enviamos de vuelta al cliente. Estas rutas no están asociadas a páginas HTML, sino que son puntos de acceso para realizar operaciones como obtener o enviar datos desde el servidor.
+En SvelteKit, el archivo `+server.js` nos permite definir rutas API o puntos finales donde podemos manejar directamente las solicitudes HTTP (GET, POST, etc.) y tener un control total sobre la respuesta que enviamos de vuelta al cliente. Estas rutas no están asociadas a páginas HTML, sino que son puntos de acceso para realizar operaciones como obtener o enviar datos desde el servidor.
 
 ### ¿Qué es +server.js?
-+server.js: Es un archivo que podemos colocar en cualquier ruta dentro de tu aplicación SvelteKit para manejar solicitudes HTTP directamente (sin pasar por un componente .svelte).
-Este archivo exporta funciones para cada uno de los métodos HTTP como GET, POST, PUT, PATCH, DELETE, OPTIONS, y HEAD.
-Cada una de estas funciones recibe un RequestEvent, que proporciona información sobre la solicitud que se ha hecho (como los parámetros, el cuerpo de la solicitud, las cookies, etc.) y devuelve un Response para enviar de vuelta al cliente.
+`+server.js`: Es un archivo que podemos colocar en cualquier ruta dentro de nuestra aplicación SvelteKit para manejar solicitudes HTTP directamente (sin pasar por un componente `.svelte`).
+
+Este archivo exporta funciones para cada uno de los métodos HTTP como GET, POST, PUT, PATCH, DELETE, OPTIONS, y HEAD. Cada una de estas funciones recibe un `RequestEvent`, que proporciona información sobre la solicitud que se ha hecho (como los parámetros, el cuerpo de la solicitud, las cookies, etc.) y devuelve un `Response` para enviar de vuelta al cliente.
 
 ### Ejemplo básico de +server.js
 Supongamos que queremos crear una API que maneje solicitudes GET y POST en una ruta /api/data.
-
 ```cmd
 src/
 └── routes/
@@ -352,7 +351,7 @@ src/
             └── +server.js
 ```
 
-Código en +server.js:
+Ejemplo: `+server.js`
 ```js
 // Maneja solicitudes GET
 export async function GET({ request }) {
@@ -377,15 +376,15 @@ export async function POST({ request }) {
 ```
 
 1. Manejador GET. Get handler:
-- La función GET se ejecuta cuando alguien hace una solicitud GET a /api/data.
+- La función GET se ejecuta cuando alguien hace una solicitud GET a la url `/api/data`.
 - La respuesta es un objeto JSON con un mensaje que se envía de vuelta al cliente.
 
 2. Manejador POST. Post handler:
-- La función POST se ejecuta cuando alguien hace una solicitud POST a /api/data.
+- La función POST se ejecuta cuando alguien hace una solicitud POST a la url `/api/data`.
 - Obtenemos el cuerpo de la solicitud con `request.json()`, procesamos los datos y enviamos de vuelta una respuesta JSON con los datos recibidos.
 
 ### El objeto RequestEvent
-Cada función en +server.js recibe un RequestEvent como argumento. Este objeto contiene toda la información de la solicitud, como:
+Cada función en `+server.js` recibe un `RequestEvent` como argumento. Este objeto contiene toda la información de la solicitud, como:
 - `request`: La solicitud entrante, que podemos usar para obtener datos como el cuerpo, las cabeceras, la URL, etc.
 - `params`: Los parámetros de la ruta (si la ruta contiene variables dinámicas).
 - `cookies`: Para acceder y modificar cookies.
@@ -405,14 +404,14 @@ export async function GET({ params, cookies }) {
 ```
 
 ### Uso común de +server.js
-- Crear APIs: Es ideal para crear rutas API que interactúan con la base de datos, manejan autenticación, o cualquier otra lógica del servidor.
+- Crear APIs: Es ideal para crear rutas API que interactúan con la base de datos, manejar autenticación, o cualquier otra lógica del servidor.
 - Manejo de formularios: Podemos manejar solicitudes POST que provienen de formularios de nuestra aplicación.
 - Redirecciones: Podemos redirigir a los usuarios después de procesar una solicitud.
 - CRUD: Realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) usando métodos HTTP como POST, GET, PUT, PATCH, y DELETE.
 
 
 ### Respuestas HTTP
-Cada función en +server.js debe devolver un objeto Response, que es la respuesta que se enviará de vuelta al cliente. Este objeto Response puede contener:
+Cada función en `+server.js` debe devolver un objeto `Response`, que es la respuesta que se enviará de vuelta al cliente. Este objeto `Response` puede contener:
 - `body`: El cuerpo de la respuesta, que puede ser un objeto, una cadena de texto, un ArrayBuffer, un Blob, etc.
     ```js
     return new Response('Hola, mundo!', { status: 200 });
@@ -442,15 +441,17 @@ Cada función en +server.js debe devolver un objeto Response, que es la respuest
 - `set()`: Una función para establecer un encabezado en la respuesta.
 - `delete()`: Una función para eliminar un encabezado de la respuesta.
 - `forEach()`: Una función para iterar sobre todos los encabezados de la respuesta.
-    ```js
-    const headers = new Headers();
-    headers.set('Content-Type', 'application/json');
-    headers.set('X-Custom-Header', 'valor');
-
-    return new Response(JSON.stringify({ data: 'Ejemplo' }), { headers });
-    ```
 
 Ejemplo:
+```js
+const headers = new Headers();
+headers.set('Content-Type', 'application/json');
+headers.set('X-Custom-Header', 'valor');
+
+return new Response(JSON.stringify({ data: 'Ejemplo' }), { headers });
+```
+
+Otro ejemplo:
 ```js
 return new Response('Cuerpo de la respuesta', {
   status: 200,
@@ -459,9 +460,9 @@ return new Response('Cuerpo de la respuesta', {
 ```
 
 ### Ejemplo práctico con varias rutas:
-- GET: Para obtener un recurso (por ejemplo, /api/users).
+- GET: Para obtener un recurso (por ejemplo, `/api/users`).
 - POST: Para crear un nuevo recurso (por ejemplo, enviar datos de un formulario).
-- DELETE: Para eliminar un recurso (por ejemplo, /api/users/123).
+- DELETE: Para eliminar un recurso (por ejemplo, `/api/users/123`).
 
 
 ```js
@@ -498,7 +499,7 @@ export async function DELETE({ params }) {
 
 Al exportar los manejadores (handlers) POST/ PUT/ PATCH/ DELETE/ OPTIONS/ HEAD, `+server.js` los archivos se pueden usar para crear una API completa:
 
-Ejemplo src/rutas/agregar/+pagina.svelte:
+Ejemplo `src/routes/add/+pagina.svelte`:
 ```js
 <script>
 	let a = 0;
@@ -525,7 +526,7 @@ Ejemplo src/rutas/agregar/+pagina.svelte:
 <button on:click={add}>Calculate</button>
 ```
 
-Ejemplo src/rutas/api/add/+server.js:
+Ejemplo `src/rutas/api/add/+server.js`:
 ```js
 import { json } from '@sveltejs/kit';
 /** @type {import('./$types').RequestHandler} */
@@ -538,16 +539,16 @@ export async function POST({ request }) {
 >![Important]  
 > En general, las acciones de formulario son una mejor manera de enviar datos desde el navegador al servidor.  
 > 
-> En lugar de usar fetch, podemos enviar datos de formulario con un formulario HTML normal y manejarlos en +server.js.
+> En lugar de usar fetch, podemos enviar datos de formulario con un formulario HTML normal y manejarlos en `+server.js`.
 
 > Las acciones de formulario manejan automáticamente la serialización de datos y la configuración de encabezados, y también manejan errores de red y validación de formulario.
 > 
 > Sin embargo, fetch es útil cuando necesitamos enviar datos de forma programática o cuando necesitamos más control sobre la solicitud.
 
 
-> En el ejemplo anterior, fetch se usa para enviar datos de forma programática a la ruta /api/add, donde se manejan en +server.js.  
+> En el ejemplo anterior, fetch se usa para enviar datos de forma programática a la ruta `/api/add`, donde se manejan en `+server.js`.  
 > 
-> La función POST en +server.js recibe los datos enviados desde el navegador, los procesa y devuelve el resultado al navegador. En este caso, la función POST en +server.js simplemente suma dos números y devuelve el resultado.
+> La función POST en `+server.js` recibe los datos enviados desde el navegador, los procesa y devuelve el resultado al navegador. En este caso, la función POST en `+server.js` simplemente suma dos números y devuelve el resultado.
 > 
 > El resultado se muestra en la página web en tiempo real, sin necesidad de recargar la página.
 > 
@@ -555,7 +556,7 @@ export async function POST({ request }) {
 
 
 ### Negociación de Contenidos en SvelteKit: +server.js y +page.svelte
-En SvelteKit, podemos tener tanto un archivo +server.js como un archivo +page.svelte en el mismo directorio para manejar diferentes tipos de solicitudes a la misma ruta. Esto permite que una ruta pueda funcionar como página (para ser visualizada en el navegador) o como punto final de API (para manejar datos). El proceso de negociación de contenidos es lo que determina cómo se maneja cada solicitud según el método HTTP y los headers (encabezados) de la solicitud.
+En SvelteKit, podemos tener tanto un archivo `+server.js` como un archivo `+page.svelte` en el mismo directorio para manejar diferentes tipos de solicitudes a la misma ruta. Esto permite que una ruta pueda funcionar como página (para ser visualizada en el navegador) o como punto final de API (para manejar datos). El proceso de negociación de contenidos es lo que determina cómo se maneja cada solicitud según el método HTTP y los headers (encabezados) de la solicitud.
 
 #### ¿Cómo SvelteKit decide si una solicitud debe ser manejada por `+server.js` o `+page.svelte`?
 1. Rutas y archivos: `+server.js` y `+page.svelte`.  
@@ -563,7 +564,7 @@ En SvelteKit, podemos tener tanto un archivo +server.js como un archivo +page.sv
     - `+server.js`: Se usa para manejar rutas API o solicitudes no relacionadas directamente con la interfaz de usuario (por ejemplo, una solicitud de datos en formato JSON o una acción en el servidor como PUT, DELETE).
     - `+page.svelte`: Maneja las solicitudes que requieren renderizar una página HTML (por ejemplo, cuando un navegador hace una solicitud GET para visualizar una página).
 
-2. Reglas para determinar cómo se maneja la solicitud: SvelteKit aplica las siguientes reglas para decidir si la solicitud debe ser manejada por +server.js o por la página:
+2. Reglas para determinar cómo se maneja la solicitud: SvelteKit aplica las siguientes reglas para decidir si la solicitud debe ser manejada por `+server.js` o por la página:
    - Métodos PUT / PATCH / DELETE / OPTIONS:
      - Las solicitudes que usan estos métodos siempre serán manejadas por `+server.js`, ya que estos métodos están generalmente asociados con operaciones CRUD (actualizar, eliminar) o consultas de preconfiguración como OPTIONS.
      - Ejemplo: Si hacemos una solicitud PUT o DELETE a una ruta, SvelteKit la manejará en `+server.js` porque estas solicitudes no están relacionadas con la carga de una página HTML.
@@ -577,11 +578,11 @@ En SvelteKit, podemos tener tanto un archivo +server.js como un archivo +page.sv
     ```
 
     - Métodos GET / POST / HEAD:
-        - Si el header Accept de la solicitud prioriza text/html (es decir, el cliente espera una página HTML, como lo haría un navegador), la solicitud se trata como una solicitud de página y se manejará por `+page.svelte`.
-        - Si el header Accept prioriza otros tipos de contenido (por ejemplo, application/json), la solicitud será manejada por `+server.js` como un punto final de API.
+        - Si el `header Accept` de la solicitud prioriza `text/html` (es decir, el cliente espera una página HTML, como lo haría un navegador), la solicitud se trata como una solicitud de página y se manejará por `+page.svelte`.
+        - Si el `header Accept` prioriza otros tipos de contenido (por ejemplo, `application/json`), la solicitud será manejada por `+server.js` como un punto final de API.
         - Esto significa que:
           - Las solicitudes de página del navegador (como visitar una URL en el navegador) serán manejadas por `+page.svelte`. 
-          - Las solicitudes de datos (como una solicitud GET o POST para obtener o enviar datos) serán manejadas por `+server.js` si el header Accept no incluye text/html como prioridad.
+          - Las solicitudes de datos (como una solicitud GET o POST para obtener o enviar datos) serán manejadas por `+server.js` si el `header Accept` no incluye `text/html` como prioridad.
 
     Solicitudes de página (GET para ver una página HTML):
     ```js
@@ -602,8 +603,8 @@ En SvelteKit, podemos tener tanto un archivo +server.js como un archivo +page.sv
     }
     ```
        
-3. Encabezado `Vary: Accept` en las respuestas GET: Cuando SvelteKit maneja una solicitud GET que puede devolver diferentes tipos de contenido (por ejemplo, HTML o JSON), agrega un header Vary: Accept a la respuesta.
-    El encabezado Vary le dice a los servidores proxy y a los navegadores que el contenido de la respuesta puede variar según el valor del header Accept de la solicitud.
+3. Encabezado `Vary: Accept` en las respuestas GET: Cuando SvelteKit maneja una solicitud GET que puede devolver diferentes tipos de contenido (por ejemplo, HTML o JSON), agrega un `header Vary: Accept` a la respuesta.
+    El encabezado Vary le dice a los servidores proxy y a los navegadores que el contenido de la respuesta puede variar según el valor del `header Accept` de la solicitud.
 
 
 #### Ejemplo completo con +server.js y +page.svelte en la misma ruta
@@ -616,10 +617,8 @@ src/routes/
         └── +page.svelte (maneja página HTML)
 ```
 
-Código en +server.js (para solicitudes API):
+Ejemplo `/src/routes/api/users/+server.js` (para solicitudes API):
 ```js
-// src/routes/api/users/+server.js
-
 // Maneja solicitudes GET (API)
 export async function GET() {
   const users = [{ id: 1, name: 'Juan' }, { id: 2, name: 'Ana' }];
@@ -636,10 +635,8 @@ export async function DELETE() {
 }
 ```
 
-Código en +page.svelte (para solicitudes de página):
+Código en `/src/routes/apu/users/+page.svelte` (para solicitudes de página):
 ```sveltehtml
-<!-- src/routes/api/users/+page.svelte -->
-
 <script>
   export let data;
 </script>
@@ -656,20 +653,20 @@ Código en +page.svelte (para solicitudes de página):
 
 Flujo de cómo SvelteKit maneja las solicitudes:
 - Solicitud GET desde un navegador:
-    - Si visitamos /api/users en el navegador, el header Accept priorizará text/html, y SvelteKit servirá la página HTML (+page.svelte).
+    - Si visitamos `/api/users` en el navegador, el `header Accept` priorizará `text/html`, y SvelteKit servirá la página HTML (`+page.svelte`).
 - Solicitud GET desde una API (fetch, Postman, etc.):
-    - Si hacemos una solicitud GET a /api/users con un header Accept: application/json, SvelteKit devolverá la respuesta de `+server.js` en formato JSON.
+    - Si hacemos una solicitud GET a `/api/users` con un `header Accept: application/json`, SvelteKit devolverá la respuesta de `+server.js` en formato JSON.
   - Solicitud DELETE desde un cliente:
-    - Si enviamos una solicitud DELETE a /api/users, será manejada directamente por `+server.js`, ya que las solicitudes DELETE siempre son manejadas por `+server.js`.
+    - Si enviamos una solicitud DELETE a `/api/users`, será manejada directamente por `+server.js`, ya que las solicitudes DELETE siempre son manejadas por `+server.js`.
 
 
 ## $types
-En SvelteKit, cuando usamoss TypeScript o JavaScript con anotaciones de tipo JSDoc, podemos aprovechar los tipos generados automáticamente para asegurarnos de que los datos y funciones tienen los tipos correctos. Estos tipos se generan en un archivo llamado `$types.d.ts`, que es creado por SvelteKit en un directorio oculto para ayudarnos a mejorar la seguridad de tipos en la aplicación.
+En SvelteKit, cuando usamos TypeScript o JavaScript con anotaciones de tipo JSDoc, podemos aprovechar los tipos generados automáticamente para asegurarnos de que los datos y funciones tienen los tipos correctos. Estos tipos se generan en un archivo llamado `$types.d.ts`, que es creado por SvelteKit en un directorio oculto para ayudarnos a mejorar la seguridad de tipos en la aplicación.
 
 ### ¿Qué es $types.d.ts?
 - SvelteKit genera un archivo `$types.d.ts` en el que define todos los tipos que podemos usar en nuestro proyecto.
 - Este archivo contiene tipos que SvelteKit crea automáticamente para nosotros en función de las rutas, los parámetros y los datos que se devuelven en las funciones load.
-- Aunque no lo veamos directamente en el proyecto, SvelteKit se asegura de que nuestro editor de código (como VS Code) tenga acceso a estos tipos para ofrecerte autocompletado y verificación de tipos.
+- Aunque no lo veamos directamente en el proyecto, SvelteKit se asegura de que nuestro editor de código (como VS Code o Webstorm) tenga acceso a estos tipos para ofrecerte autocompletado y verificación de tipos.
 
 
 ### Importar datos desde `$types.d.ts`:
@@ -688,9 +685,9 @@ En SvelteKit, cuando usamoss TypeScript o JavaScript con anotaciones de tipo JSD
 
 ### Tipos comunes generados por SvelteKit:
 - PageData: El tipo que describe los datos que se inyectan en +page.svelte a través de la función load.
-- PageLoad y PageServerLoad: Tipos que aseguran que la función load en archivos como +page.js o +page.server.js esté correctamente tipada.
-- LayoutData: Similar a PageData, pero para datos inyectados en un archivo +layout.svelte.
-- LayoutLoad y LayoutServerLoad: Tipos que aseguran que las funciones load en +layout.js y +layout.server.js tienen los tipos correctos.
+- PageLoad y PageServerLoad: Tipos que aseguran que la función load en archivos como `+page.js` o `+page.server.js` esté correctamente tipada.
+- LayoutData: Similar a PageData, pero para datos inyectados en un archivo `+layout.svelte`.
+- LayoutLoad y LayoutServerLoad: Tipos que aseguran que las funciones `load` en `+layout.js` y `+layout.server.js` tienen los tipos correctos.
 
 
 ## Otros Archivos
