@@ -56,7 +56,7 @@ src/
     - `+error.svelte`: Renderiza una página de error personalizada para una ruta específica. Si ocurre un error en esa ruta, SvelteKit mostrará esta página en lugar de la página de error predeterminada.
   
 
-- **`+prefijo`:** Cada directorio de ruta contiene uno o más archivos de ruta, que pueden identificarse por su `+prefijo`. Si el archivo está ubicado en `/routes/+page.svelte**, la página será accesible desde la ruta `/`. Si el archivo estuviera en `/routes/about/+page.svelte`, representaría el contenido de la página que se muestra cuando un usuario navega a la ruta `/about`.
+- **`+prefijo`:** Cada directorio de ruta contiene uno o más archivos de ruta, que pueden identificarse por su `+prefijo`. Si el archivo está ubicado en `/routes/+page.svelte`**, la página será accesible desde la ruta `/`. Si el archivo estuviera en `/routes/about/+page.svelte`, representaría el contenido de la página que se muestra cuando un usuario navega a la ruta `/about`.
   
 - **Cada archivo `+page.svelte` en la estructura del directorio representa una página en nuestra aplicación.**
 
