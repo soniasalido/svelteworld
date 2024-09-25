@@ -1,4 +1,4 @@
-# 1. Estructura de un proyecto svelte 5 creado con sveltekit
+# 1. Estructura Básica de un proyecto svelte 5 creado con sveltekit
 
 Una estructura típica de un proyecto Svelte 5 creado con SvelteKit incluye varios archivos y carpetas que definen la configuración, el contenido y la lógica de la aplicación. A continuación, se describen algunos de los archivos y carpetas más importantes que se encuentran en un proyecto SvelteKit:
 ```bash
@@ -268,3 +268,6 @@ Un proyecto Svelte creado sin SvelteKit usa un punto de anclaje en el archivo in
   export default app;
 </script>
 ```
+
+> [!TIP]
+> Más Profundidad sobre las rutas: [05-Rutas-Routing.md](05-Rutas-Routing.md)
