@@ -56,7 +56,7 @@ src/
     - `+error.svelte`: Renderiza una página de error personalizada para una ruta específica. Si ocurre un error en esa ruta, SvelteKit mostrará esta página en lugar de la página de error predeterminada.
   
 
-- **`+prefijo`:** Cada directorio de ruta contiene uno o más archivos de ruta, que pueden identificarse por su `+prefijo`. Si el archivo está ubicado en `/routes/+page.svelte`**, la página será accesible desde la ruta `/`. Si el archivo estuviera en `/routes/about/+page.svelte`, representaría el contenido de la página que se muestra cuando un usuario navega a la ruta `/about`.
+- **`+prefijo`:** Cada directorio de ruta contiene uno o más archivos de ruta, que pueden identificarse por su `+prefijo`. Si el archivo está ubicado en `/routes/+page.svelte`, la página será accesible desde la ruta `/`. Si el archivo estuviera en `/routes/about/+page.svelte`, representaría el contenido de la página que se muestra cuando un usuario navega a la ruta `/about`.
   
 - **Cada archivo `+page.svelte` en la estructura del directorio representa una página en nuestra aplicación.**
 
@@ -82,22 +82,23 @@ src/
 
 ## +page.svelte
 Un `+page.svelte` componente define una página de nuestra aplicación. De forma predeterminada, las páginas se muestran tanto en el servidor (SSR) para la solicitud inicial como en el navegador (CSR) para la navegación posterior.
+
+Ejemplo `/src/routes/+page.svelte`:
 ```js
-// src/routes/+page.svelte
+
 <h1>Hello and welcome to my site!</h1>
 <a href="/about">About my site</a>
 ```
 
+Ejemplo: `/src/routes/about/+page.svelte`
 ```js
-// src/routes/about/+page.svelte
 <h1>About this site</h1>
 <p>TODO...</p>
 <a href="/">Home</a>
 ```
 
-
+Ejemplo: `/src/routes/blog/[slug]/+page.svelte`
 ```sveltehtml
-// src/routes/blog/[slug]/+page.svelte
 <script>
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -108,9 +109,10 @@ Un `+page.svelte` componente define una página de nuestra aplicación. De forma
 ```
 
 ## +page.js
-A menudo, una página necesitamos cargar algunos datos antes de poder renderizarse. Para ello, agregamos un módulo `+page.js` que exporta una función `load`:
+A veces necesitamos cargar en una página algunos datos antes de poder renderizarse. Para ello, agregamos un módulo `+page.js` que exporta una función `load`:
+
+Ejemplo: `/src/routes/blog/[slug]/+page.js`
 ```js
-// src/routes/blog/[slug]/+page.js
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageLoad} */
@@ -126,19 +128,19 @@ export function load({ params }) {
 }
 ```
 
-Esta función se ejecuta junto con `+page.svelte`, lo que significa que se ejecuta en el servidor durante la representación del lado del servidor y en el navegador durante la navegación del lado del cliente. 
+Esta función se ejecuta junto con `+page.svelte`, lo que significa que **se ejecuta en el servidor durante la representación del lado del servidor y en el navegador durante la navegación del lado del cliente**. 
 
 
-Además de `load y `+page.js` podemos exportar valores que configuran el comportamiento de la página:
+Además de `load` y `+page.js` podemos exportar valores que configuran el comportamiento de la página:
 - `export const prerender = true` or `false` or `auto`
 - `export const ssr = true` or `false`
-- export const csr = true` or `false`
+- `export const csr = true` or `false`
 
 ## +page.server.js
 Si nuestra `load` función solo puede ejecutarse en el servidor (por ejemplo, si necesitamos obtener datos de una base de datos o necesitamos acceder a variables de entorno privadas como claves API), podemos cambiar el nombre `+page.js` a `+page.server.js` y cambiar el `PageLoad` a `PageServerLoad`.
 
+Ejemplo: `/src/routes/blog/[slug]/+page.server.js`
 ```js
-// src/routes/blog/[slug]/+page.server.js
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
@@ -153,7 +155,7 @@ export async function load({ params }) {
 }
 ```
 
-Durante la navegación del lado del cliente, SvelteKit cargará estos datos desde el servidor, lo que significa que el valor devuelto debe ser serializable mediante devalue .
+Durante la navegación del lado del cliente, SvelteKit cargará estos datos desde el servidor, lo que significa que el valor devuelto debe ser serializable mediante `devalue`.
 
 Un fichero `+page.server.js` también puede exportar acciones. Si `load` nos permite leer datos del servidor, `actions` nos permite escribir datos en el servidor mediante el elemento `<form>`.
 
@@ -165,12 +167,12 @@ Si se produce un error durante la ejecución `load`, SvelteKit mostrará una pá
 Específicamente cuando se produce un error durante la ejecución de una función `load`, que generalmente se utiliza para cargar datos antes de que se renderice una página.
 
 - **Página de error predeterminada:**
-	- Cuando ocurre un error en SvelteKit durante la ejecución de load, como cuando no se puede cargar datos necesarios para una página, SvelteKit muestra una página de error predeterminada.
-	- Sin embargo, puedes personalizar esta página de error creando un archivo especial llamado +error.svelte dentro del directorio de la ruta afectada.
+	- Cuando ocurre un error en SvelteKit durante la ejecución de `load`, como cuando no se puede cargar datos necesarios para una página, SvelteKit muestra una página de error predeterminada.
+	- Sin embargo, podemos personalizar esta página de error creando un archivo especial llamado `+error.svelte` dentro del directorio de la ruta afectada.
 
-- **Archivo +error.svelte personalizado:** El archivo +error.svelte contiene el diseño personalizado que deseas mostrar cuando se produzca un error en esa ruta en particular.
+- **Archivo `+error.svelte` personalizado:** Este archivo contiene el diseño personalizado que deseamos mostrar cuando se produzca un error en esa ruta en particular.
+    Ejemplo: `/src/routes/blog/[slug]/+error.svelte`
 	```js
-	// src/rutas/blog/[slug]/+error.svelte
 	<script>
 		import { page } from '$app/stores';
 	</script>
@@ -178,21 +180,21 @@ Específicamente cuando se produce un error durante la ejecución de una funció
 	<h1>{$page.status}: {$page.error.message}</h1>
 	```
 
-	Este archivo +error.svelte muestra el código de estado (por ejemplo, 404 o 500) y el mensaje de error, accediendo a los datos de la tienda page.
+	Este archivo `+error.svelte` muestra el código de estado (por ejemplo, 404 o 500) y el mensaje de error, accediendo a los datos de la tienda `page`.
 
 
 - **Jerarquía de búsqueda de límites de error:**
-	- SvelteKit "recorre el árbol de directorios" en busca del límite de error más cercano. Si ocurre un error en una página, buscará un archivo +error.svelte en la misma ruta. Si no lo encuentra, subirá un nivel y buscará un archivo +error.svelte en el directorio superior.
-	- Si no hay un archivo +error.svelte en ningún lugar del árbol de directorios, finalmente mostrará la página de error predeterminada de SvelteKit.
+	- SvelteKit "recorre el árbol de directorios" en busca del límite de error más cercano. Si ocurre un error en una página, buscará un archivo `+error.svelte` en la misma ruta. Si no lo encuentra, subirá un nivel y buscará un archivo `+error.svelte` en el directorio superior.
+	- Si no hay un archivo `+error.svelte` en ningún lugar del árbol de directorios, finalmente mostrará la página de error predeterminada de SvelteKit.
 
-- **Error en el +layout(.server).js**
-	- Si el error ocurre en la función load de un archivo de diseño +layout(.server).js, SvelteKit buscará el archivo +error.svelte que esté "encima" de ese layout en la estructura de directorios, no uno que esté a su lado. Esto se debe a que los layouts afectan a múltiples rutas y están en un nivel jerárquico superior en la estructura de las páginas.
+- **Error en el `+layout(.server).js`**
+	- Si el error ocurre en la función `load` de un archivo de diseño `+layout(.server).js`, SvelteKit buscará el archivo `+error.svelte` que esté "encima" de ese layout en la estructura de directorios, no uno que esté a su lado. Esto se debe a que los layouts afectan a múltiples rutas y están en un nivel jerárquico superior en la estructura de las páginas.
 
 - **Error 404:**
-	- Si un usuario intenta acceder a una ruta que no existe, se genera un error 404. Para estos casos, SvelteKit buscará el archivo src/routes/+error.svelte para manejar el error. Si este archivo no existe, mostrará la página de error predeterminada.
+	- Si un usuario intenta acceder a una ruta que no existe, se genera un error 404. Para estos casos, SvelteKit buscará el archivo `src/routes/+error.svelte` para manejar el error. Si este archivo no existe, mostrará la página de error predeterminada.
 
 - **Personalización de la página de error estática de respaldo:**
-	- Si fallan todos los intentos de encontrar un archivo +error.svelte, SvelteKit mostrará una página de error estática de respaldo. Esta página también puede ser personalizada creando un archivo src/error.html.
+	- Si fallan todos los intentos de encontrar un archivo `+error.svelte`, SvelteKit mostrará una página de error estática de respaldo. Esta página también puede ser personalizada creando un archivo `src/error.html`.
 
 >![Important]  
 >`+error.svelte` no se utiliza cuando se produce un error dentro de handle un controlador de solicitud `+server.js`.
