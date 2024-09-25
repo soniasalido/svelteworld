@@ -270,4 +270,4 @@ Un proyecto Svelte creado sin SvelteKit usa un punto de anclaje en el archivo in
 ```
 
 > [!TIP]
-> Más Profundidad sobre las rutas: [05-Rutas-Routing.md](05-Rutas-Routing.md)
+> Más Profundidad sobre las rutas y estructura de proyectos: [05-Rutas-Routing.md](05-Rutas-Routing.md)
