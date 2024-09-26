@@ -27,7 +27,7 @@ Menor tamaño de bundle: Como Svelte compila todo en un JavaScript optimizado, e
 
 
 
-## Tu aplicación NO carga con mochilas de librerías
+## Una aplicación en Svelte NO carga con mochilas de librerías
 No se arrastran librerías: A diferencia de frameworks como React o Vue, que requieren que sus bibliotecas (React, ReactDOM, Vue) sean incluidas en la aplicación para gestionar la reactividad, el Virtual DOM, el estado y otros aspectos del framework, Svelte no necesita "arrastrar" o incluir una biblioteca adicional en el bundle final que se ejecuta en el navegador. Todo el trabajo del framework se realiza durante la compilación, y el resultado es un código muy eficiente que no depende de una biblioteca adicional.
 
 Esto significa que cuando usamos Svelte, no estamos cargando una biblioteca adicional en el navegador. El código resultante es más pequeño y rápido.
