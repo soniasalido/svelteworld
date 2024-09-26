@@ -52,7 +52,7 @@ Hablando de reactividad, Svelte es reactivo por diseño. Solo necesitamos declar
 [Mostrar un contador simple que se incrementa en ambas bibliotecas. En Svelte, se ve el código simple y directo, mientras que en React se muestra la implementación con hooks.]
 
 
-## Mejor rendimiento
+## Svelte tiene un mejor rendimiento
 Gracias a su enfoque sin Virtual DOM, Svelte tiene mejor rendimiento en muchas situaciones. Especialmente en aplicaciones pequeñas y medianas, Svelte puede superar a React en términos de velocidad de carga y rendimiento en tiempo de ejecución.
 
 [Comparación visual de tiempos de carga en dos aplicaciones sencillas, una en Svelte y otra en React. Los números de carga en Svelte son más rápidos.]
