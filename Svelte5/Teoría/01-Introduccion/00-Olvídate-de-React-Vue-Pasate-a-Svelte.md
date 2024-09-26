@@ -16,7 +16,7 @@ Primero, hablemos de la diferencia fundamental. **React es un framework basado e
 Svelte se identifica principalmente como un **compilador** porque su enfoque principal es **transformar el código fuente que escribimos en JavaScript, HTML y CSS puros (es decir, sin dependencias externas) que se ejecutan directamente en el navegador y que interactúa directamente con el DOM**. Este JavaScript generado es eficiente y optimizado, lo que resulta en una aplicación que no necesita una gran biblioteca de tiempo de ejecución, como ocurre con otros frameworks. Así, el código resultante puede considerarse **`"Vanilla JavaScript"`** porque **es JavaScript que no depende de un framework específico para funcionar en el navegador**. No hay una gran biblioteca en tiempo de ejecución que acompañe a la aplicación, como ocurre con otros frameworks como React, Angular o Vue.
 
 > [!Important]
-> Svelte es un compilador porque "compila" el código en lugar de ejecutarlo directamente en el navegador.
+> **Svelte es un compilador porque "compila" el código en lugar de ejecutarlo directamente en el navegador.**
 
 ## Menor tamaño de archivo
 "¿Sabías que las aplicaciones creadas con Svelte son mucho más ligeras? Comparémoslo."
