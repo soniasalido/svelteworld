@@ -92,11 +92,11 @@ Svelte es una excelente opción si buscas un framework moderno, con una curva de
 
 
 # Fin 
-"Si aún no te he convencido con las bondades de Svelte, no te pierdas el próximo vídeo, donde te explicaré en detalle cómo funciona la magia detrás de su proceso de compilación, cómo maneja el DOM de manera ultra eficiente y cómo su reactividad nativa simplifica tu código."
+Si aún no te he convencido con las bondades de Svelte, no te pierdas el próximo vídeo, donde te explicaré en detalle cómo funciona la magia detrás de su proceso de compilación, cómo maneja el DOM de manera ultra eficiente y cómo su reactividad nativa simplifica tu código.
 
-"Estas potentes características deberían ser razones más que suficientes para que consideres dejar atrás React y dar el salto a Svelte. Al final, el objetivo es mejorar tu flujo de trabajo y crear aplicaciones más rápidas, simples y con menos esfuerzo."
+Estas potentes características deberían ser razones más que suficientes para que consideres dejar atrás React y dar el salto a Svelte. Al final, el objetivo es mejorar tu flujo de trabajo y crear aplicaciones más rápidas, simples y con menos esfuerzo.
 
-"Si te ha gustado este vídeo, dale like, suscríbete y activa la campanita para no perderte el siguiente episodio. ¡Nos vemos en el próximo vídeo!"
+Si te ha gustado este vídeo, dale like, suscríbete y activa la campanita para no perderte el siguiente episodio. ¡Nos vemos en el próximo vídeo!
 
 # Manejo del DOM en Svelte vs. React:
 ### En Svelte:
