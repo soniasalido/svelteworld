@@ -1,6 +1,6 @@
 # ¿Hay alguien que piense en el desarrollador? Olvídate de React | Vue && Pásate a Svelte.
 
-La respuesta es sencilla, ni la industria ni los clientes piensan en el desarrollador. En los ámbitos en los que el desarrollador pueda elegir la tecnología que usará para hacer un producto, sería interesante que evaluara la opción de usar Svelte, ya que es una herramienta que le permitirá hacer productos de calidad en menos tiempo.
+La respuesta es sencilla, ni la industria ni los clientes piensan en el desarrollador. Si el desarrollador pudiera elegir la tecnología que usará para hacer un producto, sería interesante que evaluara la opción de usar Svelte, ya que es una herramienta que le permitirá hacer productos de calidad en menos tiempo.
 
 
 "¿Estás pensando en aprender un nuevo framework o quieres mejorar tus aplicaciones web? Hoy vamos a explorar por qué Svelte podría ser la mejor opción frente a React, uno de los frameworks más populares actualmente."
