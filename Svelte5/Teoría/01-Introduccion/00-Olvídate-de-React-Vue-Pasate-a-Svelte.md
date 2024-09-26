@@ -59,19 +59,19 @@ Gracias a su enfoque sin Virtual DOM, Svelte tiene mejor rendimiento en muchas s
 
 Svelte optimiza el código en tiempo de compilación, mientras que React hace su magia en el navegador, lo que puede generar más sobrecarga.
 
-Con Svelte, no necesitas cargar un Virtual DOM en cada aplicación. Esto puede hacer una diferencia notable en el rendimiento y el tamaño del archivo, especialmente en dispositivos móviles o conexiones lentas.
+Con Svelte, no necesitamos cargar un Virtual DOM en cada aplicación. Esto puede hacer una diferencia notable en el rendimiento y el tamaño del archivo, especialmente en dispositivos móviles o conexiones lentas.
 
 Svelte no utiliza un Virtual DOM. En lugar de eso, el código compilado por Svelte actualiza directamente el DOM real. Esto permite que las aplicaciones creadas con Svelte sean rápidas y eficientes, especialmente en términos de rendimiento.
 
 
-## CSS y estilos encapsulados
+## Svelte tiene CSS y estilos encapsulados
 En Svelte, el manejo de estilos también es más limpio. Los estilos CSS en Svelte son locales por defecto.
 
 [Muestra cómo se aplican los estilos en un componente Svelte y cómo estos se encapsulan localmente sin la necesidad de módulos CSS o styled-components como en React.]
 
 No necesitamoss preocuparnos por clases globales o conflictos de nombres. Todo está encapsulado en el propio componente.
 
-## Ecosistema de herramientas y plugins
+## Svelte: Ecosistema de herramientas y plugins
 Aunque el ecosistema de React es más maduro y amplio, Svelte tiene un crecimiento impresionante en su ecosistema de herramientas y plugins.
 
 [Mostrar SvelteKit, la herramienta oficial de Svelte para crear aplicaciones robustas con routing, manejo de datos, y renderizado en el servidor.]
@@ -79,7 +79,7 @@ Aunque el ecosistema de React es más maduro y amplio, Svelte tiene un crecimien
 Con SvelteKit, podemos crear aplicaciones completas con renderizado en el servidor, rutas dinámicas y más, de una manera muy eficiente.
 
 
-## Comunidad y soporte
+## Svelte: Comunidad y soporte
 Svelte tiene una comunidad creciente y muy activa. Aunque React tiene una comunidad más grande, Svelte está ganando terreno rápidamente.
 
 [Comparar los crecimientos en popularidad y las estrellas en GitHub de Svelte y React, con una animación que muestre el progreso reciente de Svelte.]
