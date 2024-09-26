@@ -32,7 +32,7 @@ No se arrastran librerías: A diferencia de frameworks como React o Vue, que req
 
 Esto significa que cuando usamos Svelte, no estamos cargando una biblioteca adicional en el navegador. El código resultante es más pequeño y rápido.
 
-## Los componentes NO se atan a versiones específicas
+## Los componentes en Svelte NO se atan a versiones específicas
 Debido a que Svelte es un compilador y no una biblioteca de tiempo de ejecución, los componentes que creas no dependen de la versión de Svelte que se utiliza para compilarlos. Una vez que el componente es compilado a JavaScript, HTML y CSS, no depende de Svelte en tiempo de ejecución. Por lo tanto, los componentes que construimos en Svelte son más resilientes a cambios en el framework mismo.
 
 ## Simplicidad en el código
