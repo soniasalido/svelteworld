@@ -35,7 +35,7 @@ Esto significa que cuando usamos Svelte, no estamos cargando una biblioteca adic
 ## Los componentes en Svelte NO se atan a versiones específicas
 Debido a que Svelte es un compilador y no una biblioteca de tiempo de ejecución, los componentes que creas no dependen de la versión de Svelte que se utiliza para compilarlos. Una vez que el componente es compilado a JavaScript, HTML y CSS, no depende de Svelte en tiempo de ejecución. Por lo tanto, los componentes que construimos en Svelte son más resilientes a cambios en el framework mismo.
 
-## Simplicidad en el código
+## Svelte es sinónimo de Simplicidad en el código
 
 Veamos el código. Uno de los puntos fuertes de Svelte es la simplicidad.
 
@@ -46,7 +46,7 @@ En React, necesitas manejar JSX, hooks, y estados de manera explícita. Con Svel
 [Muestra cómo en Svelte simplemente declaras una variable, y el estado se actualiza de forma reactiva sin necesidad de useState() o useEffect().]
 
 
-## Reactividad automática
+## Svelte tiene Reactividad nativa y automática
 Hablando de reactividad, Svelte es reactivo por diseño. Solo necesitamos declarar las variables, y cuando cambian, la interfaz se actualiza automáticamente. En React, tenemos que aprender hooks como `useState()` y `useEffect()` para lograr lo mismo."
 
 [Mostrar un contador simple que se incrementa en ambas bibliotecas. En Svelte, se ve el código simple y directo, mientras que en React se muestra la implementación con hooks.]
