@@ -51,7 +51,7 @@ En React, necesitas manejar JSX, hooks, y estados de manera explícita. Con Svel
 ## Svelte tiene Reactividad nativa y automática
 Hablando de reactividad, Svelte es reactivo por diseño. Solo necesitamos declarar las variables, y cuando cambian, la interfaz se actualiza automáticamente. En React, tenemos que aprender hooks como `useState()` y `useEffect()` para lograr lo mismo.
 
-Cuandooo definimos una variable reactiva en Svelte, cualquier cambio en esa variable provoca automáticamente una actualización en la interfaz de usuario (UI) sin necesidad de utilizar un "setState" o métodos similares. Svelte compila el código de la aplicación e inyecta el código necesario para actualizar el DOM directamente cuando cambian los estados. Esto reduce la sobrecarga en comparación con enfoques como el de React, donde las actualizaciones se planifican y optimizan antes de aplicarse al DOM.
+Cuando definimos una variable reactiva en Svelte, cualquier cambio en esa variable provoca automáticamente una actualización en la interfaz de usuario (UI) sin necesidad de utilizar un "setState" o métodos similares. Svelte compila el código de la aplicación e inyecta el código necesario para actualizar el DOM directamente cuando cambian los estados. Esto reduce la sobrecarga en comparación con enfoques como el de React, donde las actualizaciones se planifican y optimizan antes de aplicarse al DOM.
 
 [Mostrar un contador simple que se incrementa en ambas bibliotecas. En Svelte, se ve el código simple y directo, mientras que en React se muestra la implementación con hooks.]
 
