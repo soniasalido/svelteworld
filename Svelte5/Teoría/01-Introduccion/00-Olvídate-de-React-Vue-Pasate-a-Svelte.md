@@ -18,7 +18,7 @@ Svelte se identifica principalmente como un **compilador** porque su enfoque pri
 > [!Important]
 > **Svelte es un compilador porque "compila" el código en lugar de ejecutarlo directamente en el navegador.**
 
-## Menor tamaño de archivo
+## Un proyecto Svelte tiene un menor tamaño de archivo
 "¿Sabías que las aplicaciones creadas con Svelte son mucho más ligeras? Comparémoslo."
 
 [Comparación lado a lado del tamaño de los archivos JavaScript finales para una simple aplicación en Svelte y React.]
