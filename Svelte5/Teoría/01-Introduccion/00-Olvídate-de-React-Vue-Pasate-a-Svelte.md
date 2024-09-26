@@ -1,3 +1,5 @@
+¡Hola a todos! Bienvenidos a este tutorial donde exploraremos las virtudes de Svelte y te explicaremos por qué deberías usarlo ¡Vamos a empezar!
+
 # ¿Hay alguien que piense en el desarrollador? Olvídate de React | Vue && Pásate a Svelte.
 
 La respuesta es sencilla, ni la industria ni los clientes piensan en el desarrollador. Si el desarrollador pudiera elegir la tecnología que usará para hacer un producto, sería interesante que evaluara la opción de usar Svelte, ya que es una herramienta que le permitirá hacer productos de calidad en menos tiempo.
