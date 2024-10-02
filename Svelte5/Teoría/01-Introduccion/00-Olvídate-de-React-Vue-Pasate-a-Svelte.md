@@ -255,15 +255,13 @@ Transforma componentes Svelte en código JavaScript optimizado.
 
 2. Análisis Sintáctico (Parsing): El compilador analiza el código fuente y genera un AST (Abstract Syntax Tree) que representa la estructura del componente.
 
-3. Transformación:
-    El AST se transforma en un nuevo AST que optimiza el código para mejorar el rendimiento. Esto incluye:
-        - Eliminación de código muerto.
+3. Transformación: El AST se transforma en un nuevo AST que optimiza el código para mejorar el rendimiento. Esto incluye:
+    - Eliminación de código muerto.
     - Reorganización de la lógica para eficiencia.
 
-4. Generación de Código:
-    - Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
-        - Funciones reactivas para manejar el estado.
-        - Manipulación del DOM utilizando la API de Svelte.
+4. Generación de Código: Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
+    - Funciones reactivas para manejar el estado.
+    - Manipulación del DOM utilizando la API de Svelte.
 
 5. Salida 🠮 Código JavaScript: El resultado es un archivo .js que puede ser ejecutado en el navegador o en un entorno de Node.js.
 
