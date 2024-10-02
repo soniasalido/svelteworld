@@ -247,8 +247,7 @@ Transpilar se refiere a convertir código escrito en un lenguaje o versión de u
 Transforma componentes Svelte en código JavaScript optimizado.
 
 ## Esquema del Proceso de Transpilación en Svelte
-1. Entrada: Componente Svelte:
-    - Archivos con extensión .svelte que contienen:
+1. Entrada: Componente Svelte: Archivos con extensión `.svelte` que contienen:
         - HTML: Estructura del componente.
         - CSS: Estilos específicos.
         - JavaScript: Lógica del componente.
