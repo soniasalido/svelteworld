@@ -265,3 +265,25 @@ Transforma componentes Svelte en código JavaScript optimizado.
 5. Salida 🠮 Código JavaScript: El resultado es un archivo .js que puede ser ejecutado en el navegador o en un entorno de Node.js.
 
 6. Integración con el Entorno: El código generado se integra con otras partes de la aplicación, permitiendo su uso en frameworks como React o Vue si es necesario.
+
+
+```cmd
+[Inicio] --> [Escribir código en Svelte]
+               |
+               v
+      [Compilación en Svelte]
+               |
+               v
+   [Optimización del código JavaScript]
+               |
+               v
+   [Tamaño del bundle final pequeño]
+    (Debido a que Svelte no necesita un runtime,
+    el tamaño del bundle resultante es más pequeño.)
+               |
+               v
+[Comparación con frameworks que incluyen librerías grandes en runtime]
+               |
+               v
+ [Resultado: Bundle final de Svelte más pequeño]
+```
