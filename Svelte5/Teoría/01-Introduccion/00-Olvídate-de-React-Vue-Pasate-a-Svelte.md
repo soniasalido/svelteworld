@@ -122,14 +122,6 @@ Está integrado directamente en el compilador. Cuando definimos una variable rea
 En React, la reactividad está manejada mediante un ciclo de vida basado en el estado y las propiedades. Cuando cambiamos el estado en React utilizando setState (en componentes de clase) o el hook useState (en componentes funcionales), React planifica una actualización que luego se aplica al DOM. Esta actualización se gestiona a través de un proceso llamado reconciliation, donde React compara un Virtual DOM con el estado actual del DOM real y aplica las diferencias necesarias. Este proceso, aunque eficiente y optimizado, introduce cierta latencia y sobrecarga en la gestión de cambios, ya que React no actualiza el DOM inmediatamente, sino que decide el mejor momento para hacerlo.
 
 
-# Nota:
-## Bundler
-Un bundler es una herramienta que combina múltiples archivos (JavaScript, CSS, imágenes, etc.) en uno o varios archivos que luego pueden ser utilizados por el navegador. La idea es agrupar y optimizar los recursos para que se reduzcan las solicitudes HTTP, mejorando el rendimiento de la web. Ejemplos de bundlers incluyen Webpack, Parcel y Rollup.
-
-## Transpilar
-Transpilar se refiere a convertir código escrito en un lenguaje o versión de un lenguaje a otro. En el contexto de JavaScript, transpilar usualmente significa convertir código moderno de JavaScript (como ECMAScript 6 o superior) a una versión más antigua (como ECMAScript 5) que pueda ser compatible con más navegadores. Una herramienta popular para transpilar es Babel, que convierte el código para que pueda ejecutarse en entornos que no soportan las características más nuevas.
-
-
 # Flujo de ejecución de un componente en Svelte
 ## 1. Componente Svelte:
 Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y JavaScript encapsulados.
@@ -241,3 +233,38 @@ En resumen, Svelte es una gran alternativa a React si buscas un framework ligero
 
 ¿Qué framework te gusta más? ¡Déjanos tu opinión en los comentarios! Y si te ha gustado el video, no olvides suscribirte y darle like. Nos vemos en el próximo vídeo. 
 
+
+# Nota:
+## Bundler
+Un bundler es una herramienta que combina múltiples archivos (JavaScript, CSS, imágenes, etc.) en uno o varios archivos que luego pueden ser utilizados por el navegador. La idea es agrupar y optimizar los recursos para que se reduzcan las solicitudes HTTP, mejorando el rendimiento de la web. Ejemplos de bundlers incluyen Webpack, Parcel y Rollup.
+
+## Transpilar
+Transpilar se refiere a convertir código escrito en un lenguaje o versión de un lenguaje a otro. En el contexto de JavaScript, transpilar usualmente significa convertir código moderno de JavaScript (como ECMAScript 6 o superior) a una versión más antigua (como ECMAScript 5) que pueda ser compatible con más navegadores. Una herramienta popular para transpilar es Babel, que convierte el código para que pueda ejecutarse en entornos que no soportan las características más nuevas.
+
+
+
+# El proceso de transpilación del compilador de Svelte 
+Transforma componentes Svelte en código JavaScript optimizado.
+
+## Esquema del Proceso de Transpilación en Svelte
+1. Entrada: Componente Svelte:
+    - Archivos con extensión .svelte que contienen:
+        - HTML: Estructura del componente.
+        - CSS: Estilos específicos.
+        - JavaScript: Lógica del componente.
+
+2. Análisis Sintáctico (Parsing): El compilador analiza el código fuente y genera un AST (Abstract Syntax Tree) que representa la estructura del componente.
+
+3. Transformación:
+    El AST se transforma en un nuevo AST que optimiza el código para mejorar el rendimiento. Esto incluye:
+        - Eliminación de código muerto.
+    - Reorganización de la lógica para eficiencia.
+
+4. Generación de Código:
+    - Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
+        - Funciones reactivas para manejar el estado.
+        - Manipulación del DOM utilizando la API de Svelte.
+
+5. Salida 🠮 Código JavaScript: El resultado es un archivo .js que puede ser ejecutado en el navegador o en un entorno de Node.js.
+
+6. Integración con el Entorno: El código generado se integra con otras partes de la aplicación, permitiendo su uso en frameworks como React o Vue si es necesario.
