@@ -248,9 +248,9 @@ Transforma componentes Svelte en código JavaScript optimizado.
 
 ## Esquema del Proceso de Transpilación en Svelte
 1. Entrada: Componente Svelte: Archivos con extensión `.svelte` que contienen:  
-        - HTML: Estructura del componente.
-        - CSS: Estilos específicos.
-        - JavaScript: Lógica del componente.
+    - HTML: Estructura del componente.
+    - CSS: Estilos específicos.
+    - JavaScript: Lógica del componente.
 
 2. Análisis Sintáctico (Parsing): El compilador analiza el código fuente y genera un AST (Abstract Syntax Tree) que representa la estructura del componente.
 
