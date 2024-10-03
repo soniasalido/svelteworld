@@ -2,9 +2,11 @@
 	"name": "00-basic-props",
 	"version": "0.0.1",
 	"private": true,
-	"scripts": {
+	"scripts": {				
 		"dev": "vite dev",
 		"build": "vite build",
+		"start": "vite preview",
+		"preview": "vite preview",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -17,6 +19,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-netlify": "^4.3.4",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
 		"@types/eslint": "^9.6.0",
