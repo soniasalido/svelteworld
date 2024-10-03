@@ -1,5 +1,5 @@
 # Que es Svelte
-Svelte es un framework moderno para construir interfaces de usuario (User Interfaces - UI) en aplicaciones web.
+Svelte es un compilador que nos ayuda a construir interfaces de usuario (User Interfaces - UI) en aplicaciones web.
 
 ## Svelte como un framework:
 A pesar de ser un compilador, Svelte también puede ser considerado un framework en un sentido más amplio. Un framework, en términos generales, es un conjunto de herramientas y prácticas que nos ayudan a construir aplicaciones. Svelte proporciona una estructura para desarrollar aplicaciones de usuario, incluyendo:
