@@ -21,12 +21,9 @@ Svelte se identifica principalmente como un **compilador** porque su enfoque pri
 > **Svelte es un compilador porque "compila" el código en lugar de ejecutarlo directamente en el navegador.**
 
 ## Un proyecto Svelte tiene un menor tamaño de archivo
-"¿Sabías que las aplicaciones creadas con Svelte son mucho más ligeras? Comparémoslo."
-
-[Comparación lado a lado del tamaño de los archivos JavaScript finales para una simple aplicación en Svelte y React.]
+¿Sabías que las aplicaciones creadas con Svelte son mucho más ligeras? Comparémoslo.
 
 Menor tamaño de bundle: Como Svelte compila todo en un JavaScript optimizado, el tamaño del bundle final tiende a ser más pequeño en comparación con aplicaciones similares hechas en otros frameworks que incluyen librerías grandes para su tiempo de ejecución.
-
 
 
 ## Una aplicación en Svelte NO carga con mochilas de librerías
@@ -39,13 +36,7 @@ Debido a que Svelte es un compilador y no una biblioteca de tiempo de ejecución
 
 ## Svelte es sinónimo de Simplicidad en el código
 
-Veamos el código. Uno de los puntos fuertes de Svelte es la simplicidad.
-
-[Muestra un componente React básico junto a un componente equivalente en Svelte.]
-
 En React, necesitas manejar JSX, hooks, y estados de manera explícita. Con Svelte, el enfoque es mucho más sencillo. El código es más fácil de leer y mantener porque no necesitas tanta infraestructura para manejar el estado o las actualizaciones de la interfaz.
-
-[Muestra cómo en Svelte simplemente declaras una variable, y el estado se actualiza de forma reactiva sin necesidad de useState() o useEffect().]
 
 
 ## Svelte tiene Reactividad nativa y automática
@@ -53,13 +44,9 @@ Hablando de reactividad, Svelte es reactivo por diseño. Solo necesitamos declar
 
 Cuando definimos una variable reactiva en Svelte, cualquier cambio en esa variable provoca automáticamente una actualización en la interfaz de usuario (UI) sin necesidad de utilizar un "setState" o métodos similares. Svelte compila el código de la aplicación e inyecta el código necesario para actualizar el DOM directamente cuando cambian los estados. Esto reduce la sobrecarga en comparación con enfoques como el de React, donde las actualizaciones se planifican y optimizan antes de aplicarse al DOM.
 
-[Mostrar un contador simple que se incrementa en ambas bibliotecas. En Svelte, se ve el código simple y directo, mientras que en React se muestra la implementación con hooks.]
-
 
 ## Svelte tiene un mejor rendimiento
 Gracias a su enfoque sin Virtual DOM, Svelte tiene mejor rendimiento en muchas situaciones. Especialmente en aplicaciones pequeñas y medianas, Svelte puede superar a React en términos de velocidad de carga y rendimiento en tiempo de ejecución.
-
-[Comparación visual de tiempos de carga en dos aplicaciones sencillas, una en Svelte y otra en React. Los números de carga en Svelte son más rápidos.]
 
 Svelte optimiza el código en tiempo de compilación, mientras que React hace su magia en el navegador, lo que puede generar más sobrecarga.
 
@@ -71,14 +58,10 @@ Svelte no utiliza un Virtual DOM. En lugar de eso, el código compilado por Svel
 ## Svelte tiene CSS y estilos encapsulados
 En Svelte, el manejo de estilos también es más limpio. Los estilos CSS en Svelte son locales por defecto.
 
-[Muestra cómo se aplican los estilos en un componente Svelte y cómo estos se encapsulan localmente sin la necesidad de módulos CSS o styled-components como en React.]
-
 No necesitamoss preocuparnos por clases globales o conflictos de nombres. Todo está encapsulado en el propio componente.
 
 ## Svelte: Ecosistema de herramientas y plugins
 Aunque el ecosistema de React es más maduro y amplio, Svelte tiene un crecimiento impresionante en su ecosistema de herramientas y plugins.
-
-[Mostrar SvelteKit, la herramienta oficial de Svelte para crear aplicaciones robustas con routing, manejo de datos, y renderizado en el servidor.]
 
 Con SvelteKit, podemos crear aplicaciones completas con renderizado en el servidor, rutas dinámicas y más, de una manera muy eficiente.
 
@@ -86,17 +69,8 @@ Con SvelteKit, podemos crear aplicaciones completas con renderizado en el servid
 ## Svelte: Comunidad y soporte
 Svelte tiene una comunidad creciente y muy activa. Aunque React tiene una comunidad más grande, Svelte está ganando terreno rápidamente.
 
-[Comparar los crecimientos en popularidad y las estrellas en GitHub de Svelte y React, con una animación que muestre el progreso reciente de Svelte.]
-
 Svelte es una excelente opción si buscas un framework moderno, con una curva de aprendizaje suave y una comunidad que sigue expandiéndose.
 
-
-# Fin 
-Si aún no te he convencido con las bondades de Svelte, no te pierdas el próximo vídeo, donde te explicaré en detalle cómo funciona la magia detrás de su proceso de compilación, cómo maneja el DOM de manera ultra eficiente y cómo su reactividad nativa simplifica tu código.
-
-Estas potentes características deberían ser razones más que suficientes para que consideres dejar atrás React y dar el salto a Svelte. Al final, el objetivo es mejorar tu flujo de trabajo y crear aplicaciones más rápidas, simples y con menos esfuerzo.
-
-Si te ha gustado este vídeo, dale like, suscríbete y activa la campanita para no perderte el siguiente episodio. ¡Nos vemos en el próximo vídeo!
 
 # Manejo del DOM en Svelte vs. React:
 ### En Svelte:
