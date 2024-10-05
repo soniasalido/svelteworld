@@ -2,11 +2,10 @@
 	"name": "00-basic-props",
 	"version": "0.0.1",
 	"private": true,
-	"scripts": {				
+	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
 		"start": "vite preview",
-		"preview": "vite preview",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
