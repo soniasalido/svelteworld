@@ -295,88 +295,88 @@ La interfaz CompileOptions en el compilador de Svelte define una serie de opcion
 La interfaz CompileOptions permite controlar numerosos aspectos del proceso de compilación en Svelte, incluyendo la depuración, la generación de sourcemaps, cómo se gestionan los estilos CSS, la creación de elementos personalizados y las verificaciones de desarrollo. Estas opciones ofrecen una gran flexibilidad al momento de configurar la salida del compilador para adaptarse a diferentes entornos y casos de uso.
 
 Opciones principales de CompileOptions:
-1. name?: string (por defecto: 'Component'):
+1. `name?: string` (por defecto: 'Component'):
    - Define el nombre de la clase JavaScript generada para el componente.
    - El compilador puede cambiar este nombre si hay conflictos con otras variables en el ámbito del archivo.
    - Normalmente se deduce del nombre del archivo si no se especifica.
 
-2. filename?: string (por defecto: null):
+2. `filename?: string` (por defecto: null):
    - Se usa para pistas de depuración y para generar sourcemaps.
    - Si usas un bundler como Vite o Webpack, este suele establecer el nombre del archivo automáticamente.
 
-3. generate?: 'dom' | 'ssr' | false (por defecto: 'dom'):
+3. `generate?: 'dom' | 'ssr' | false` (por defecto: 'dom'):
    - dom: Genera una clase JavaScript para montar el componente en el DOM.
    - ssr: Genera un objeto con un método render, adecuado para el renderizado en el servidor (Server-Side Rendering).
    - false: No genera JavaScript o CSS, solo devuelve metadatos.
 
-4. errorMode?: 'throw' | 'warn' (por defecto: 'throw'):
+4. `errorMode?: 'throw' | 'warn'` (por defecto: 'throw'):
    - throw: Lanza un error cuando ocurre un problema de compilación.
    - warn: Trata los errores como advertencias, añadiéndolos al informe de advertencias.
 
-5. varsReport?: 'full' | 'strict' | false (por defecto: 'strict'):
+5. `varsReport?: 'full' | 'strict' | false` (por defecto: 'strict'):
    - strict: Devuelve un informe de variables que solo incluye aquellas que no son variables globales o internas.
    - full: Devuelve un informe con todas las variables detectadas.
    - false: No devuelve un informe de variables.
 
-6. sourcemap?: object | string (por defecto: null):
+6. `sourcemap?: object | string` (por defecto: null):
    - Permite especificar un sourcemap inicial, generalmente proporcionado por un preprocesador, que será fusionado con el sourcemap final generado.
 
-7. enableSourcemap?: EnableSourcemap (por defecto: true):
+7. `enableSourcemap?: EnableSourcemap` (por defecto: true):
    - Si es true, Svelte genera sourcemaps para los componentes.
    - Puedes pasar un objeto para controlar la generación de sourcemaps en JavaScript (js) o CSS (css) de manera más granular.
 
-8. outputFilename?: string (por defecto: null):
+8. `outputFilename?: string` (por defecto: null):
    - Especifica el nombre del archivo para el sourcemap de JavaScript.
 
-9. cssOutputFilename?: string (por defecto: null):
+9. `cssOutputFilename?: string` (por defecto: null):
    - Especifica el nombre del archivo para el sourcemap de CSS.
 
-10. sveltePath?: string (por defecto: 'svelte'):
+10. `sveltePath?: string` (por defecto: 'svelte'):
    - La ubicación del paquete de Svelte. Las importaciones de Svelte serán modificadas en consecuencia.
 
-11. dev?: boolean (por defecto: false):
+11. `dev?: boolean` (por defecto: false):
    - Si es true, se añaden verificaciones y código adicional para depuración durante el desarrollo.
 
-12. accessors?: boolean (por defecto: false):
+12. `accessors?: boolean` (por defecto: false):
     - Si es true, se generan getters y setters para las propiedades del componente.
     - Si customElement: true, esto se establece automáticamente en true.
 
-13. immutable?: boolean (por defecto: false):
+13. `immutable?: boolean` (por defecto: false):
    - Si es true, indica al compilador que no mutarás objetos, lo que le permite ser menos conservador al verificar cambios en los valores.
 
-14. hydratable?: boolean (por defecto: false):
+14. `hydratable?: boolean` (por defecto: false):
     - Si es true al generar código DOM, habilita la opción hydrate: true, permitiendo que el componente actualice el DOM existente en lugar de crear uno nuevo desde cero. 
 
-15. legacy?: boolean (por defecto: false):
+15. `legacy?: boolean` (por defecto: false):
    - Si es true, genera código compatible con navegadores antiguos como IE9 e IE10.
 
-16. customElement?: boolean (por defecto: false):
+16. `customElement?: boolean` (por defecto: false):
    - Si es true, genera un constructor de elementos personalizados (Web Components) en lugar de un componente Svelte estándar.
 
-17. tag?: string (por defecto: null):
+17. `tag?: string` (por defecto: null):
    - Define el nombre de la etiqueta personalizada para el elemento si customElement: true. Debe ser una cadena alfanumérica en minúsculas con al menos un guion (e.g., 'my-element').
 
-18. css?: 'injected' | 'external' | 'none' | boolean (por defecto: 'injected'):
+18. `css?: 'injected' | 'external' | 'none' | boolean` (por defecto: 'injected'):
     - injected: Los estilos CSS se inyectan en el JavaScript y se aplican en tiempo de ejecución.
     - external: El CSS se devuelve como un archivo separado en el resultado de la compilación, lo que mejora el rendimiento en grandes aplicaciones.
     - none: No se genera ningún CSS.
     
-19. loopGuardTimeout?: number (por defecto: 0):
+19. `loopGuardTimeout?: number` (por defecto: 0):
    - Establece un número en milisegundos para que Svelte interrumpa un bucle si bloquea el hilo principal por demasiado tiempo, útil para evitar bucles infinitos en desarrollo.
 
-20. namespace?: string (por defecto: 'html'):
+20. `namespace?: string` (por defecto: 'html'):
    - Especifica el espacio de nombres para los elementos, como "svg" o "mathml".
 
-21. cssHash?: CssHashGetter (por defecto: undefined):
+21. `cssHash?: CssHashGetter` (por defecto: undefined):
    - Una función que genera el nombre de clase para el CSS con scope basado en un hash del contenido CSS.
 
-22. preserveComments?: boolean (por defecto: false):
+22. `preserveComments?: boolean` (por defecto: false):
    - Si es true, conserva los comentarios HTML durante el renderizado en el servidor.
 
-23. preserveWhitespace?: boolean (por defecto: false):
+23. `preserveWhitespace?: boolean` (por defecto: false):
    - Si es true, conserva los espacios en blanco dentro y entre los elementos HTML, en lugar de colapsarlos.
 
-24. discloseVersion?: boolean (por defecto: true):
+24. `discloseVersion?: boolean` (por defecto: true):
     - Si es true, expone la versión de Svelte en el navegador, agregándola a un Set en window.__svelte.v.
 
 
