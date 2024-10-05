@@ -79,8 +79,6 @@ Svelte es una excelente opción si buscas un framework moderno, con una curva de
 # Conclusión
 En resumen, Svelte es una gran alternativa a React si buscas un framework ligero, rápido y fácil de usar. Aunque React sigue siendo una excelente herramienta, Svelte puede ofrecerte una mejor experiencia de desarrollo y rendimiento en proyectos donde la simplicidad y la velocidad son cruciales.
 
-[Muestra un resumen visual de las ventajas de Svelte (rendimiento, simplicidad, menor tamaño) sobre React.]
-
 ¿Qué framework te gusta más? ¡Déjanos tu opinión en los comentarios! Y si te ha gustado el video, no olvides suscribirte y darle like. Nos vemos en el próximo vídeo. 
 
 
