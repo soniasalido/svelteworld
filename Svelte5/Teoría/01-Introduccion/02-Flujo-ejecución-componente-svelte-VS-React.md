@@ -635,14 +635,22 @@ El equipo de Svelte recomienda el plugin para Vite llamado `vite-plugin-svelte`.
 Si no quieres usar Vite, hay otros plugins disponibles para integrarse con otras herramientas populares de construcción como Rollup y Webpack. La comunidad de Svelte mantiene una lista de estos plugins.
 
 ## Esquema del Proceso de Transpilación en Svelte
-1. Entrada: Componente Svelte: Archivos con extensión `.svelte` que contienen:
+### 1. Entrada: Componente Svelte: Archivos con extensión `.svelte` que contienen:
    - HTML: Estructura del componente.
    - CSS: Contiene los estilos específicos del componente, generalmente encapsulados para que no afecten a otros componentes.
    - JavaScript: Define la lógica del componente, incluidas variables reactivas, eventos, y funciones.
 
-2. La función `compile()`: Aquí es donde ocurre la MAGIA. 
-- Aquí es donde el compilador transforma el código fuente en un módulo JavaScript que exporta una clase. Esa clase es la que usará el navegador para crear y manejar el componente en la aplicación.
-- La compilación convierte el código Svelte en un módulo JavaScript. Este módulo contendrá una clase que representa el componente y que se podrá instanciar en el navegador o en otro entorno.
+### 2. La función `compile()`: El compilador de Svelte toma el código fuente del componente y lo transforma en un objeto CompileResult que contiene:
+   - Código JavaScript: El código JavaScript optimizado que representa el componente.
+   - Código CSS: Los estilos CSS generados a partir de los estilos definidos en el componente.
+   - Árbol de Sintaxis Abstracta (AST): Una representación estructurada del código fuente del componente.
+   - Advertencias: Posibles problemas o errores detectados durante la compilación.
+   - Variables: Información sobre las variables declaradas en el componente.
+   - Estadísticas: Datos de tiempo de compilación.
+
+>![Important]
+> El compilador transforma el código fuente en un módulo JavaScript que exporta una clase. Esa clase es la que usará el navegador para crear y manejar el componente en la aplicación.
+> La compilación convierte el código Svelte en un módulo JavaScript. Este módulo contendrá una clase que representa el componente y que se podrá instanciar en el navegador o en otro entorno.
 
 3. Análisis Sintáctico (Parsing): La función parse() en el contexto del compilador de Svelte se usa para analizar el código fuente de un componente y devolver su árbol de sintaxis abstracta (AST, por sus siglas en inglés). El AST es una representación estructurada del código que permite entender su organización y contenido a nivel sintáctico, pero sin llegar a compilar o validar el código. Solo se enfoca en analizar y estructurar el código en un formato de árbol. Este AST incluye la representación del HTML, CSS y JavaScript del componente.
 
