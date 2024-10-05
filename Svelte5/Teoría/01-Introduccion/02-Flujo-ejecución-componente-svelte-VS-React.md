@@ -421,6 +421,208 @@ Resumen del objeto CompileResult: Cuando compilamos un componente Svelte usando 
 - stats: Datos de tiempo de compilación, usados principalmente por el equipo de Svelte para diagnósticos.
 
 
+### 6.3 Obtención de hash CSS (CssHashGetter)
+```sveltehtml
+type CssHashGetter = (args: {
+        name: string;
+        filename: string | undefined;
+        css: string;
+        hash: (input: string) => string;
+}) => string;
+```
+El tipo CssHashGetter en Svelte se refiere a una función que se utiliza para generar un nombre de clase CSS con un hash único. Esta función toma como entrada varios parámetros relacionados con el componente, el archivo CSS y el contenido, y devuelve una cadena de texto que representa el nombre de clase generado.
+
+Este tipo es útil en Svelte para manejar el scoping de CSS (alcance de los estilos) de manera que los estilos aplicados a un componente no interfieran con los de otros componentes o partes de la página. El nombre de clase generado incluye un hash basado en el contenido CSS para asegurar que sea único.
+
+La función CssHashGetter recibe un objeto con las siguientes propiedades:
+- `name`: El nombre del componente o del archivo CSS.
+- `filename`: El nombre del archivo CSS, si está disponible.
+- `css`: El contenido CSS del componente.
+- `hash`: Una función que toma una cadena de texto y devuelve un hash único. Esta función se utiliza para generar el hash que se agrega al nombre de clase CSS.
+- La función CssHashGetter devuelve una cadena de texto que representa el nombre de clase CSS con el hash único incluido.
+- Esta función es útil para generar nombres de clase CSS únicos y evitar conflictos de estilos en aplicaciones Svelte.
+- El hash se basa en el contenido del CSS, lo que garantiza que el nombre de clase generado sea único para cada componente o archivo CSS.
+- Al utilizar esta función, Svelte puede aplicar estilos de manera segura y evitar problemas de colisión entre los estilos de diferentes componentes.
+
+
+Ejemplo de uso: Supongamos que tienes un componente Svelte con el siguiente contenido CSS:
+```sveltehtml
+<style>
+.button {
+   color: red;
+}
+</style>
+```
+
+El compilador Svelte genera automáticamente una clase CSS con un hash para que sea única, algo como:
+```css
+.button.svelte-123abc {
+   color: red;
+}
+```
+
+El CssHashGetter te permite personalizar cómo se genera ese hash y el nombre de la clase. Un ejemplo de cómo podrías implementar un CssHashGetter:
+```js
+const customCssHash: CssHashGetter = ({ name, filename, css, hash }) => {
+   // Combina el nombre del componente con el hash del contenido CSS
+   return `${name}-${hash(css)}`;
+};
+```
+El propósito principal es garantizar que los nombres de clases sean únicos, evitando conflictos de estilo entre componentes, especialmente cuando diferentes componentes puedan tener nombres de clases similares.
+
+### 6.4 EnableSourcemap
+El tipo EnableSourcemap en Svelte se utiliza para configurar cómo se generan los sourcemaps (mapas de origen) durante el proceso de compilación. Un sourcemap es un archivo que asocia el código compilado (el JavaScript o CSS generado) con el código fuente original, lo que facilita la depuración, ya que permite rastrear los errores o advertencias en el código compilado hacia las líneas originales en el código fuente.
+
+```sveltehtml
+type EnableSourcemap = 
+    | boolean
+    | { js: boolean; css: boolean };
+```
+Los sourcemaps son cruciales en el desarrollo porque permiten depurar el código compilado. Si tu código fuente es transformado (por ejemplo, desde Svelte a JavaScript estándar), los mapas de origen permiten rastrear los errores o advertencias que ocurren en el código transformado y ver de dónde provienen en el código fuente original.
+
+Ejemplo:
+```js
+enableSourcemap: { js: true, css: false }  // Sourcemaps solo para JavaScript
+```
+En este caso, se generan sourcemaps solo para el código JavaScript, pero no para el CSS. Esto puede ser útil si solo necesitas depurar el JavaScript y no el CSS en la aplicación.
+
+### 6.5 MarkupPreprocessor
+El MarkupPreprocessor en Svelte es un tipo de preprocesador que se utiliza para manipular o transformar el contenido completo de un archivo Svelte antes de que sea compilado. Este preprocesador recibe el contenido de todo el archivo como una cadena de texto y puede devolver una versión modificada de ese contenido.
+
+```sveltehtml
+type MarkupPreprocessor = (options: {
+    <!--The whole Svelte file content-->
+    content: string;
+
+    <!--The filename of the Svelte file-->
+    filename?: string;
+}) => Processed | void | Promise<Processed | void>;
+```
+
+Este tipo define una función que recibe un objeto con dos propiedades:
+- `content: string`: El contenido completo del archivo Svelte (todo el código HTML, <script>, <style>, etc.).
+- `filename?: string`: El nombre del archivo Svelte que se está procesando (opcional).
+
+La función puede devolver uno de los siguientes valores:
+- `Processed`: Un objeto que contiene el código transformado y, opcionalmente, un sourcemap.
+- `void`: Si no se devuelve nada, significa que el contenido no fue modificado.
+- `Promise<Processed | void>`: La función también puede devolver una promesa, lo que permite hacer operaciones asíncronas dentro del preprocesador (por ejemplo, cargar o procesar archivos externos). La promesa puede resolver a un objeto Processed o a void.
+
+Ejemplo básico de un MarkupPreprocessor: Imaginemos que queremos escribir un preprocesador que busque y reemplace todas las ocurrencias de la palabra "foo" en el código por "bar". Devuelve un objeto Processed con el contenido modificado:
+```js
+const markupPreprocessor = ({ content, filename }) => {
+  // Reemplaza todas las ocurrencias de 'foo' por 'bar'
+  const modifiedContent = content.replace(/foo/g, 'bar');
+  
+  // Devuelve el contenido modificado
+  return { code: modifiedContent };
+};
+```
+
+### 6.6 Preprocessor
+Un Preprocessor en Svelte es una función que se utiliza para procesar el contenido de las etiquetas <script> o <style> en un archivo Svelte antes de que se compile. Esta función recibe varios datos relacionados con la etiqueta que se va a procesar y devuelve una versión procesada del contenido.
+
+**Ejemplo de uso:** Un preprocesador de Sass podría transformar el contenido del bloque <style lang="scss"> a CSS antes de que Svelte compile el componente. Para crear un preprocesador de Sass que transforme el contenido del bloque <style lang="scss"> a CSS en un archivo Svelte antes de que se compile, puedes usar la función preprocess() de Svelte junto con la librería sass para realizar la conversión.
+1. Instala la librería sass:
+```cmd
+npm install sass
+```
+
+2. Define el preprocesador de Sass: Implementamos un preprocesador para convertir Sass a CSS antes de que Svelte compile el archivo:
+```js
+import sass from 'sass';  // Importa la librería Sass
+import { preprocess } from 'svelte/compiler';
+
+const sassPreprocessor = {
+  style: async ({ content, attributes, filename }) => {
+    // Solo procesa bloques <style lang="scss">
+    if (attributes.lang !== 'scss') return;
+
+    try {
+      const result = sass.renderSync({
+        data: content, // El contenido del <style>
+        file: filename, // El nombre del archivo para mejor manejo de errores
+        includePaths: ['src'], // Rutas adicionales que Sass podría necesitar
+      });
+
+      return {
+        code: result.css.toString(), // Devuelve el CSS transformado
+        map: result.map?.toString(), // Si Sass generó un source map
+      };
+    } catch (err) {
+      console.error('Error compilando Sass:', err);
+    }
+  },
+};
+
+// Exporta el preprocesador
+export default {
+  preprocess: [sassPreprocessor],
+};
+```
+
+- `sass.renderSync()`: Esta función de sass toma el contenido de Sass y lo convierte en CSS. El código CSS resultante se devuelve en result.css.toString().
+- `attributes.lang !== 'scss'`: Se verifica si el bloque `<style>` tiene el atributo `lang="scss"` para asegurarse de que solo se procese Sass.
+- `includePaths: ['src']`: Esta opción permite especificar rutas adicionales para Sass, donde buscar archivos parciales o mixins. Aquí podemos ajustar según la estructura de tu proyecto.
+- Devuelve `code` y `map`: Devuelve el código CSS compilado y el source map (si se generó), lo que facilita la depuración.
+
+3. Integración con Svelte: Este preprocesador debe integrarse en la configuración de Svelte, dependiendo del bundler que estés usando (por ejemplo, Vite o Rollup). A continuación, se muestra cómo integrar el preprocesador en un proyecto Svelte con Vite:
+```js
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import sassPreprocessor from './path-to-preprocessor-file';  // Importa tu preprocesador de Sass
+
+export default defineConfig({
+  plugins: [
+    svelte({
+      preprocess: sassPreprocessor  // Usa el preprocesador de Sass
+    }),
+  ],
+});
+```
+
+
+### 6.7 PreprocessorGroup
+Un PreprocessorGroup en Svelte es un conjunto de preprocesadores que se aplican a un archivo Svelte para procesar diferentes partes del archivo antes de su compilación. Este grupo puede incluir preprocesadores para el marcado HTML, los estilos CSS y el código JavaScript.
+
+Componentes principales del PreprocessorGroup:
+- `name?: string`: El nombre del grupo de preprocesadores. Actualmente es opcional, pero será obligatorio en la próxima versión importante de Svelte.
+- `markup?: MarkupPreprocessor`: Un preprocesador para el marcado HTML del archivo Svelte (el contenido total del archivo, incluyendo las etiquetas `<script>`, `<style>`, y HTML).
+- `style?: Preprocessor`: Un preprocesador para los bloques de estilo (`<style>`) dentro del archivo Svelte. Se utiliza para procesar estilos como Sass, Less, etc.
+- `script?: Preprocessor`: Un preprocesador para los bloques de script (`<script>`) en el archivo Svelte. Se puede utilizar para procesar TypeScript o cualquier otro lenguaje de scripts.
+
+Uso: Un PreprocessorGroup permite combinar estos tres tipos de preprocesadores (markup, style y script) en un solo objeto, lo que facilita el procesamiento de diferentes partes del archivo Svelte de manera organizada.
+
+Por ejemplo, un grupo de preprocesadores puede tener un preprocesador de Sass para los estilos y otro de TypeScript para los scripts.
+
+### 6.8 Processed
+Processed es una interfaz que define el resultado de la ejecución de un preprocesador en Svelte. Si un preprocesador devuelve un objeto Processed, indica que el código ha sido transformado de alguna manera. Si no devuelve nada, se asume que el código no ha cambiado.
+
+Componentes principales de Processed:
+- `code: string`: El nuevo código resultante después de que el preprocesador haya aplicado sus transformaciones.
+- `map?: string | object`: Un sourcemap opcional que relaciona el código transformado con el código fuente original. Esto facilita la depuración permitiendo rastrear los cambios.
+- `dependencies?: string[]`: Una lista opcional de archivos adicionales que el compilador debe observar en busca de cambios. Es útil si el preprocesador depende de otros archivos (como archivos parciales de Sass).
+- `attributes?: Record<string, string | boolean>`: Solo para los preprocesadores de `<script>`` y `<style>`. Indica los atributos actualizados que deben establecerse en la etiqueta. Si no se devuelve nada, los atributos permanecen sin cambios.
+- `toString?: () => string`: Una función opcional que devuelve una representación en cadena del objeto Processed.
+
+El objeto Processed contiene el código transformado, un sourcemap opcional, archivos adicionales que deben observarse y atributos actualizados (para `<script>` y `<style>`). Si un preprocesador modifica el código, devolverá este objeto para que los cambios se apliquen en el proceso de compilación de Svelte.
+
+### 6.9 SveltePreprocessor
+La interfaz SveltePreprocessor es un tipo utilitario en Svelte que se utiliza para extraer el tipo de un preprocesador a partir de un grupo de preprocesadores (PreprocessorGroup). Permite tipificar el preprocesador específico que quieres extraer del grupo, como los preprocesadores para markup, `style` o `script`.
+
+Desglose de SveltePreprocessor:
+```sveltehtml
+interface SveltePreprocessor<
+    PreprocessorType extends keyof PreprocessorGroup,
+    Options = any
+> {
+        (options?: Options): Required<Pick<PreprocessorGroup, PreprocessorType>>;
+}
+```
+
+SveltePrepocessor  es útil cuando necesitas extraer y tipificar un preprocesador específico de un grupo de preprocesadores. Permite asegurarte de que el preprocesador que estás utilizando sigue la estructura correcta de acuerdo con la clave de preprocesador que selecciones (`markup`, `style`, o `script`).
+
+
 # Poceso de transpilación del compilador de Svelte
 Transforma componentes Svelte en código JavaScript optimizado.
 
