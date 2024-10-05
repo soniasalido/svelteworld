@@ -648,7 +648,7 @@ Si no quieres usar Vite, hay otros plugins disponibles para integrarse con otras
    - Variables: Información sobre las variables declaradas en el componente.
    - Estadísticas: Datos de tiempo de compilación.
 
->![Important]
+>![Important]  
 > El compilador transforma el código fuente en un módulo JavaScript que exporta una clase. Esa clase es la que usará el navegador para crear y manejar el componente en la aplicación.
 > La compilación convierte el código Svelte en un módulo JavaScript. Este módulo contendrá una clase que representa el componente y que se podrá instanciar en el navegador o en otro entorno.
 
