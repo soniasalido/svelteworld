@@ -170,7 +170,7 @@ La función `preprocess()` en Svelte es utilizada para preprocesar el código fu
 
 ### 3.2 2. ¿Qué es un preprocesador?
 Un preprocesador es un objeto con un nombre y una o más funciones opcionales para procesar el código de un componente en Svelte. Puede tener las siguientes funciones:
-- `markup`: Función que recibe todo el contenido del componente (HTML, <script>, y <style>).
+- `markup`: Función que recibe todo el contenido del componente (HTML, `<script>`, y `<style>`).
 - `script`: Función que recibe solo el contenido dentro de la etiqueta `<script>`.
 - `style`: Función que recibe solo el contenido dentro de la etiqueta `<style>`.
 
