@@ -76,8 +76,8 @@ Estos son los elementos que podemos obtener:
 
 
 ### 5. CompileOptions y CompileResult:
-- `CompileOptions`: Este es el objeto que podemos pasar como segundo parámetro a la función `compile()`. Incluye configuraciones como la generación de mapas de origen (source maps), el formato de salida, la compatibilidad con versiones antiguas de JavaScript, etc.
-- `CompileResult`: Es el objeto que contiene los resultados de la compilación, como el código JavaScript (js), el CSS, el AST, y otros elementos como advertencias y estadísticas.
+- `CompileOptions`: Este es el objeto que podemos pasar como segundo parámetro a la función `compile()`. Incluye configuraciones como la generación de mapas de origen (source maps), el formato de salida, la compatibilidad con versiones antiguas de JavaScript, etc. Consulta CompileOptions para conocer todas las opciones disponibles 🠮 https://svelte.dev/docs/svelte-compiler#types-compileoptions
+- `CompileResult`: Es el objeto que contiene los resultados de la compilación, como el código JavaScript (js), el CSS, el AST, y otros elementos como advertencias y estadísticas. Consulta CompileResult para obtener una descripción completa del resultado de la compilación 🠮 https://svelte.dev/docs/svelte-compiler#types-compileresult 
 
 
 Aunque generalmente no usaremos esta función directamente (porque los plugins de bundlers lo hacen por nosotros), entenderla nos permite personalizar el proceso de compilación si es necesario.
