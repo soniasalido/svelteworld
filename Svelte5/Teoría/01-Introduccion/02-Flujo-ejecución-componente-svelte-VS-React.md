@@ -12,12 +12,11 @@ Como desarrollador, normalmente no tendremos que usar el compilador de Svelte de
 
 En lugar de interactuar directamente con el compilador, Svelte se integra con nuestro flujo de trabajo a través de un sistema de construcción o bundler (herramientas como Vite, Webpack, o Rollup, que agrupan y optimizan los archivos de nuestra aplicación).
 
+**En lugar de compilar manualmente nuestros archivos Svelte, usamos un plugin dentro de nuestro bundler (como Vite o Webpack) que se encarga de invocar al compilador de Svelte automáticamente** cuando sea necesario. Estos plugins son responsables de transformar nuestros componentes de Svelte en un formato que los navegadores puedan entender.
 
-En lugar de compilar manualmente nuestros archivos Svelte, usamos un plugin dentro de nuestro bundler (como Vite o Webpack) que se encarga de invocar al compilador de Svelte automáticamente cuando sea necesario. Estos plugins son responsables de transformar tus componentes de Svelte en un formato que los navegadores puedan entender.
+**El equipo de Svelte recomienda el plugin para Vite llamado `vite-plugin-svelte`.** Vite es una herramienta moderna de desarrollo que ofrece compilaciones rápidas y es muy eficiente. Este plugin permite integrar Svelte fácilmente con Vite y simplifica el proceso de construcción de aplicaciones.
 
-El equipo de Svelte recomienda el plugin para Vite llamado `vite-plugin-svelte`. Vite es una herramienta moderna de desarrollo que ofrece compilaciones rápidas y es muy eficiente. Este plugin permite integrar Svelte fácilmente con Vite y simplifica el proceso de construcción de aplicaciones.
-
-`SvelteKit` es un framework basado en Svelte, que se usa para crear aplicaciones completas. Utiliza `vite-plugin-svelte` bajo el capó para manejar la compilación y construcción de los componentes Svelte de forma eficiente. SvelteKit no solo facilita la creación de aplicaciones, sino que también proporciona herramientas para empaquetar bibliotecas de componentes.
+**`SvelteKit` es un framework basado en Svelte**, que se usa para crear aplicaciones completas. Utiliza `vite-plugin-svelte` bajo el capó para manejar la compilación y construcción de los componentes Svelte de forma eficiente. SvelteKit no solo facilita la creación de aplicaciones, sino que también proporciona herramientas para empaquetar bibliotecas de componentes.
 
 Si no quieres usar Vite, hay otros plugins disponibles para integrarse con otras herramientas populares de construcción como `Rollup` y `Webpack`. La comunidad de Svelte mantiene una lista de estos plugins.
 
@@ -81,7 +80,7 @@ Estos son los elementos que podemos obtener:
 - `CompileResult`: Es el objeto que contiene los resultados de la compilación, como el código JavaScript (js), el CSS, el AST, y otros elementos como advertencias y estadísticas.
 
 
-Aunque generalmente no usaremos esta función directamente (porque los plugins de bundlers lo hacen por ti), entenderla nos permite personalizar el proceso de compilación si es necesario.
+Aunque generalmente no usaremos esta función directamente (porque los plugins de bundlers lo hacen por nosotros), entenderla nos permite personalizar el proceso de compilación si es necesario.
 
 
 # Poceso de transpilación del compilador de Svelte
