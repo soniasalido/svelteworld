@@ -23,9 +23,9 @@ Si no quieres usar Vite, hay otros plugins disponibles para integrarse con otras
 Aunque normalmente no interactuamos directamente con el compilador, es útil entender cómo funciona, ya que los plugins que usamos con Vite, Rollup o Webpack suelen exponer opciones del compilador. Esto nos permite ajustar configuraciones como el nivel de optimización, el manejo de estilos, o cómo manejar la reactividad de los componentes.
 
 
-## Cómo funcionael proceso de compilación en Svelte
+## 1. Compilar
 
-### 1. La función `compile()`:
+### 1.1 La función `compile()`:
 ```sveltehtml
 function compile(
         source: string,
@@ -40,11 +40,11 @@ Recibe dos parámetros principales:
    - `options`: Opcionalmente, podemos pasarle un objeto CompileOptions que contiene configuraciones adicionales para el proceso de compilación (como optimizaciones, generación de mapas de origen, etc.).
 
 
-### 2. El proceso de compilación: Aquí es donde ocurre la magia.
+### 1.2. El proceso de compilación: Aquí es donde ocurre la magia.
 - Aquí es donde **el compilador transforma el código fuente en un módulo JavaScript que exporta una clase. Esa clase es la que usará el navegador para crear y manejar el componente en la aplicación.**
 - **La compilación convierte el código Svelte en un módulo JavaScript. Este módulo contendrá una clase que representa el componente y que se podrá instanciar en el navegador o en otro entorno.**
 
-### 3. Uso de compile() en código:
+### 1.3. Uso de compile() en código:
 ```js
 import { compile } from 'svelte/compiler';
 
@@ -58,7 +58,7 @@ const result = compile(source, {
 - El resultado de la compilación es un objeto que contiene el código JavaScript y otros elementos útiles que describe más abajo.
 
 
-### 4. Objeto resultado de la compilación (`CompileResult`):
+### 1.4. Objeto resultado de la compilación (`CompileResult`):
 El objeto que devuelve `compile()` incluye varios elementos, no solo el código JavaScript del componente, sino también información adicional (metadatos) que puede ser útil durante el desarrollo.
 
 Ejemplo de cómo obtener los diferentes elementos del resultado:
@@ -75,12 +75,35 @@ Estos son los elementos que podemos obtener:
 
 
 
-### 5. CompileOptions y CompileResult:
+### 1.5. CompileOptions y CompileResult:
 - `CompileOptions`: Este es el objeto que podemos pasar como segundo parámetro a la función `compile()`. Incluye configuraciones como la generación de mapas de origen (source maps), el formato de salida, la compatibilidad con versiones antiguas de JavaScript, etc. Consulta CompileOptions para conocer todas las opciones disponibles 🠮 https://svelte.dev/docs/svelte-compiler#types-compileoptions
 - `CompileResult`: Es el objeto que contiene los resultados de la compilación, como el código JavaScript (js), el CSS, el AST, y otros elementos como advertencias y estadísticas. Consulta CompileResult para obtener una descripción completa del resultado de la compilación 🠮 https://svelte.dev/docs/svelte-compiler#types-compileresult 
 
 
 Aunque generalmente no usaremos esta función directamente (porque los plugins de bundlers lo hacen por nosotros), entenderla nos permite personalizar el proceso de compilación si es necesario.
+
+
+## 2. Analizar gramaticalmente (Parsing)
+### 2.1. La función `parse()`:
+```sveltehtml
+function parse(
+template: string,
+options?: ParserOptions
+): Ast;
+```
+
+La función parse() en el contexto del compilador de Svelte se usa para analizar el código fuente de un componente y devolver su árbol de sintaxis abstracta (AST, por sus siglas en inglés). El AST es una representación estructurada del código que permite entender su organización y contenido a nivel sintáctico, pero sin llegar a compilar o validar el código.
+
+- `parse()` es una función que toma como entrada el código fuente de un componente Svelte (en el parámetro template) y devuelve el AST del componente.
+- Los parámetros que recibe son:
+  - `template`: Este es el código fuente del componente, que generalmente será una cadena de texto que contiene el HTML, CSS y JavaScript específicos de un componente Svelte.
+  - `options` (opcional): Este es un objeto de tipo `ParserOptions` que puede incluir configuraciones adicionales, como el nombre del archivo (por ejemplo, App.svelte) o el modo en el que se quiere realizar el parsing.
+
+
+
+
+
+
 
 
 # Poceso de transpilación del compilador de Svelte
