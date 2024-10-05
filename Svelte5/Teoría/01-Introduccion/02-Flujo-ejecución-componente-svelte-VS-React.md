@@ -624,9 +624,9 @@ SveltePrepocessor  es útil cuando necesitas extraer y tipificar un preprocesado
 
 
 # Poceso de transpilación del compilador de Svelte
-Transforma componentes Svelte en código JavaScript optimizado.
+¿Cómo se transforman los componentes Svelte en código JavaScript optimizado?
 
-Como desarrolladores, normalmente no tendremos que usar el compilador de Svelte de manera manual o directa. Svelte es un compilador que transforma los componentes escritos en un formato específico de Svelte en Vanilla JavaScript, que luego puede ser directamente ejecutado por los navegadores.
+Como desarrolladores, normalmente no tendremos que usar el compilador de Svelte de manera manual o directa. Svelte es un compilador que transforma los componentes Svelte en Vanilla JavaScript, que luego puede ser directamente ejecutado por los navegadores.
 
 En lugar de compilar manualmente nuestros archivos Svelte, usamos un plugin dentro de nuestro bundler (como Vite o Webpack) que se encarga de invocar al compilador de Svelte automáticamente cuando sea necesario. Estos plugins son responsables de transformar nuestros componentes de Svelte en un formato que los navegadores puedan entender.
 
