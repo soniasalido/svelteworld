@@ -626,23 +626,35 @@ SveltePrepocessor  es útil cuando necesitas extraer y tipificar un preprocesado
 # Poceso de transpilación del compilador de Svelte
 Transforma componentes Svelte en código JavaScript optimizado.
 
+Como desarrolladores, normalmente no tendremos que usar el compilador de Svelte de manera manual o directa. Svelte es un compilador que transforma los componentes escritos en un formato específico de Svelte en Vanilla JavaScript, que luego puede ser directamente ejecutado por los navegadores.
+
+En lugar de compilar manualmente nuestros archivos Svelte, usamos un plugin dentro de nuestro bundler (como Vite o Webpack) que se encarga de invocar al compilador de Svelte automáticamente cuando sea necesario. Estos plugins son responsables de transformar nuestros componentes de Svelte en un formato que los navegadores puedan entender.
+
+El equipo de Svelte recomienda el plugin para Vite llamado `vite-plugin-svelte`. Vite es una herramienta moderna de desarrollo que ofrece compilaciones rápidas y es muy eficiente. Este plugin permite integrar Svelte fácilmente con Vite y simplifica el proceso de construcción de aplicaciones.
+
+Si no quieres usar Vite, hay otros plugins disponibles para integrarse con otras herramientas populares de construcción como Rollup y Webpack. La comunidad de Svelte mantiene una lista de estos plugins.
+
 ## Esquema del Proceso de Transpilación en Svelte
 1. Entrada: Componente Svelte: Archivos con extensión `.svelte` que contienen:
    - HTML: Estructura del componente.
    - CSS: EContiene los estilos específicos del componente, generalmente encapsulados para que no afecten a otros componentes.
    - JavaScript: Define la lógica del componente, incluidas variables reactivas, eventos, y funciones.
 
-2. Análisis Sintáctico (Parsing): El compilador de Svelte analiza el archivo `.svelte` y genera un AST (Abstract Syntax Tree), que es una representación estructurada de la sintaxis del código del componente. Este AST incluye la representación del HTML, CSS y JavaScript del componente.
+2. La función `compile()`: Aquí es donde ocurre la MAGIA. 
+- Aquí es donde el compilador transforma el código fuente en un módulo JavaScript que exporta una clase. Esa clase es la que usará el navegador para crear y manejar el componente en la aplicación.
+- La compilación convierte el código Svelte en un módulo JavaScript. Este módulo contendrá una clase que representa el componente y que se podrá instanciar en el navegador o en otro entorno.
 
-3. Transformación: El AST es transformado y optimizado. Esto puede incluir:
+3. Análisis Sintáctico (Parsing): El compilador de Svelte analiza el archivo `.svelte` y genera un AST (Abstract Syntax Tree), que es una representación estructurada de la sintaxis del código del componente. Este AST incluye la representación del HTML, CSS y JavaScript del componente.
+
+4. Transformación: El AST es transformado y optimizado. Esto puede incluir:
    - Eliminación de código muerto: Svelte detecta y elimina código que no es necesario para la ejecución.
    - Reorganización de la lógica para mejorar la eficiencia del código generado, como reducir el número de actualizaciones del DOM.
 
-4. Generación de Código: Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
+5. Generación de Código: Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
    - Funciones reactivas que permiten manejar el estado del componente y las actualizaciones automáticas del DOM cuando el estado cambia.
    - Manipulación directa del DOM utilizando la API optimizada de Svelte, que evita el uso de virtual DOM (a diferencia de React o Vue).
 
-5. Salida 🠮 Código JavaScript: El resultado final es un archivo JavaScript (normalmente un archivo .js) que puede ejecutarse en el navegador o en entornos como Node.js. Este archivo contiene todo lo necesario para renderizar el componente Svelte y manejar la lógica reactiva.
+6. Salida 🠮 Código JavaScript: El resultado final es un archivo JavaScript (normalmente un archivo .js) que puede ejecutarse en el navegador o en entornos como Node.js. Este archivo contiene todo lo necesario para renderizar el componente Svelte y manejar la lógica reactiva.
 
 ```cmd
 [Inicio] --> [Escribir código en Svelte]
