@@ -652,20 +652,24 @@ Si no quieres usar Vite, hay otros plugins disponibles para integrarse con otras
 > El compilador transforma el código fuente en un módulo JavaScript que exporta una clase. Esa clase es la que usará el navegador para crear y manejar el componente en la aplicación.  
 > La compilación convierte el código Svelte en un módulo JavaScript. Este módulo contendrá una clase que representa el componente y que se podrá instanciar en el navegador o en otro entorno.
 
-3. Análisis Sintáctico (Parsing): La función parse() en el contexto del compilador de Svelte se usa para analizar el código fuente de un componente y devolver su árbol de sintaxis abstracta (AST, por sus siglas en inglés). El AST es una representación estructurada del código que permite entender su organización y contenido a nivel sintáctico, pero sin llegar a compilar o validar el código. Solo se enfoca en analizar y estructurar el código en un formato de árbol. Este AST incluye la representación del HTML, CSS y JavaScript del componente.
+### 3. Análisis Sintáctico (Parsing):
+La función parse() en el contexto del compilador de Svelte se usa para analizar el código fuente de un componente y devolver su árbol de sintaxis abstracta (AST, por sus siglas en inglés). El AST es una representación estructurada del código que permite entender su organización y contenido a nivel sintáctico, pero sin llegar a compilar o validar el código. Solo se enfoca en analizar y estructurar el código en un formato de árbol. Este AST incluye la representación del HTML, CSS y JavaScript del componente.
 
-   **Advertencia sobre el AST:** El AST devuelto por parse() no es una API pública oficial, lo que significa que la forma y estructura del árbol pueden cambiar en futuras versiones del compilador de Svelte. Es importante tener esto en cuenta si quieres usar el AST directamente en el código, ya que esos cambios pueden romper la implementación en el futuro.
+**Advertencia sobre el AST:** El AST devuelto por parse() no es una API pública oficial, lo que significa que la forma y estructura del árbol pueden cambiar en futuras versiones del compilador de Svelte. Es importante tener esto en cuenta si quieres usar el AST directamente en el código, ya que esos cambios pueden romper la implementación en el futuro.
 
-4. Transformación: El AST es transformado y optimizado. Esto puede incluir:
+### 4. Transformación:
+El AST es transformado y optimizado. Esto puede incluir:
    - Eliminación de código muerto: Svelte detecta y elimina código que no es necesario para la ejecución.
    - Reorganización de la lógica para mejorar la eficiencia del código generado, como reducir el número de actualizaciones del DOM.
 
-5. Generación de Código: Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
+### 5. Generación de Código:
+Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
    - Funciones reactivas que permiten manejar el estado del componente y las actualizaciones automáticas del DOM cuando el estado cambia.
    - Manipulación directa del DOM utilizando la API optimizada de Svelte, que evita el uso de virtual DOM (a diferencia de React o Vue).
    - Código necesario para no depender de librerías externas ni de versiones.
 
-6. Salida 🠮 Código JavaScript: El resultado final es un archivo JavaScript (normalmente un archivo .js) que puede ejecutarse en el navegador o en entornos como Node.js. Este archivo contiene todo lo necesario para renderizar el componente Svelte y manejar la lógica reactiva.
+### 6. Salida 🠮 Código JavaScript:
+El resultado final es un archivo JavaScript (normalmente un archivo .js) que puede ejecutarse en el navegador o en entornos como Node.js. Este archivo contiene todo lo necesario para renderizar el componente Svelte y manejar la lógica reactiva.
 
 
 ```cmd
