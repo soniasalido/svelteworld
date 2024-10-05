@@ -646,7 +646,7 @@ Si no quieres usar Vite, hay otros plugins disponibles para integrarse con otras
 
 3. Análisis Sintáctico (Parsing): La función parse() en el contexto del compilador de Svelte se usa para analizar el código fuente de un componente y devolver su árbol de sintaxis abstracta (AST, por sus siglas en inglés). El AST es una representación estructurada del código que permite entender su organización y contenido a nivel sintáctico, pero sin llegar a compilar o validar el código. Solo se enfoca en analizar y estructurar el código en un formato de árbol. Este AST incluye la representación del HTML, CSS y JavaScript del componente.
 
-**Advertencia sobre el AST:** El AST devuelto por parse() no es una API pública oficial, lo que significa que la forma y estructura del árbol pueden cambiar en futuras versiones del compilador de Svelte. Es importante tener esto en cuenta si quieres usar el AST directamente en el código, ya que esos cambios pueden romper la implementación en el futuro.
+   **Advertencia sobre el AST:** El AST devuelto por parse() no es una API pública oficial, lo que significa que la forma y estructura del árbol pueden cambiar en futuras versiones del compilador de Svelte. Es importante tener esto en cuenta si quieres usar el AST directamente en el código, ya que esos cambios pueden romper la implementación en el futuro.
 
 4. Transformación: El AST es transformado y optimizado. Esto puede incluir:
    - Eliminación de código muerto: Svelte detecta y elimina código que no es necesario para la ejecución.
