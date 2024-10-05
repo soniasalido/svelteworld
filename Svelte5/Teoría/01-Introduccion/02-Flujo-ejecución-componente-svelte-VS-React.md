@@ -695,6 +695,10 @@ El resultado final es un archivo JavaScript (normalmente un archivo .js) que pue
 
 
 # Flujo de ejecución de un componente en Svelte
+````cmd
+Componente Svelte ➝ Transpilación (Svelte Compiler) ➝ Código optimizado en JavaScript vanilla ➝
+Bundler ➝ Código ejecutable por el navegador
+````
 ## 1. Componente Svelte:
 Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y JavaScript encapsulados.
 
@@ -704,7 +708,7 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 - Este proceso genera el código necesario para crear los elementos del DOM, aplicar estilos y gestionar la reactividad del componente.
 - En este paso de Transpilación (cuando se ejecuta el Compilador de Svelte), Svelte **inyecta el código necesario para:**
   - manejar la reactividad y los cambios en el DOM, sin depender de un runtime como React.
-  - no depender de librerías externas ni de versiones**. 
+  - no depender de librerías externas ni de versiones. 
 - Aquí radica una de las diferencias clave de Svelte frente a frameworks como React o Vue. Mientras que React y Vue tienen un "runtime" que se carga junto con la aplicación para gestionar el estado y el DOM, **Svelte genera todo el código necesario en tiempo de compilación**, lo que hace que la aplicación final sea más ligera y eficiente.
 
 ## 3. Bundler (Webpack, Rollup, Vite, etc.):
@@ -716,11 +720,6 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 - El código JavaScript empaquetado (el resultado del bundler) es directamente ejecutable por el navegador. 
 - No hay una segunda fase de transpilación o bundling. El navegador simplemente carga y ejecuta el código JavaScript generado previamente.
 - Sin runtime adicional: Esta es una característica clave de Svelte. A diferencia de frameworks como React o Vue, no hay un runtime adicional que se cargue en el navegador para gestionar la lógica del framework. Todo el código necesario para la reactividad y la actualización del DOM ya se ha generado en tiempo de compilación.
-
-````cmd
-Componente Svelte ➝ Transpilación (Svelte Compiler) ➝ Código optimizado en JavaScript vanilla ➝
-Bundler ➝ Código ejecutable por el navegador
-````
 
 ## Pasos
 1. Componente Svelte: Escribes un archivo .svelte que contiene tu lógica, estructura y estilos encapsulados.
