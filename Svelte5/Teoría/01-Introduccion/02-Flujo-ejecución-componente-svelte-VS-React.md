@@ -111,7 +111,7 @@ No verifica errores ni genera código ejecutable, solo interpreta la sintaxis.
 
 
 ### 2.3 Advertencia sobre el AST:
-**El AST devuelto por `parse()` no es una API pública oficial**, lo que significa que la forma y estructura del árbol pueden cambiar en futuras versiones del compilador de Svelte. Es importante tener esto en cuenta si estás usando el AST directamente en tu código, ya que esos cambios pueden romper tu implementación en el futuro.
+**El AST devuelto por `parse()` no es una API pública oficial**, lo que significa que la forma y estructura del árbol pueden cambiar en futuras versiones del compilador de Svelte. Es importante tener esto en cuenta si quieres usar el AST directamente en el código, ya que esos cambios pueden romper la implementación en el futuro.
 
 
 
