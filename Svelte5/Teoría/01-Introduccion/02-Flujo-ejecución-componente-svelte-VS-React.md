@@ -662,7 +662,7 @@ El AST es transformado y optimizado. Esto puede incluir:
    - Eliminación de código muerto: Svelte detecta y elimina código que no es necesario para la ejecución.
    - Reorganización de la lógica para mejorar la eficiencia del código generado, como reducir el número de actualizaciones del DOM.
 
-### 5. Generación de Código:
+### 5. Generación de Código: Aquí es donde ocurre la MAGIA de SVELTE
 Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
    - Funciones reactivas que permiten manejar el estado del componente y las actualizaciones automáticas del DOM cuando el estado cambia.
    - Manipulación directa del DOM utilizando la API optimizada de Svelte, que evita el uso de virtual DOM (a diferencia de React o Vue).
