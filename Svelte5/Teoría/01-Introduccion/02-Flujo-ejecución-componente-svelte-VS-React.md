@@ -629,23 +629,20 @@ Transforma componentes Svelte en código JavaScript optimizado.
 ## Esquema del Proceso de Transpilación en Svelte
 1. Entrada: Componente Svelte: Archivos con extensión `.svelte` que contienen:
    - HTML: Estructura del componente.
-   - CSS: Estilos específicos.
-   - JavaScript: Lógica del componente.
+   - CSS: EContiene los estilos específicos del componente, generalmente encapsulados para que no afecten a otros componentes.
+   - JavaScript: Define la lógica del componente, incluidas variables reactivas, eventos, y funciones.
 
-2. Análisis Sintáctico (Parsing): El compilador analiza el código fuente y genera un AST (Abstract Syntax Tree) que representa la estructura del componente.
+2. Análisis Sintáctico (Parsing): El compilador de Svelte analiza el archivo `.svelte` y genera un AST (Abstract Syntax Tree), que es una representación estructurada de la sintaxis del código del componente. Este AST incluye la representación del HTML, CSS y JavaScript del componente.
 
-3. Transformación: El AST se transforma en un nuevo AST que optimiza el código para mejorar el rendimiento. Esto incluye:
-   - Eliminación de código muerto.
-   - Reorganización de la lógica para eficiencia.
+3. Transformación: El AST es transformado y optimizado. Esto puede incluir:
+   - Eliminación de código muerto: Svelte detecta y elimina código que no es necesario para la ejecución.
+   - Reorganización de la lógica para mejorar la eficiencia del código generado, como reducir el número de actualizaciones del DOM.
 
 4. Generación de Código: Se genera el código JavaScript a partir del nuevo AST optimizado, que incluye:
-   - Funciones reactivas para manejar el estado.
-   - Manipulación del DOM utilizando la API de Svelte.
+   - Funciones reactivas que permiten manejar el estado del componente y las actualizaciones automáticas del DOM cuando el estado cambia.
+   - Manipulación directa del DOM utilizando la API optimizada de Svelte, que evita el uso de virtual DOM (a diferencia de React o Vue).
 
-5. Salida 🠮 Código JavaScript: El resultado es un archivo .js que puede ser ejecutado en el navegador o en un entorno de Node.js.
-
-6. Integración con el Entorno: El código generado se integra con otras partes de la aplicación, permitiendo su uso en frameworks como React o Vue si es necesario.
-
+5. Salida 🠮 Código JavaScript: El resultado final es un archivo JavaScript (normalmente un archivo .js) que puede ejecutarse en el navegador o en entornos como Node.js. Este archivo contiene todo lo necesario para renderizar el componente Svelte y manejar la lógica reactiva.
 
 ```cmd
 [Inicio] --> [Escribir código en Svelte]
