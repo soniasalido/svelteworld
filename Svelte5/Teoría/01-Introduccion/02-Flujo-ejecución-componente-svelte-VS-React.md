@@ -623,7 +623,7 @@ interface SveltePreprocessor<
 SveltePrepocessor  es útil cuando necesitas extraer y tipificar un preprocesador específico de un grupo de preprocesadores. Permite asegurarte de que el preprocesador que estás utilizando sigue la estructura correcta de acuerdo con la clave de preprocesador que selecciones (`markup`, `style`, o `script`).
 
 
-# Poceso de transpilación del compilador de Svelte
+# Proceso de transpilación del compilador de Svelte
 ¿Cómo se transforman los componentes Svelte en código JavaScript optimizado?
 
 Como desarrolladores, normalmente no tendremos que usar el compilador de Svelte de manera manual o directa. Svelte es un compilador que transforma los componentes Svelte en Vanilla JavaScript, que luego puede ser directamente ejecutado por los navegadores.
