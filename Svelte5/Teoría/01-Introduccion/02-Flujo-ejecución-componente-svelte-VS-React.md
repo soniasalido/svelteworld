@@ -105,7 +105,7 @@ La función `parse()` se encarga de leer el código fuente y devolver solo el AS
 
 Por ejemplo, en un archivo Svelte, se identificarían las secciones de `<script>`, `<style>`, y el marcado HTML, y cada uno de estos elementos sería representado como un nodo en el árbol.
 
-A diferencia de la opción `generate: false` que se usa en el proceso de compilación para generar el AST pero también hacer validaciones, `parse()` solo genera el árbol de sintaxis abstracta, sin realizar ninguna validación o análisis adicional sobre el código. Solo se enfoca en analizar y estructurar el código en un formato de árbol.
+A diferencia de la opción `generate: false` que se usa en el proceso de compilación para generar el AST pero también hacer validaciones, **`parse()` solo genera el árbol de sintaxis abstracta, sin realizar ninguna validación o análisis adicional sobre el código. Solo se enfoca en analizar y estructurar el código en un formato de árbol.**
 
 No verifica errores ni genera código ejecutable, solo interpreta la sintaxis.
 
