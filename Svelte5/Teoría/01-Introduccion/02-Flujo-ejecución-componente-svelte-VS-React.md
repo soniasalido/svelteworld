@@ -103,7 +103,8 @@ Bundler ➝ Código ejecutable por el navegador
    El navegador ejecuta el código JavaScript empaquetado, que incluye las llamadas a `React.createElement` para renderizar el contenido y gestionar el estado mediante el virtual DOM.
 
 ````cmd
-Componente React (JSX) ➝ Transpilación (Babel) ➝ Código JavaScript estándar ➝ Bundler ➝ Código optimizado ➝ Código ejecutable por el navegador
+Componente React (JSX) ➝ Transpilación (Babel) ➝ Código JavaScript estándar ➝ Bundler ➝ 
+Código optimizado ➝ Código ejecutable por el navegador
 ````
 
 ## Pasos
