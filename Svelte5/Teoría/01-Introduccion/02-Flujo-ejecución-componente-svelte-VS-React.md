@@ -147,6 +147,279 @@ Un Árbol de Sintaxis Abstracta es una representación intermedia del código fu
 - El AST es útil en diversas herramientas que necesitan comprender la estructura del código fuente sin necesariamente ejecutarlo o validarlo.
 
 
+## 3. Preprocesar (Preprocessing)
+
+### 3.1. La función `preprocess()`:
+```sveltehtml
+function preprocess(
+source: string,
+preprocessor: PreprocessorGroup | PreprocessorGroup[],
+options?:
+| {
+        filename?: string | undefined;
+}
+| undefined
+): Promise<Processed>;
+```
+
+La función `preprocess()` en Svelte es utilizada para preprocesar el código fuente de un componente antes de que se compile, permitiendo realizar transformaciones en el código de manera personalizada o usando herramientas de la comunidad, como TypeScript, SCSS, PostCSS, entre otras. 
+
+- `source`: El primer parámetro es una cadena que contiene el código fuente del componente Svelte. Este es el código que queremos preprocesar.
+- `preprocessor`: El segundo parámetro puede ser uno o más preprocesadores (un objeto o un array de objetos). Un preprocesador es un conjunto de funciones que pueden transformar el código antes de que sea compilado.
+- `options` (opcional): Un objeto con configuraciones adicionales. Por ejemplo, podemos especificar el nombre del archivo (por si queremos saber de dónde viene el código).
+
+### 3.2 2. ¿Qué es un preprocesador?
+Un preprocesador es un objeto con un nombre y una o más funciones opcionales para procesar el código de un componente en Svelte. Puede tener las siguientes funciones:
+- `markup`: Función que recibe todo el contenido del componente (HTML, <script>, y <style>).
+- `script`: Función que recibe solo el contenido dentro de la etiqueta `<script>`.
+- `style`: Función que recibe solo el contenido dentro de la etiqueta `<style>`.
+
+Estas funciones permiten transformar el código según nuestras necesidades antes de que llegue al compilador de Svelte. Por ejemplo, podemos usar un preprocesador para transformar código Sass en CSS.
+
+### 3.3. Uso de preprocesadores en Svelte
+La función `preprocess()` facilita ganchos (hooks) para transformar el código del componente antes de la compilación. Esto es útil para procesar sintaxis que Svelte no entiende de manera nativa, como TypeScript, SCSS, Less, PostCSS, etc.
+
+Existen plugins oficiales y de la comunidad que ya implementan estos preprocesadores. Podemos configurar nuestro proyecto para usarlos directamente o escribir nuestros propios preprocesadores personalizados.
+
+### 3.4. Ejemplo de un preprocesador común (SCSS):
+Supongamos que queremos usar SCSS para nuestros estilos en un componente Svelte. En este caso, podemos usar un preprocesador que convierta el código dentro de `<style lang="scss">` a CSS estándar.
+```html
+<style lang="scss">
+   $color: red;
+   div {
+      color: $color;
+   }
+</style>
+```
+El preprocesador transformará este bloque SCSS en CSS normal antes de que Svelte compile el componente.
+
+
+### 3.5. Escribir un preprocesador personalizado
+Si queremos crear nuestro propio preprocesador, usaremos la API de `svelte.preprocess`. Aquí podemos definir cómo transformar el código antes de que se compile. Un preprocesador personalizado tiene las siguientes funciones disponibles:
+- `markup()`: Esta función recibe todo el código fuente del componente, incluyendo el HTML, <script>, y <style>. También recibe el nombre del archivo si está disponible.
+- `script()`: Esta función recibe solo el contenido del bloque `<script>` dentro del componente, así como los atributos que están presentes en la etiqueta `<script>`.
+- `style()`: Esta función recibe solo el contenido dentro de la etiqueta `<style>` y sus atributos (como lang="scss").
+
+
+Cada una de estas funciones debe devolver un objeto con:
+- `code`: El código transformado, es decir, el resultado después del procesamiento.
+- `dependencies` (opcional): Un array con archivos que deben ser observados por cambios. Esto es útil si el preprocesador depende de otros archivos (como archivos parciales de SCSS).
+- `map` (opcional): Un mapa de origen (source map) que permita rastrear las transformaciones al código original. Esto es útil para depurar el código preprocesado.
+
+
+### 3.6. Ejemplo de un preprocesador personalizado:
+Supongamos que queremos crear un preprocesador que simplemente transforma los estilos en minúsculas (como un ejemplo simple):
+```js
+const customStylePreprocessor = {
+   style({ content, attributes }) {
+      return {
+         code: content.toLowerCase()  // Convierte el CSS a minúsculas
+      };
+   }
+};
+
+const result = await preprocess(source, [customStylePreprocessor]);
+```
+
+En este ejemplo, el preprocesador personalizado recibe el contenido de los estilos y simplemente lo convierte a minúsculas. Luego, pasamos este preprocesador a la función `preprocess()` para que se ejecute antes de la compilación del componente.
+
+
+### 3.7. Resultado de la función `preprocess()`: `Processed`
+La función `preprocess()` devuelve una promesa que, al resolverse, contiene un objeto `Processed` con el código fuente modificado y otros datos importantes.
+
+El objeto `Processed` incluye:
+- `code`: El código fuente del componente transformado, que ahora será procesado por el compilador de Svelte.
+- `dependencies`: Archivos adicionales que el compilador debería observar por si hay cambios.
+
+
+### 3.8 Uso de varios preprocesadores a la vez:
+Podemos usar varios preprocesadores en un proyecto de Svelte. Los preprocesadores permiten transformar diferentes partes de un componente (como el marcado HTML, el código JavaScript o los estilos CSS) antes de que se compile.
+
+Si tenemos varios preprocesadores, el resultado del primer preprocesador se pasa como entrada al segundo preprocesador. Esto crea una cadena en la que cada preprocesador aplica transformaciones sobre el código modificado por el anterior.
+
+Orden de ejecución dentro de un preprocesador:
+- `markup` (el HTML del componente): Primero se transforma el marcado del componente.
+- `script` (el código JavaScript en <script>): Después se procesa el contenido del bloque `<script>`.
+- `style` (el CSS o Sass en `<style>`): Por último, se procesan los estilos en el bloque `<style>`.
+
+En Svelte 3, todas las funciones de preprocesamiento de markup (de todos los preprocesadores) se ejecutaban primero, luego todas las funciones de script, y finalmente todas las funciones de style. Esto significaba que, si tenías varios preprocesadores, primero se procesaba todo el marcado HTML (de todos los preprocesadores), luego todo el JavaScript, y luego todos los estilos.
+
+En Svelte 4, este comportamiento cambió. Ahora, dentro de cada preprocesador, se sigue el orden markup -> `script` -> `style`. Es decir, cada preprocesador aplica sus transformaciones completas antes de que el siguiente preprocesador entre en acción. Este cambio permite una mayor coherencia en cómo se aplican las transformaciones, ya que cada preprocesador maneja el componente completo de una vez, en lugar de solo partes específicas en cada paso.
+
+
+## 4. La función `walk()`
+La función `walk()` proporcionada por el compilador de Svelte para recorrer (o "caminar") los árboles de sintaxis abstracta (AST, por sus siglas en inglés) que son generados por el parser (analizador sintáctico) de Svelte. La función `walk()` utiliza una instancia del paquete `estree-walker`, que es una herramienta estándar para caminar por un AST.
+
+
+### 4.1. ¿Qué es el AST (Árbol de Sintaxis Abstracta)?
+Un AST (Abstract Syntax Tree) es una representación estructurada del código fuente. Cada nodo en el AST representa una construcción dentro del código, como una etiqueta HTML, un bloque de JavaScript, una declaración de variable, etc. En el caso de Svelte, el AST es una forma de representar los componentes de Svelte después de que han sido analizados por el parser.
+
+### 4. 2. Función walk()
+La función `walk()` es una herramienta que permite recorrer o navegar por los nodos de este AST, examinando o manipulando cada nodo que representa una parte del código fuente.
+
+Caminar por un AST implica visitar cada nodo en el árbol y, potencialmente, realizar acciones en esos nodos. Esto es útil si queremos analizar o modificar el código fuente. En el contexto de Svelte, podemos usar `walk()` para:
+- Inspeccionar o analizar el contenido de un componente Svelte.
+- Modificar o transformar ciertos nodos del componente antes de que sea compilado.
+- Aplicar optimizaciones al código o generar advertencias para los desarrolladores.
+
+
+## 5. Constante Version
+
+La constante llamada VERSION se puede importar desde el módulo svelte/compiler. Esta constante contiene la versión actual de Svelte que está siendo utilizada, la cual está definida en el archivo package.json del paquete de Svelte y es útil para depurar o verificar que estamos usando la versión correcta en nuestro proyecto.
+
+```js
+const VERSION: string;
+```
+Es una constante de tipo string (cadena de texto) que contiene la versión de Svelte en uso.
+
+Ejemplo de un archivo package.json:
+```cmd
+	"devDependencies": {
+		"svelte": "^5.0.0-next.1",
+		"svelte-check": "^3.6.0",
+		"typescript": "^5.0.0",
+		"typescript-eslint": "^8.0.0",
+		"vite": "^5.0.3",
+		"vitest": "^2.0.0"
+	},
+```
+
+En este caso, la constante VERSION contendría el valor "5.0.0-next.1".
+
+
+## 6. Tipos
+
+### 6.1 Opciones de Compilación (CompileOptions)
+La interfaz CompileOptions en el compilador de Svelte define una serie de opciones que podemos configurar al compilar un componente Svelte. Estas opciones controlan diversos aspectos del proceso de compilación, como el tipo de salida (DOM o SSR), la generación de sourcemaps, la depuración, entre otros. Vamos a desglosarlo para entender qué hace cada opción.
+
+La interfaz CompileOptions permite controlar numerosos aspectos del proceso de compilación en Svelte, incluyendo la depuración, la generación de sourcemaps, cómo se gestionan los estilos CSS, la creación de elementos personalizados y las verificaciones de desarrollo. Estas opciones ofrecen una gran flexibilidad al momento de configurar la salida del compilador para adaptarse a diferentes entornos y casos de uso.
+
+Opciones principales de CompileOptions:
+1. name?: string (por defecto: 'Component'):
+   - Define el nombre de la clase JavaScript generada para el componente.
+   - El compilador puede cambiar este nombre si hay conflictos con otras variables en el ámbito del archivo.
+   - Normalmente se deduce del nombre del archivo si no se especifica.
+
+2. filename?: string (por defecto: null):
+   - Se usa para pistas de depuración y para generar sourcemaps.
+   - Si usas un bundler como Vite o Webpack, este suele establecer el nombre del archivo automáticamente.
+
+3. generate?: 'dom' | 'ssr' | false (por defecto: 'dom'):
+   - dom: Genera una clase JavaScript para montar el componente en el DOM.
+   - ssr: Genera un objeto con un método render, adecuado para el renderizado en el servidor (Server-Side Rendering).
+   - false: No genera JavaScript o CSS, solo devuelve metadatos.
+
+4. errorMode?: 'throw' | 'warn' (por defecto: 'throw'):
+   - throw: Lanza un error cuando ocurre un problema de compilación.
+   - warn: Trata los errores como advertencias, añadiéndolos al informe de advertencias.
+
+5. varsReport?: 'full' | 'strict' | false (por defecto: 'strict'):
+   - strict: Devuelve un informe de variables que solo incluye aquellas que no son variables globales o internas.
+   - full: Devuelve un informe con todas las variables detectadas.
+   - false: No devuelve un informe de variables.
+
+6. sourcemap?: object | string (por defecto: null):
+   - Permite especificar un sourcemap inicial, generalmente proporcionado por un preprocesador, que será fusionado con el sourcemap final generado.
+
+7. enableSourcemap?: EnableSourcemap (por defecto: true):
+   - Si es true, Svelte genera sourcemaps para los componentes.
+   - Puedes pasar un objeto para controlar la generación de sourcemaps en JavaScript (js) o CSS (css) de manera más granular.
+
+8. outputFilename?: string (por defecto: null):
+   - Especifica el nombre del archivo para el sourcemap de JavaScript.
+
+9. cssOutputFilename?: string (por defecto: null):
+   - Especifica el nombre del archivo para el sourcemap de CSS.
+
+10. sveltePath?: string (por defecto: 'svelte'):
+   - La ubicación del paquete de Svelte. Las importaciones de Svelte serán modificadas en consecuencia.
+
+11. dev?: boolean (por defecto: false):
+   - Si es true, se añaden verificaciones y código adicional para depuración durante el desarrollo.
+
+12. accessors?: boolean (por defecto: false):
+    - Si es true, se generan getters y setters para las propiedades del componente.
+    - Si customElement: true, esto se establece automáticamente en true.
+
+13. immutable?: boolean (por defecto: false):
+   - Si es true, indica al compilador que no mutarás objetos, lo que le permite ser menos conservador al verificar cambios en los valores.
+
+14. hydratable?: boolean (por defecto: false):
+    - Si es true al generar código DOM, habilita la opción hydrate: true, permitiendo que el componente actualice el DOM existente en lugar de crear uno nuevo desde cero. 
+
+15. legacy?: boolean (por defecto: false):
+   - Si es true, genera código compatible con navegadores antiguos como IE9 e IE10.
+
+16. customElement?: boolean (por defecto: false):
+   - Si es true, genera un constructor de elementos personalizados (Web Components) en lugar de un componente Svelte estándar.
+
+17. tag?: string (por defecto: null):
+   - Define el nombre de la etiqueta personalizada para el elemento si customElement: true. Debe ser una cadena alfanumérica en minúsculas con al menos un guion (e.g., 'my-element').
+
+18. css?: 'injected' | 'external' | 'none' | boolean (por defecto: 'injected'):
+    - injected: Los estilos CSS se inyectan en el JavaScript y se aplican en tiempo de ejecución.
+    - external: El CSS se devuelve como un archivo separado en el resultado de la compilación, lo que mejora el rendimiento en grandes aplicaciones.
+    - none: No se genera ningún CSS.
+    
+19. loopGuardTimeout?: number (por defecto: 0):
+   - Establece un número en milisegundos para que Svelte interrumpa un bucle si bloquea el hilo principal por demasiado tiempo, útil para evitar bucles infinitos en desarrollo.
+
+20. namespace?: string (por defecto: 'html'):
+   - Especifica el espacio de nombres para los elementos, como "svg" o "mathml".
+
+21. cssHash?: CssHashGetter (por defecto: undefined):
+   - Una función que genera el nombre de clase para el CSS con scope basado en un hash del contenido CSS.
+
+22. preserveComments?: boolean (por defecto: false):
+   - Si es true, conserva los comentarios HTML durante el renderizado en el servidor.
+
+23. preserveWhitespace?: boolean (por defecto: false):
+   - Si es true, conserva los espacios en blanco dentro y entre los elementos HTML, en lugar de colapsarlos.
+
+24. discloseVersion?: boolean (por defecto: true):
+    - Si es true, expone la versión de Svelte en el navegador, agregándola a un Set en window.__svelte.v.
+
+
+
+### 6.2 CompileResult
+El resultado de la función `compile()` del compilador de Svelte, que devuelve un objeto de tipo CompileResult. Este objeto contiene varios detalles sobre el proceso de compilación del componente, como el código JavaScript generado, el código CSS, el árbol de sintaxis abstracta (AST), advertencias, y otros metadatos. Desglosamos cada parte de este resultado:
+
+```sveltehtml
+interface CompileResult {…}
+```
+1. `js: {...}`: El código JavaScript resultante de la compilación del componente.
+- `code: string`: Este campo contiene el código JavaScript del componente como una cadena de texto. Este es el código compilado que se ejecutará en el navegador o en el servidor, dependiendo de cómo hayas configurado el proceso de compilación.
+
+- `map: any`: El mapa de origen (source map) generado durante la compilación del JavaScript. Los mapas de origen son útiles para depurar el código, ya que permiten a las herramientas de desarrollo rastrear la correspondencia entre el código original (escrito en Svelte) y el código compilado.
+
+2. `css: CssResult`: El código CSS resultante de la compilación del componente. Este campo contiene el CSS generado a partir de los estilos definidos en el componente Svelte. Al igual que con el JavaScript, puede incluir un mapa de origen para el CSS y el código resultante.
+
+3. `ast: Ast`: El árbol de sintaxis abstracta (AST) que representa la estructura del componente.  El AST es una representación estructurada del código fuente del componente. Aunque normalmente no interactuarás directamente con el AST, es útil si necesitas hacer análisis o modificaciones programáticas al código.
+
+4. `warnings: Warning[]`: Un arreglo de advertencias generadas durante la compilación. Cada advertencia es un objeto con varias propiedades:
+   - `code`: Una cadena que identifica la categoría de la advertencia. Es un código breve que describe el tipo de problema que se ha encontrado.
+   - `message`: Un mensaje en lenguaje comprensible que describe el problema. Esto te ayuda a entender qué está mal en el código.
+   - `start` y `end`: Si la advertencia se refiere a una ubicación específica del código, estos objetos contienen las propiedades line, column, y character que indican la ubicación del problema en el archivo fuente.
+   - `frame`: Si es aplicable, este campo incluye una cadena con un fragmento del código que muestra la línea problemática, junto con los números de línea, para que sea más fácil ubicar y entender el problema.
+
+5. `vars: Var[]`: Un arreglo de las declaraciones de variables del componente. Esta información es útil para herramientas del ecosistema, como plugins de ESLint, que pueden usar este arreglo para inferir más información sobre el componente y hacer análisis estático del código.
+
+6. `stats: { timings: { total: number; } }`: Estadísticas sobre el tiempo de compilación.
+
+   - Este objeto incluye estadísticas que el equipo de desarrollo de Svelte utiliza para diagnosticar el rendimiento del compilador.
+   - `total`: Es el tiempo total que tomó la compilación (en milisegundos).
+      
+Aunque esta información es útil para los desarrolladores de Svelte, no es recomendable depender de este campo en tu propio código, ya que podría cambiar en futuras versiones de Svelte.
+
+
+Resumen del objeto CompileResult: Cuando compilamos un componente Svelte usando la función compile(), obtenemos un objeto con:
+- js: El código JavaScript compilado y su mapa de origen.
+- css: El CSS generado, si hay estilos en el componente.
+- ast: El árbol de sintaxis abstracta del componente.
+- warnings: Un arreglo de advertencias generadas durante la compilación, con detalles sobre la ubicación del problema.
+- vars: Información sobre las variables declaradas en el componente, útil para herramientas de análisis estático.
+- stats: Datos de tiempo de compilación, usados principalmente por el equipo de Svelte para diagnósticos.
+
 
 # Poceso de transpilación del compilador de Svelte
 Transforma componentes Svelte en código JavaScript optimizado.
