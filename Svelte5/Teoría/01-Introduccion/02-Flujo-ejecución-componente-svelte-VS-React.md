@@ -9,7 +9,7 @@ Transpilar se refiere a convertir código escrito en un lenguaje o versión de u
 
 
 
-# El proceso de transpilación del compilador de Svelte
+# Poceso de transpilación del compilador de Svelte
 Transforma componentes Svelte en código JavaScript optimizado.
 
 ## Esquema del Proceso de Transpilación en Svelte
@@ -75,7 +75,8 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 - No hay una segunda fase de transpilación o bundling. El navegador simplemente carga y ejecuta el código JavaScript generado previamente.
 
 ````cmd
-Componente Svelte ➝ Transpilación (Svelte Compiler) ➝ Código optimizado en JavaScript vanilla ➝ Bundler ➝ Código ejecutable por el navegador
+Componente Svelte ➝ Transpilación (Svelte Compiler) ➝ Código optimizado en JavaScript vanilla ➝
+Bundler ➝ Código ejecutable por el navegador
 ````
 
 ## Pasos
