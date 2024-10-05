@@ -152,13 +152,13 @@ Un Árbol de Sintaxis Abstracta es una representación intermedia del código fu
 ### 3.1. La función `preprocess()`:
 ```sveltehtml
 function preprocess(
-source: string,
-preprocessor: PreprocessorGroup | PreprocessorGroup[],
-options?:
-| {
-        filename?: string | undefined;
-}
-| undefined
+    source: string,
+    preprocessor: PreprocessorGroup | PreprocessorGroup[],
+    options?:
+        | {
+            filename?: string | undefined;
+          }
+        | undefined
 ): Promise<Processed>;
 ```
 
