@@ -138,7 +138,7 @@ const ast = parse(source);
 En este caso, ast contendrá la representación estructurada del código en forma de árbol, que podemos inspeccionar o usar para realizar análisis más profundos del código.
 
 
-### 2.5 5. ¿Qué es un AST (Abstract Syntax Tree)?
+### 2.5 ¿Qué es un AST (Abstract Syntax Tree)?
 Un Árbol de Sintaxis Abstracta es una representación intermedia del código fuente. Cada nodo del árbol representa una construcción dentro del código (como etiquetas HTML, bloques de JavaScript, etc.). Por ejemplo:
 - Un nodo podría representar una etiqueta HTML como `<div>`.
 - Otro nodo podría representar una variable en un bloque de JavaScript.
