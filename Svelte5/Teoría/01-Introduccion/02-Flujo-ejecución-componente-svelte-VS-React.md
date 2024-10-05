@@ -100,6 +100,14 @@ La función parse() en el contexto del compilador de Svelte se usa para analizar
   - `options` (opcional): Este es un objeto de tipo `ParserOptions` que puede incluir configuraciones adicionales, como el nombre del archivo (por ejemplo, App.svelte) o el modo en el que se quiere realizar el parsing.
 
 
+### 2.2 Proceso de análisis (parsing):
+La función parse() se encarga de leer el código fuente y devolver solo el AST. El AST es una estructura en forma de árbol que organiza el código fuente de acuerdo con su estructura sintáctica.
+
+Por ejemplo, en un archivo Svelte, se identificarían las secciones de `<script>`, `<style>`, y el marcado HTML, y cada uno de estos elementos sería representado como un nodo en el árbol.
+
+A diferencia de la opción `generate: false` que se usa en el proceso de compilación para generar el AST pero también hacer validaciones, `parse()` solo genera el árbol de sintaxis abstracta, sin realizar ninguna validación o análisis adicional sobre el código. Solo se enfoca en analizar y estructurar el código en un formato de árbol.
+
+No verifica errores ni genera código ejecutable, solo interpreta la sintaxis.
 
 
 
