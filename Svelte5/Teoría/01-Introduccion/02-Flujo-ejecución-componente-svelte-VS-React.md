@@ -101,7 +101,7 @@ La función parse() en el contexto del compilador de Svelte se usa para analizar
 
 
 ### 2.2 Proceso de análisis (parsing):
-La función parse() se encarga de leer el código fuente y devolver solo el AST. El AST es una estructura en forma de árbol que organiza el código fuente de acuerdo con su estructura sintáctica.
+La función `parse()` se encarga de leer el código fuente y devolver solo el AST. El AST es una estructura en forma de árbol que organiza el código fuente de acuerdo con su estructura sintáctica.
 
 Por ejemplo, en un archivo Svelte, se identificarían las secciones de `<script>`, `<style>`, y el marcado HTML, y cada uno de estos elementos sería representado como un nodo en el árbol.
 
@@ -110,7 +110,41 @@ A diferencia de la opción `generate: false` que se usa en el proceso de compila
 No verifica errores ni genera código ejecutable, solo interpreta la sintaxis.
 
 
+### 2.3 Advertencia sobre el AST:
+**El AST devuelto por `parse()` no es una API pública oficial**, lo que significa que la forma y estructura del árbol pueden cambiar en futuras versiones del compilador de Svelte. Es importante tener esto en cuenta si estás usando el AST directamente en tu código, ya que esos cambios pueden romper tu implementación en el futuro.
 
+
+
+- Podemos trabajar con el AST de un componente Svelte usando la API del compilador, pero si solo nos interesa el AST, la función más adecuada es `parse()`.
+- La función `compile()` es más adecuada cuando buscamos compilar un componente completo, y aunque devuelve el AST, su objetivo principal es generar código ejecutable.
+- El AST no es parte de la API pública estable de Svelte, por lo que puede sufrir cambios en futuras versiones.
+
+
+
+### 2.4 Uso de la función `parse()`:
+```js
+import { parse } from 'svelte/compiler';
+
+const ast = parse(source, { filename: 'App.svelte' });
+```
+
+- `source`: Es una cadena de texto que contiene el código fuente del componente, por ejemplo, el contenido del archivo App.svelte.
+- `options`: Aquí se le está pasando una opción que especifica el nombre del archivo (filename: 'App.svelte'). Esto puede ser útil para depuración o análisis, aunque no es obligatorio.
+
+El resultado es el AST del componente:
+```sveltehtml
+const ast = parse(source);
+```
+En este caso, ast contendrá la representación estructurada del código en forma de árbol, que podemos inspeccionar o usar para realizar análisis más profundos del código.
+
+
+### 2.5 5. ¿Qué es un AST (Abstract Syntax Tree)?
+Un Árbol de Sintaxis Abstracta es una representación intermedia del código fuente. Cada nodo del árbol representa una construcción dentro del código (como etiquetas HTML, bloques de JavaScript, etc.). Por ejemplo:
+- Un nodo podría representar una etiqueta HTML como `<div>`.
+- Otro nodo podría representar una variable en un bloque de JavaScript.
+- Un nodo también podría representar un bloque de estilo CSS.
+
+- El AST es útil en diversas herramientas que necesitan comprender la estructura del código fuente sin necesariamente ejecutarlo o validarlo.
 
 
 
