@@ -20,8 +20,6 @@ Ya que el proceso de compilación lo explicamos en el tema anterior ([02-El-Proc
     - Manejar directamente el DOM de FORMA ULTRA EFICIENTE, ya que solo se modifican las partes del DOM que necesitan cambiarse.
     - No depender de librerías externas ni de versiones.
     - Manejo de eventos: El código generado por Svelte incluye los controladores de eventos que asignamos (como `on:click`), que son traducidos a listeners de JavaScript estándar que el navegador puede interpretar.
-
-    Aquí radica una de las diferencias clave de Svelte frente a frameworks como React o Vue. Mientras que React y Vue tienen un "runtime" que se carga junto con la aplicación para gestionar el estado y el DOM, **Svelte genera todo el código necesario en tiempo de compilación**, lo que hace que la aplicación final sea más ligera y eficiente.
 - **Salida:** Código Vanilla Javascript.
 
 
