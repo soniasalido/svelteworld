@@ -16,7 +16,8 @@ Ya que el proceso de compilación lo explicamos en el tema anterior ([02-El-Proc
 - **Transformación:** Se optimiza el código AST para mejorar la eficiencia y la reactividad del componente.
 - **Generación de código:** En tiempo de compilación, Svelte **inyecta en nuestra aplicación, el código necesario para:**
     - Manejar los estados, la reactividad y los estilos.
-    - Manejar directamente el DOM, sin depender de un runtime como React Y DE FORMA ULTRA EFICIENTE, ya que solo se modifican las partes del DOM que necesitan cambiarse.
+    - Manejar directamente el DOM, sin depender de un runtime como React.
+    - Manejar directamente el DOM de FORMA ULTRA EFICIENTE, ya que solo se modifican las partes del DOM que necesitan cambiarse.
     - No depender de librerías externas ni de versiones.
     - Manejo de eventos: El código generado por Svelte incluye los controladores de eventos que asignamos (como `on:click`), que son traducidos a listeners de JavaScript estándar que el navegador puede interpretar.
 
