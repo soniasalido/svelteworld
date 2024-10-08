@@ -1,6 +1,6 @@
 Hola a Todos! Bienvenidos a este tutorial donde vamos a descubrir cómo se realiza el flujo de ejecución de un componente Svelte. 
 
-En el tema anterior vimos en detalle el proceso de compilación de Svelte, es decir, cómo Svelte transpila los componentes a código JavaScript optimizado. En este tema, vamos a desarrollar qué ocurre después de obtener ese código optimizado (Vanilla JavaScript) y también, compararemos el flujo de ejecución de un componente en Svelte con el de un componente en React. Ambos frameworks son muy populares y ampliamente utilizados en el desarrollo web, pero tienen diferencias significativas en cómo manejan la creación y actualización de la interfaz de usuario. Vamos a ver cómo se ejecuta un componente en Svelte y cómo se compara con el proceso en React. ¡Vamos a ello!
+En el tema anterior vimos en detalle el proceso de compilación de Svelte, es decir, cómo Svelte transpila los componentes a código JavaScript optimizado. En este tema, vamos a desarrollar qué ocurre después de obtener ese código optimizado (Vanilla JavaScript) y también, compararemos el flujo de ejecución de un componente Svelte con el de un componente React. Ambos frameworks son muy populares y ampliamente utilizados en el desarrollo web, pero tienen diferencias significativas en cómo manejan la creación y actualización de la interfaz de usuario. Vamos a ver cómo se ejecuta un componente en Svelte y cómo se compara con el proceso en React. ¡Vamos a ello!
 
 # Flujo de ejecución de un componente en Svelte
 ````cmd
@@ -10,15 +10,17 @@ Bundler ➝ Código ejecutable por el navegador
 ## 1. Componente Svelte:
 Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y JavaScript encapsulados.
 
-## 2. Transpilación (Svelte Compiler):
-- Svelte no depende de un virtual DOM como React, sino que compila los componentes directamente en JavaScript vanilla en tiempo de desarrollo.
-- El compilador de Svelte convierte el código Svelte en código JavaScript altamente optimizado, que manipula directamente el DOM.
-- Este proceso genera el código necesario para crear los elementos del DOM, aplicar estilos y gestionar la reactividad del componente.
-- En este paso de Transpilación (cuando se ejecuta el Compilador de Svelte), Svelte **inyecta el código necesario para en tiempo de compilación:**
-  - manejar los estados y la reactividad.
-  - manejar los cambios en el DOM, sin depender de un runtime como React.
-  - no depender de librerías externas ni de versiones. 
-- Aquí radica una de las diferencias clave de Svelte frente a frameworks como React o Vue. Mientras que React y Vue tienen un "runtime" que se carga junto con la aplicación para gestionar el estado y el DOM, **Svelte genera todo el código necesario en tiempo de compilación**, lo que hace que la aplicación final sea más ligera y eficiente.
+## 2. Transpilación (Svelte Compiler - Proceso de Compilación en Svelte):
+Ya que el proceso de compilación lo desarrollamos en el tema anterior ([02-El-Proceso-de-Compilación-en-Svelte.md](02-El-Proceso-de-Compilaci%C3%B3n-en-Svelte.md)), ahora, solo vamos a resumir los pasos clave en el proceso de compilación de un componente en Svelte:
+- **Análisis Sintáctico:** El compilador de Svelte analiza el código Svelte y genera un AST (Abstract Syntax Tree) que representa la estructura del componente.
+- **Transformación:** Se optimiza el código AST para mejorar la eficiencia y la reactividad del componente.
+- **Generación de código:** Svelte **inyecta en nuestra aplicación el código necesario para en tiempo de compilación:**
+    - Manejar los estados, la reactividad y los estilos.
+    - Manejar directamente el DOM, sin depender de un runtime como React.
+    - No depender de librerías externas ni de versiones.
+
+    Aquí radica una de las diferencias clave de Svelte frente a frameworks como React o Vue. Mientras que React y Vue tienen un "runtime" que se carga junto con la aplicación para gestionar el estado y el DOM, **Svelte genera todo el código necesario en tiempo de compilación**, lo que hace que la aplicación final sea más ligera y eficiente.
+- **Salida:** Código Vanilla Javascript.
 
 ## 3. Bundler (Webpack, Rollup, Vite, etc.):
 - El bundler se encarga de agrupar los archivos JavaScript, CSS y otros recursos en un paquete o varios archivos optimizados.
@@ -29,13 +31,6 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 - El código JavaScript empaquetado (el resultado del bundler) es directamente ejecutable por el navegador. 
 - No hay una segunda fase de transpilación o bundling. El navegador simplemente carga y ejecuta el código JavaScript generado previamente.
 - Sin runtime adicional: Esta es una característica clave de Svelte. A diferencia de frameworks como React o Vue, no hay un runtime adicional que se cargue en el navegador para gestionar la lógica del framework. Todo el código necesario para la reactividad y la actualización del DOM ya se ha generado en tiempo de compilación.
-
-## Pasos
-Ya que el proceso de compilación lo desarrollamos en el anterior tema ([02-El-Proceso-de-Compilación-en-Svelte.md](02-El-Proceso-de-Compilaci%C3%B3n-en-Svelte.md)), ahora, solo vamos a resumir los pasos clave en el proceso de compilación de un componente en Svelte:
-1. Componente Svelte: Escribes un archivo .svelte que contiene tu lógica, estructura y estilos encapsulados.
-2. Transpilación (Svelte Compiler): Svelte convierte este archivo `.svelte` en código JavaScript directo y optimizado. Este código es altamente eficiente porque no necesita un virtual DOM; actualiza el DOM directamente.
-3. Bundler: Herramientas como Webpack, Rollup o Vite agrupan el código JavaScript generado por Svelte, junto con cualquier dependencia externa (por ejemplo, módulos, imágenes, CSS).
-4. Código ejecutable: El código resultante del bundler ya está listo para ser ejecutado por el navegador sin necesidad de más procesamiento.
 
 
 # Flujo de ejecución de un componente en React
