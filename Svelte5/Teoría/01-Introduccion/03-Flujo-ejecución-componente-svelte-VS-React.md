@@ -14,7 +14,7 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 Ya que el proceso de compilación lo explicamos en el tema anterior ([02-El-Proceso-de-Compilación-en-Svelte.md](02-El-Proceso-de-Compilaci%C3%B3n-en-Svelte.md)), ahora, solo vamos a resumir los pasos clave de dicho proceso:
 - **Análisis Sintáctico:** El compilador de Svelte analiza el código Svelte y genera un AST (Abstract Syntax Tree) que representa la estructura del componente.
 - **Transformación:** Se optimiza el código AST para mejorar la eficiencia y la reactividad del componente.
-- **Generación de código:** Svelte **inyecta en nuestra aplicación en tiempo de compilación el código necesario para:**
+- **Generación de código:** En tiempo de compilación, Svelte **inyecta en nuestra aplicación, el código necesario para:**
     - Manejar los estados, la reactividad y los estilos.
     - Manejar directamente el DOM, sin depender de un runtime como React Y DE FORMA ULTRA EFICIENTE, ya que solo se modifican las partes del DOM que necesitan cambiarse.
     - No depender de librerías externas ni de versiones.
