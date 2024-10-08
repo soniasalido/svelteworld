@@ -11,7 +11,7 @@ Bundler ➝ Código ejecutable por el navegador
 Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y JavaScript encapsulados.
 
 ## 2. Transpilación (Svelte Compiler - Proceso de Compilación en Svelte):
-Ya que el proceso de compilación lo desarrollamos en el tema anterior ([02-El-Proceso-de-Compilación-en-Svelte.md](02-El-Proceso-de-Compilaci%C3%B3n-en-Svelte.md)), ahora, solo vamos a resumir los pasos clave en el proceso de compilación de un componente en Svelte:
+Ya que el proceso de compilación lo desarrollamos en el tema anterior ([02-El-Proceso-de-Compilación-en-Svelte.md](02-El-Proceso-de-Compilaci%C3%B3n-en-Svelte.md)), ahora, solo vamos a resumir los pasos clave de dicho proceso:
 - **Análisis Sintáctico:** El compilador de Svelte analiza el código Svelte y genera un AST (Abstract Syntax Tree) que representa la estructura del componente.
 - **Transformación:** Se optimiza el código AST para mejorar la eficiencia y la reactividad del componente.
 - **Generación de código:** Svelte **inyecta en nuestra aplicación el código necesario para en tiempo de compilación:**
