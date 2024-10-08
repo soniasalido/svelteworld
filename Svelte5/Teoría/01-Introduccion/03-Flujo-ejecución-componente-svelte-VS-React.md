@@ -39,7 +39,7 @@ Una vez obtenido el código optimizado, el bundler se encarga de realizar una se
 
 **6.- Generación de Sourcemaps:** Los sourcemaps son archivos que mapean el código transpilado (optimizado y minificado) con el código original que escribimos. Esto es útil para depurar la aplicación en caso de errores, ya que los navegadores nos mostrarán el código fuente real en lugar del código transpilado o minificado.
 
-La comunidad Svelte ha adoptado Vite como una de las herramientas recomendadas para el desarrollo de aplicaciones con Svelte. Aunque Svelte fue originalmente diseñado para funcionar con Rollup como bundler predeterminado, Vite ha ganado popularidad debido a su enfoque en mejorar la experiencia de desarrollo, especialmente en términos de velocidad y recarga en caliente.
+La comunidad Svelte ha adoptado **Vite** como una de las herramientas recomendadas para el desarrollo de aplicaciones con Svelte. Aunque Svelte fue originalmente diseñado para funcionar con Rollup como bundler predeterminado, Vite ha ganado popularidad debido a su enfoque en mejorar la experiencia de desarrollo, especialmente en términos de velocidad y recarga en caliente.
 
 Vite usa Rollup bajo el capó: Aunque Vite es principalmente una herramienta de desarrollo, cuando se trata de empaquetar el código para producción, utiliza Rollup internamente. Esto significa que aprovecha las mismas capacidades avanzadas de empaquetado de Rollup, que ha sido utilizado por Svelte desde sus inicios. Rollup se encarga de optimizar el código, aplicar minificación, eliminar dependencias no utilizadas, y producir archivos listos para producción.
 
@@ -48,7 +48,7 @@ Vite usa Rollup bajo el capó: Aunque Vite es principalmente una herramienta de 
 - No hay una segunda fase de transpilación o bundling. El navegador simplemente carga y ejecuta el código JavaScript generado previamente.
 - Sin runtime adicional: Esta es una característica clave de Svelte. A diferencia de frameworks como React o Vue, no hay un runtime adicional que se cargue en el navegador para gestionar la lógica del framework. Todo el código necesario para la reactividad y la actualización del DOM ya se ha generado en tiempo de compilación.
 
-**Despliegue del código ejecutable en el navegador:** Una vez que el código JavaScript, CSS y HTML ha sido empaquetado por el bundler, estos archivos optimizados se envían al navegador cuando el usuario accede a la aplicación.
+**Despliegue del código ejecutable en el navegador:** Una vez que el código JavaScript, CSS y HTML ha sido empaquetado por el bundler, estos archivos optimizados se envían al navegador cuando el usuario accede a nuestra aplicación 🠮 
 - Descarga de archivos: El navegador descarga los archivos JavaScript, CSS y HTML empaquetados. 
 - Ejecución de JavaScript: El motor JavaScript del navegador (como V8 en Chrome o SpiderMonkey en Firefox) interpreta y ejecuta el código. Este código se encarga de montar los componentes, gestionar el estado, manejar los eventos y actualizar la interfaz de usuario.
 - Interactividad: Los eventos y las interacciones del usuario (clics, desplazamientos, formularios, etc.) son procesados por el JavaScript generado, que actualiza la página sin necesidad de recargarla completamente.
