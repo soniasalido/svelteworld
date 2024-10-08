@@ -1,4 +1,5 @@
-Hola a Todos!
+Hola a Todos! Bienvenidos a este tutorial donde vamos a descubrir cómo se realiza el flujo de ejecución de un componente en Svelte. 
+
 En el tema anterior vimos en detalle el proceso de compilación de Svelte, es decir, cómo Svelte transpila los componentes a código JavaScript optimizado. En este vídeo, vamos desarrollar qué ocurre después de obtener ese código optimizado (Vanilla JavaScript) y también, compararemos el flujo de ejecución de un componente en Svelte con el de un componente en React. Ambos frameworks son muy populares y ampliamente utilizados en el desarrollo web, pero tienen diferencias significativas en cómo manejan la creación y actualización de la interfaz de usuario. Vamos a ver cómo se ejecuta un componente en Svelte y cómo se compara con el proceso en React. ¡Vamos a ello!
 
 # Flujo de ejecución de un componente en Svelte
