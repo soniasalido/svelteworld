@@ -31,9 +31,9 @@ Una vez obtenido el código optimizado, el bundler se encarga de realizar una se
 
 **2.- Minificación:** El bundler elimina los espacios en blanco, los comentarios y realiza una serie de optimizaciones en el código para reducir el tamaño de los archivos y hacer que el código cargue más rápido en el navegador. Un ejemplo podría ser renombrar variables locales a nombres más cortos,
 
-**3.- Optimización del código:** Además de la minificación, el bundler puede aplicar optimizaciones como tree-shaking, que elimina el código no utilizado. Como por ejemplo, si hay funciones o variables que no se utilizan en ningún lugar del proyecto, el bundler las elimina.
+**3.- Optimización del código:** El bundler puede aplicar optimizaciones como tree-shaking, que elimina el código no utilizado. Como por ejemplo, si hay funciones o variables que no se utilizan en ningún lugar del proyecto, el bundler las elimina.
 
-**4.- Gestión de dependencias:** Si tu proyecto Svelte usa bibliotecas de terceros (como lodash, Axios, etc.), el bundler se asegura de incluir solo las partes de esas bibliotecas que realmente se utilizan. Esto es posible gracias al tree-shaking y otras técnicas de optimización.
+**4.- Gestión de dependencias:** Si nuestro proyecto Svelte usa bibliotecas de terceros (como lodash, Axios, etc.), el bundler se asegura de incluir solo las partes de esas bibliotecas que realmente se utilizan. Esto es posible gracias al tree-shaking y otras técnicas de optimización.
 
 **5.- Concatenación de archivos:** El bundler también se encarga de combinar archivos de diferentes tipos. Por ejemplo, puede procesar nuestros archivos .js, .css, `.svelte` y luego combinarlos en un solo archivo o en varios más pequeños pero optimizados.
 
