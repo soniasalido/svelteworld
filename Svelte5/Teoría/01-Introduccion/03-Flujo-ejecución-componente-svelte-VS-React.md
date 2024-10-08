@@ -14,7 +14,8 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 - El compilador de Svelte convierte el código Svelte en código JavaScript altamente optimizado, que manipula directamente el DOM.
 - Este proceso genera el código necesario para crear los elementos del DOM, aplicar estilos y gestionar la reactividad del componente.
 - En este paso de Transpilación (cuando se ejecuta el Compilador de Svelte), Svelte **inyecta el código necesario para:**
-  - manejar la reactividad y los cambios en el DOM, sin depender de un runtime como React.
+  - manejar los estados y la reactividad.
+  - manejar los cambios en el DOM, sin depender de un runtime como React.
   - no depender de librerías externas ni de versiones. 
 - Aquí radica una de las diferencias clave de Svelte frente a frameworks como React o Vue. Mientras que React y Vue tienen un "runtime" que se carga junto con la aplicación para gestionar el estado y el DOM, **Svelte genera todo el código necesario en tiempo de compilación**, lo que hace que la aplicación final sea más ligera y eficiente.
 
