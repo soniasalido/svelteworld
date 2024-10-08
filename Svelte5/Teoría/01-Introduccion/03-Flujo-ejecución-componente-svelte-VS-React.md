@@ -64,42 +64,42 @@ Componente React (JSX) ➝ Transpilación (Babel) ➝ Código JavaScript estánd
 Código optimizado ➝ Código ejecutable por el navegador
 ````
 
-1. Componente React (JSX):Un componente en React se escribe en un archivo `.jsx` o .`js` utilizando `JSX`, que es una extensión de sintaxis que permite escribir HTML-like dentro de JavaScript. Los archivos .jsx pueden contener:
+**1. Componente React (JSX):** Un componente en React se escribe en un archivo `.jsx` o .`js` utilizando `JSX`, que es una extensión de sintaxis que permite escribir HTML-like dentro de JavaScript. Los archivos .jsx pueden contener:
    - Lógica: Funciones, hooks, manejo del estado, etc.
    - Estructura: La representación visual del componente, que se describe en JSX.
    - Estilos: Aunque los estilos no suelen estar directamente en el archivo JSX (a menos que se usen soluciones como styled-components), pueden estar importados o inyectados.
 
-2. Transpilación (Babel): JSX no es código JavaScript válido, por lo que necesita ser transpilado. Herramientas como Babel se utilizan para convertir el código JSX a JavaScript estándar (ES5 o ES6), que el navegador puede entender.
+**2. Transpilación (Babel):** JSX no es código JavaScript válido, por lo que necesita ser transpilado. Herramientas como Babel se utilizan para convertir el código JSX a JavaScript estándar (ES5 o ES6), que el navegador puede entender.
    - JSX a JavaScript: Babel convierte el código JSX en JavaScript estándar que el navegador puede entender. Por ejemplo, una expresión JSX como `<div>Hello</div>` se convierte en una llamada a `React.createElement('div', null, 'Hello')`.
    - `ES5` o `ES6`: Además de convertir JSX, Babel también puede transpirar código ES6 o más reciente a ES5, que es compatible con más navegadores antiguos.
-   
-3. Bundler (Webpack, Rollup, Vite, etc.): Una vez que Babel transpila el código JSX a JavaScript, un bundler como Webpack, Rollup o Vite se encarga de:
+
+**3. Bundler (Webpack, Rollup, Vite, etc.):** Una vez que Babel transpila el código JSX a JavaScript, un bundler como Webpack, Rollup o Vite se encarga de:
    - Agrupar archivos: Combinar los diferentes módulos de JavaScript, estilos, imágenes y otras dependencias en uno o varios archivos empaquetados.
    - Optimización: El bundler aplica optimizaciones como:
      - Minificación: Reducir el tamaño de los archivos eliminando espacios, renombrando variables y otros procesos.
      - Tree shaking: Eliminar el código no utilizado para hacer el paquete más pequeño.
 
-4. Código ejecutable por el navegador: El archivo de salida del bundler (generalmente un archivo .js o varios archivos) se sirve al navegador. 
+**4. Código ejecutable por el navegador:** El archivo de salida del bundler (generalmente un archivo .js o varios archivos) se sirve al navegador. 
    - El navegador ejecuta el código JavaScript empaquetado, que incluye las llamadas a `React.createElement` (convertidas por Babel) para crear la representación del virtual DOM.
    - React gestiona la reactividad y la actualización eficiente del DOM real en el navegador mediante su algoritmo de reconciliación. El virtual DOM le permite a React comparar la representación actual del DOM con la nueva representación y actualizar solo las partes necesarias. 
 
 
 
 ## Pasos
-1. Componente React (JSX):  
+**1. Componente React (JSX):**  
    Se escribe el componente en JSX, lo cual incluye la lógica del componente, estado, hooks, y la estructura de la UI en una sintaxis que parece HTML, pero no es JavaScript válido.
 
-2. Transpilación (Babel):  
+**2. Transpilación (Babel):**  
    Babel convierte el JSX en código JavaScript estándar usando la función React.createElement. Esta función genera los nodos del DOM virtual de React.
 
-3. Bundler (Webpack, Vite, etc.):
+**3. Bundler (Webpack, Vite, etc.):**
    Herramientas como Webpack o Vite toman el código JavaScript transpilado y lo agrupan con todas las dependencias (como otros componentes, bibliotecas, archivos CSS e imágenes) en archivos optimizados para la web. También realizan optimizaciones como minificación y tree shaking para mejorar el rendimiento.
 
-4. Código ejecutable por el navegador:
+**4. Código ejecutable por el navegador:**
    El archivo JavaScript generado y optimizado es cargado por el navegador.  React se ejecuta y monta la aplicación en el DOM utilizando su virtual DOM, actualizando de manera eficiente solo los elementos que han cambiado en respuesta a las interacciones del usuario o cambios de estado.
 
 ## React inyecta el código que depende de las librerías y de las versiones en dos momentos clave:
-1. Durante la transpilación (Babel): JSX a JavaScript estándar: JSX no es un código JavaScript válido y debe ser transpilado a JavaScript estándar utilizando Babel. Durante esta fase, Babel convierte el JSX en llamadas a la función React.createElement().
+**1. Durante la transpilación (Babel):** JSX a JavaScript estándar: JSX no es un código JavaScript válido y debe ser transpilado a JavaScript estándar utilizando Babel. Durante esta fase, Babel convierte el JSX en llamadas a la función React.createElement().
 
    Dependencia de React inyectada en la transpilación: Durante la transpilación, se introduce una dependencia de React, ya que React.createElement() es una función fundamental que React utiliza para crear los elementos del virtual DOM. Esto significa que el código resultante de la transpilación necesita tener React disponible en el entorno de ejecución.
 
@@ -116,7 +116,7 @@ Código optimizado ➝ Código ejecutable por el navegador
    Como podemos ver, el código transpilado ahora utiliza la función `React.createElement()`, que es proporcionada por la librería de React. Esto significa que **React inyecta dependencia en la librería react en este punto**, ya que `React.createElement()` es una función fundamental que React utiliza para crear los elementos del DOM virtual.
 
 
-2. Ejecución en el navegador (React y ReactDOM): Durante la ejecución en el navegador, cuando React utiliza su runtime y las librerías de React y ReactDOM. Cuando el código se ejecuta en el navegador, se utilizan las librerías de React y ReactDOM que ya han sido incluidas como dependencias en el proyecto y referenciadas en el código final.
+**2. Ejecución en el navegador (React y ReactDOM):** Durante la ejecución en el navegador, cuando React utiliza su runtime y las librerías de React y ReactDOM. Cuando el código se ejecuta en el navegador, se utilizan las librerías de React y ReactDOM que ya han sido incluidas como dependencias en el proyecto y referenciadas en el código final.
 
    React no manipula el DOM directamente en el código transpilado. En cambio, delega esta tarea a ReactDOM, la cual es otra librería que React utiliza para interactuar con el DOM real. Esta es la fase donde la dependencia de React y ReactDOM se vuelve crítica.
 
