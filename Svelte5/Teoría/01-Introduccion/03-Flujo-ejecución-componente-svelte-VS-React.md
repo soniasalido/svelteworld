@@ -27,17 +27,17 @@ Ya que el proceso de compilación lo explicamos en el tema anterior ([02-El-Proc
 Una vez obtenido el código optimizado, el bundler se encarga de realizar una serie de tareas para preparar el código para su ejecución en el navegador.
 
 ### Tareas que realiza el Bundler:
-1.- Agrupación de módulos: El código en una aplicación Svelte utiliza módulos, es decir, archivos JavaScript separados que se importan/exportan. El bundler los combina en uno o varios archivos, dependiendo de la configuración y la estrategia de empaquetado.
+**1.- Agrupación de módulos:** El código en una aplicación Svelte utiliza módulos, es decir, archivos JavaScript separados que se importan/exportan. El bundler los combina en uno o varios archivos, dependiendo de la configuración y la estrategia de empaquetado.
 
-2.- Minificación: El bundler elimina los espacios en blanco, los comentarios y realiza una serie de optimizaciones en el código (como renombrar variables locales a nombres más cortos) para reducir el tamaño de los archivos y hacer que el código cargue más rápido en el navegador.
+**2.- Minificación:** El bundler elimina los espacios en blanco, los comentarios y realiza una serie de optimizaciones en el código (como renombrar variables locales a nombres más cortos) para reducir el tamaño de los archivos y hacer que el código cargue más rápido en el navegador.
 
-3.- Optimización del código: Además de la minificación, el bundler puede aplicar optimizaciones como tree-shaking, que elimina el código no utilizado. Como por ejemplo, si hay funciones o variables que no se utilizan en ningún lugar del proyecto, el bundler las elimina.
+**3.- Optimización del código:** Además de la minificación, el bundler puede aplicar optimizaciones como tree-shaking, que elimina el código no utilizado. Como por ejemplo, si hay funciones o variables que no se utilizan en ningún lugar del proyecto, el bundler las elimina.
 
-4.- Gestión de dependencias: Si tu proyecto Svelte usa bibliotecas de terceros (como lodash, Axios, etc.), el bundler se asegura de incluir solo las partes de esas bibliotecas que realmente se utilizan. Esto es posible gracias al tree-shaking y otras técnicas de optimización.
+**4.- Gestión de dependencias:** Si tu proyecto Svelte usa bibliotecas de terceros (como lodash, Axios, etc.), el bundler se asegura de incluir solo las partes de esas bibliotecas que realmente se utilizan. Esto es posible gracias al tree-shaking y otras técnicas de optimización.
 
-5.- Concatenación de archivos: El bundler también se encarga de combinar archivos de diferentes tipos. Por ejemplo, puede procesar nuestros archivos .js, .css, `.svelte` y luego combinarlos en un solo archivo o en varios más pequeños pero optimizados.
+**5.- Concatenación de archivos:** El bundler también se encarga de combinar archivos de diferentes tipos. Por ejemplo, puede procesar nuestros archivos .js, .css, `.svelte` y luego combinarlos en un solo archivo o en varios más pequeños pero optimizados.
 
-6.- Generación de Sourcemaps: Los sourcemaps son archivos que mapean el código transpilado (optimizado y minificado) con el código original que escribimos. Esto es útil para depurar la aplicación en caso de errores, ya que los navegadores nos mostrarán el código fuente real en lugar del código transpilado o minificado.
+**6.- Generación de Sourcemaps:** Los sourcemaps son archivos que mapean el código transpilado (optimizado y minificado) con el código original que escribimos. Esto es útil para depurar la aplicación en caso de errores, ya que los navegadores nos mostrarán el código fuente real en lugar del código transpilado o minificado.
 
 La comunidad Svelte ha adoptado Vite como una de las herramientas recomendadas para el desarrollo de aplicaciones con Svelte. Aunque Svelte fue originalmente diseñado para funcionar con Rollup como bundler predeterminado, Vite ha ganado popularidad debido a su enfoque en mejorar la experiencia de desarrollo, especialmente en términos de velocidad y recarga en caliente.
 
