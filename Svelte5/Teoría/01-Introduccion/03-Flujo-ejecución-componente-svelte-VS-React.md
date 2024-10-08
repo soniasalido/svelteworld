@@ -13,7 +13,7 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 - Svelte no depende de un virtual DOM como React, sino que compila los componentes directamente en JavaScript vanilla en tiempo de desarrollo.
 - El compilador de Svelte convierte el código Svelte en código JavaScript altamente optimizado, que manipula directamente el DOM.
 - Este proceso genera el código necesario para crear los elementos del DOM, aplicar estilos y gestionar la reactividad del componente.
-- En este paso de Transpilación (cuando se ejecuta el Compilador de Svelte), Svelte **inyecta el código necesario para:**
+- En este paso de Transpilación (cuando se ejecuta el Compilador de Svelte), Svelte **inyecta el código necesario para en tiempo de compilación:**
   - manejar los estados y la reactividad.
   - manejar los cambios en el DOM, sin depender de un runtime como React.
   - no depender de librerías externas ni de versiones. 
@@ -30,6 +30,7 @@ Se escribe un componente en un archivo `.svelte`, que incluye el HTML, CSS y Jav
 - Sin runtime adicional: Esta es una característica clave de Svelte. A diferencia de frameworks como React o Vue, no hay un runtime adicional que se cargue en el navegador para gestionar la lógica del framework. Todo el código necesario para la reactividad y la actualización del DOM ya se ha generado en tiempo de compilación.
 
 ## Pasos
+Ya que el proceso de compilación lo desarrollamos en el anterior tema ([02-El-Proceso-de-Compilación-en-Svelte.md](02-El-Proceso-de-Compilaci%C3%B3n-en-Svelte.md)), ahora, solo vamos a resumir los pasos clave en el proceso de compilación de un componente en Svelte:
 1. Componente Svelte: Escribes un archivo .svelte que contiene tu lógica, estructura y estilos encapsulados.
 2. Transpilación (Svelte Compiler): Svelte convierte este archivo `.svelte` en código JavaScript directo y optimizado. Este código es altamente eficiente porque no necesita un virtual DOM; actualiza el DOM directamente.
 3. Bundler: Herramientas como Webpack, Rollup o Vite agrupan el código JavaScript generado por Svelte, junto con cualquier dependencia externa (por ejemplo, módulos, imágenes, CSS).
