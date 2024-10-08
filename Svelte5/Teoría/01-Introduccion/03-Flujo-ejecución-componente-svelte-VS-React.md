@@ -48,8 +48,8 @@ Vite usa Rollup bajo el capó: Aunque Vite es principalmente una herramienta de 
 - No hay una segunda fase de transpilación o bundling. El navegador simplemente carga y ejecuta el código JavaScript generado previamente.
 - Sin runtime adicional: Esta es una característica clave de Svelte. A diferencia de frameworks como React o Vue, no hay un runtime adicional que se cargue en el navegador para gestionar la lógica del framework. Todo el código necesario para la reactividad y la actualización del DOM ya se ha generado en tiempo de compilación.
 
-**Despliegue del código ejecutable en el navegador:** Una vez que el código JavaScript, CSS y HTML ha sido empaquetado por el bundler, estos archivos optimizados se envían al navegador cuando el usuario accede a nuestra aplicación 🠮 
-- Descarga de archivos: El navegador descarga los archivos JavaScript, CSS y HTML empaquetados. 
+**Despliegue del código ejecutable en el navegador: 🠮** 
+- Descarga de archivos: El navegador descarga los archivos JavaScript, CSS y HTML empaquetados por el bundler. 
 - Ejecución de JavaScript: El motor JavaScript del navegador (como V8 en Chrome o SpiderMonkey en Firefox) interpreta y ejecuta el código. Este código se encarga de montar los componentes, gestionar el estado, manejar los eventos y actualizar la interfaz de usuario.
 - Interactividad: Los eventos y las interacciones del usuario (clics, desplazamientos, formularios, etc.) son procesados por el JavaScript generado, que actualiza la página sin necesidad de recargarla completamente.
 - Reactividad: Cualquier cambio en el estado del componente o en los datos de la aplicación provoca actualizaciones directas en el DOM, haciendo que la aplicación se sienta rápida y reactiva.
