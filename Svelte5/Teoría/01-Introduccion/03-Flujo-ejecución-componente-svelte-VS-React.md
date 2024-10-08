@@ -24,9 +24,7 @@ Ya que el proceso de compilación lo explicamos en el tema anterior ([02-El-Proc
 
 
 ## 3. Bundler (Webpack, Rollup, Vite, etc.):
-Un bundler es una herramienta que toma los diversos archivos y dependencias de nuestra aplicación (como archivos JavaScript, CSS, imágenes, etc.), los agrupa en un solo archivo (o en algunos casos en varios, pero optimizados) y los convierte en una versión que el navegador pueda ejecutar de manera eficiente.
-
-Después de que el Svelte Compiler convierte los componentes Svelte en JavaScript vanilla optimizado, el bundler toma ese código junto con cualquier otro recurso (dependencias, estilos, etc.) y lo empaqueta para su entrega.
+Una vez obtenido el código optimizado en JavaScript vanilla, el bundler se encarga de realizar una serie de tareas para preparar el código para su ejecución en el navegador.
 
 Tareas que realiza el Bundler:
 1. - Agrupación de módulos: El código en una aplicación Svelte utiliza módulos, es decir, archivos JavaScript separados que se importan/exportan. El bundler los combina en uno o varios archivos, dependiendo de la configuración y la estrategia de empaquetado.
