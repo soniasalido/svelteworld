@@ -26,7 +26,7 @@ Ya que el proceso de compilación lo explicamos en el tema anterior ([02-El-Proc
 ## 3. Bundler (Webpack, Rollup, Vite, etc.):
 Una vez obtenido el código optimizado, el bundler se encarga de realizar una serie de tareas para preparar el código para su ejecución en el navegador.
 
-Tareas que realiza el Bundler:
+### Tareas que realiza el Bundler:
 1.- Agrupación de módulos: El código en una aplicación Svelte utiliza módulos, es decir, archivos JavaScript separados que se importan/exportan. El bundler los combina en uno o varios archivos, dependiendo de la configuración y la estrategia de empaquetado.
 
 2.- Minificación: El bundler elimina los espacios en blanco, los comentarios y realiza una serie de optimizaciones en el código (como renombrar variables locales a nombres más cortos) para reducir el tamaño de los archivos y hacer que el código cargue más rápido en el navegador.
