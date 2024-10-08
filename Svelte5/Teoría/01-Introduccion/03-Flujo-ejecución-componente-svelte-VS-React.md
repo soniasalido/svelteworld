@@ -101,7 +101,7 @@ Código optimizado ➝ Código ejecutable por el navegador
 ## React inyecta el código que depende de las librerías y de las versiones en dos momentos clave:
 **1. Durante la transpilación (Babel):** JSX a JavaScript estándar: JSX no es un código JavaScript válido y debe ser transpilado a JavaScript estándar utilizando Babel. Durante esta fase, Babel convierte el JSX en llamadas a la función React.createElement().
 
-   Dependencia de React inyectada en la transpilación: Durante la transpilación, se introduce una dependencia de React, ya que React.createElement() es una función fundamental que React utiliza para crear los elementos del virtual DOM. Esto significa que el código resultante de la transpilación necesita tener React disponible en el entorno de ejecución.
+   Dependencia de React inyectada en la transpilación: Durante la transpilación, se introduce una dependencia de React, ya que React.createElement() es una función fundamental que React utiliza para crear los elementos del virtual DOM. **Esto significa que el código resultante de la transpilación necesita tener React disponible en el entorno de ejecución.**
 
    Ejemplo de JSX antes de la transpilación:
     ```jsx
@@ -129,7 +129,9 @@ Código optimizado ➝ Código ejecutable por el navegador
     ReactDOM.render(<App />, document.getElementById('root'));
     ```
 
-En este punto, React y ReactDOM ya están cargados como librerías externas (como parte del bundle final) y dependen de la versión específica de React que estés utilizando. La función ReactDOM.render() inicia el proceso de renderizado en el navegador utilizando el virtual DOM, y se mantiene la dependencia en la librería para manejar la actualización del DOM de manera eficiente. Virtual DOM vs. DOM real: React no manipula directamente el DOM real; en su lugar, actualiza el virtual DOM y luego, usando ReactDOM, compara las diferencias entre el virtual DOM y el DOM real para realizar las actualizaciones de manera eficiente.
+En este punto, **React y ReactDOM ya están cargados como librerías externas (como parte del bundle final) y dependen de la versión específica de React que estemos utilizando.** La función ReactDOM.render() inicia el proceso de renderizado en el navegador utilizando el virtual DOM, y se mantiene la dependencia en la librería para manejar la actualización del DOM de manera eficiente.
+
+Virtual DOM vs. DOM real: React no manipula directamente el DOM real; en su lugar, actualiza el virtual DOM y luego, usando ReactDOM, compara las diferencias entre el virtual DOM y el DOM real para realizar las actualizaciones de manera eficiente.
 
 ## Dependencia de las versiones de React y ReactDOM:
 - React y ReactDOM deben estar presentes en el bundle porque son esenciales para la ejecución. Esto genera una dependencia explícita en la versión de las librerías que estés utilizando (por ejemplo, react@17.0.0 o react@18.0.0).
