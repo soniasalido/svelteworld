@@ -16,24 +16,57 @@ Ya que el proceso de compilación lo desarrollamos en el tema anterior ([02-El-P
 - **Transformación:** Se optimiza el código AST para mejorar la eficiencia y la reactividad del componente.
 - **Generación de código:** Svelte **inyecta en nuestra aplicación el código necesario para en tiempo de compilación:**
     - Manejar los estados, la reactividad y los estilos.
-    - Manejar directamente el DOM, sin depender de un runtime como React.
+    - Manejar directamente el DOM, sin depender de un runtime como React Y DE FORMA ULTRA EFICIENTE, ya que solo se modifican las partes del DOM que necesitan cambiarse.
     - No depender de librerías externas ni de versiones.
+    - Manejo de eventos: El código generado por Svelte incluye los controladores de eventos que asignamos (como `on:click`), que son traducidos a listeners de JavaScript estándar que el navegador puede interpretar.
 
     Aquí radica una de las diferencias clave de Svelte frente a frameworks como React o Vue. Mientras que React y Vue tienen un "runtime" que se carga junto con la aplicación para gestionar el estado y el DOM, **Svelte genera todo el código necesario en tiempo de compilación**, lo que hace que la aplicación final sea más ligera y eficiente.
 - **Salida:** Código Vanilla Javascript.
 
+
 ## 3. Bundler (Webpack, Rollup, Vite, etc.):
-- El bundler se encarga de agrupar los archivos JavaScript, CSS y otros recursos en un paquete o varios archivos optimizados.
-- En este punto, el código JavaScript ya ha sido generado y optimizado por el compilador de Svelte.
-- El bundler también puede aplicar optimizaciones adicionales, como la minificación del código y tree shaking (eliminar código no utilizado) para generar archivos más pequeños y rápidos de cargar..
+Un bundler es una herramienta que toma los diversos archivos y dependencias de nuestra aplicación (como archivos JavaScript, CSS, imágenes, etc.), los agrupa en un solo archivo (o en algunos casos en varios, pero optimizados) y los convierte en una versión que el navegador pueda ejecutar de manera eficiente.
+
+Después de que el Svelte Compiler convierte los componentes Svelte en JavaScript vanilla optimizado, el bundler toma ese código junto con cualquier otro recurso (dependencias, estilos, etc.) y lo empaqueta para su entrega.
+
+Tareas que realiza el Bundler:
+1. - Agrupación de módulos: El código en una aplicación Svelte utiliza módulos, es decir, archivos JavaScript separados que se importan/exportan. El bundler los combina en uno o varios archivos, dependiendo de la configuración y la estrategia de empaquetado.
+
+2.- Minificación: El bundler elimina los espacios en blanco, los comentarios y realiza una serie de optimizaciones en el código (como renombrar variables locales a nombres más cortos) para reducir el tamaño de los archivos y hacer que el código cargue más rápido en el navegador.
+
+3.- Optimización del código: Además de la minificación, el bundler puede aplicar optimizaciones como tree-shaking, que elimina el código no utilizado. Como por ejemplo, si hay funciones o variables que no se utilizan en ningún lugar del proyecto, el bundler las elimina.
+
+4.- Gestión de dependencias: Si tu proyecto Svelte usa bibliotecas de terceros (como lodash, Axios, etc.), el bundler se asegura de incluir solo las partes de esas bibliotecas que realmente se utilizan. Esto es posible gracias al tree-shaking y otras técnicas de optimización.
+
+5.- Concatenación de archivos: El bundler también se encarga de combinar archivos de diferentes tipos. Por ejemplo, puede procesar nuestros archivos .js, .css, `.svelte` y luego combinarlos en un solo archivo o en varios más pequeños pero optimizados.
+
+6.- Generación de Sourcemaps: Los sourcemaps son archivos que mapean el código transpilado (optimizado y minificado) con el código original que escribimos. Esto es útil para depurar la aplicación en caso de errores, ya que los navegadores nos mostrarán el código fuente real en lugar del código transpilado o minificado.
+
+La comunidad Svelte ha adoptado Vite como una de las herramientas recomendadas para el desarrollo de aplicaciones con Svelte. Aunque Svelte fue originalmente diseñado para funcionar con Rollup como bundler predeterminado, Vite ha ganado popularidad debido a su enfoque en mejorar la experiencia de desarrollo, especialmente en términos de velocidad y recarga en caliente.
+
+Vite usa Rollup bajo el capó: Aunque Vite es principalmente una herramienta de desarrollo, cuando se trata de empaquetar el código para producción, utiliza Rollup internamente. Esto significa que aprovecha las mismas capacidades avanzadas de empaquetado de Rollup, que ha sido utilizado por Svelte desde sus inicios. Rollup se encarga de optimizar el código, aplicar minificación, eliminar dependencias no utilizadas, y producir archivos listos para producción.
 
 ## 4. Código ejecutable por el navegador:
 - El código JavaScript empaquetado (el resultado del bundler) es directamente ejecutable por el navegador. 
 - No hay una segunda fase de transpilación o bundling. El navegador simplemente carga y ejecuta el código JavaScript generado previamente.
 - Sin runtime adicional: Esta es una característica clave de Svelte. A diferencia de frameworks como React o Vue, no hay un runtime adicional que se cargue en el navegador para gestionar la lógica del framework. Todo el código necesario para la reactividad y la actualización del DOM ya se ha generado en tiempo de compilación.
 
+**Despliegue del código ejecutable en el navegador:** Una vez que el código JavaScript, CSS y HTML ha sido empaquetado por el bundler, estos archivos optimizados se envían al navegador cuando el usuario accede a la aplicación.
+- Descarga de archivos: El navegador descarga los archivos JavaScript, CSS y HTML empaquetados. 
+- Ejecución de JavaScript: El motor JavaScript del navegador (como V8 en Chrome o SpiderMonkey en Firefox) interpreta y ejecuta el código. Este código se encarga de montar los componentes, gestionar el estado, manejar los eventos y actualizar la interfaz de usuario.
+- Interactividad: Los eventos y las interacciones del usuario (clics, desplazamientos, formularios, etc.) son procesados por el JavaScript generado, que actualiza la página sin necesidad de recargarla completamente.
+- Reactividad: Cualquier cambio en el estado del componente o en los datos de la aplicación provoca actualizaciones directas en el DOM, haciendo que la aplicación se sienta rápida y reactiva.
+
+Este código final ejecutable es lo que el usuario experimenta al interactuar con nuestra aplicación en el navegador.
+
+
 
 # Flujo de ejecución de un componente en React
+````cmd
+Componente React (JSX) ➝ Transpilación (Babel) ➝ Código JavaScript estándar ➝ Bundler ➝ 
+Código optimizado ➝ Código ejecutable por el navegador
+````
+
 1. Componente React (JSX):Un componente en React se escribe en un archivo `.jsx` o .`js` utilizando `JSX`, que es una extensión de sintaxis que permite escribir HTML-like dentro de JavaScript. Los archivos .jsx pueden contener:
    - Lógica: Funciones, hooks, manejo del estado, etc.
    - Estructura: La representación visual del componente, que se describe en JSX.
@@ -53,10 +86,7 @@ Ya que el proceso de compilación lo desarrollamos en el tema anterior ([02-El-P
    - El navegador ejecuta el código JavaScript empaquetado, que incluye las llamadas a `React.createElement` (convertidas por Babel) para crear la representación del virtual DOM.
    - React gestiona la reactividad y la actualización eficiente del DOM real en el navegador mediante su algoritmo de reconciliación. El virtual DOM le permite a React comparar la representación actual del DOM con la nueva representación y actualizar solo las partes necesarias. 
 
-````cmd
-Componente React (JSX) ➝ Transpilación (Babel) ➝ Código JavaScript estándar ➝ Bundler ➝ 
-Código optimizado ➝ Código ejecutable por el navegador
-````
+
 
 ## Pasos
 1. Componente React (JSX):  
