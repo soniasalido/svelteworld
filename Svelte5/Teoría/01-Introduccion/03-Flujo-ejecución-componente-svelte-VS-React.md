@@ -37,7 +37,7 @@ Una vez obtenido el código optimizado, el bundler se encarga de realizar una se
 
 **5.- Concatenación de archivos:** El bundler también se encarga de combinar archivos de diferentes tipos. Por ejemplo, puede procesar nuestros archivos .js, .css, `.svelte` y luego combinarlos en un solo archivo o en varios más pequeños pero optimizados.
 
-**6.- Generación de Sourcemaps:** Los sourcemaps son archivos que mapean el código transpilado (optimizado y minificado) con el código original que escribimos. Esto es útil para depurar la aplicación en caso de errores, ya que los navegadores nos mostrarán el código fuente real en lugar del código transpilado o minificado.
+**6.- Generación de Sourcemaps:** Los sourcemaps son archivos que mapean el código transpilado (optimizado y minificado) con el código original que escribimos. Las herramientas de desarrollo del navegador nos permitirán ver el código fuente original durante la depuración, aunque el navegador esté ejecutando el código transpilado o minificado.
 
 La comunidad Svelte ha adoptado **Vite** como una de las herramientas recomendadas para el desarrollo de aplicaciones con Svelte. Aunque Svelte fue originalmente diseñado para funcionar con Rollup como bundler predeterminado, Vite ha ganado popularidad debido a su enfoque en mejorar la experiencia de desarrollo, especialmente en términos de velocidad y recarga en caliente.
 
