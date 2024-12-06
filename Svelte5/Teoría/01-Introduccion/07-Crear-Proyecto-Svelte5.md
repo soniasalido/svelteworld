@@ -76,7 +76,13 @@ El marco de aplicación oficial del equipo Svelte que permite configurar rápida
 
 Ahora, crearemos un nuevo proyecto Svelte 5 utilizando el comando `npm create`. Este comando genera un proyecto Svelte utilizando las herramientas proporcionadas por Svelte directamente.
 ```sh
-npm create svelte@latest my-svelte-app
+# Crear un nuevo proyecto Svelte (comando antiguo, ahora deprecado)
+# npm create svelte@latest my-svelte-app 
+# 🚨 Nota: Este comando ya no se recomienda, ya que `create-svelte` ha sido reemplazado.
+
+# Crear un nuevo proyecto Svelte con el comando actualizado
+npx sv create registroCivil
+# ✅ Nota: Este es el nuevo comando recomendado para iniciar proyectos con Svelte.
 ```
 Aquí, `my-svelte-app` es el nombre del proyecto. Podemos cambiarlo al nombre que prefiramos.  
 
