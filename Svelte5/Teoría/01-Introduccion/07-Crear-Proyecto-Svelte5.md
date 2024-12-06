@@ -81,7 +81,7 @@ Ahora, crearemos un nuevo proyecto Svelte 5 utilizando el comando `npm create`. 
 # 🚨 Nota: Este comando ya no se recomienda, ya que `create-svelte` ha sido reemplazado.
 
 # Crear un nuevo proyecto Svelte con el comando actualizado
-npx sv create registroCivil
+npx sv create my-svelte-app
 # ✅ Nota: Este es el nuevo comando recomendado para iniciar proyectos con Svelte.
 ```
 Aquí, `my-svelte-app` es el nombre del proyecto. Podemos cambiarlo al nombre que prefiramos.  
